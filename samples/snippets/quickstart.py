@@ -16,7 +16,7 @@
 
 """Google Analytics Data API sample quickstart application.
 Example usage:
-    python quickstart.py --property_id <PROPERTY_ID>
+    python3 quickstart.py --property_id <PROPERTY_ID>
 
     where <PROPERTY_ID> is the Google Analytics property id to use for a query.
 
@@ -54,7 +54,7 @@ by specifying the keyFilename parameter in the constructor:
 https://cloud.google.com/docs/authentication/production#passing_the_path_to_the_service_account_key_in_code
 
 To install the latest published package dependency, execute the following:
-  pip install google-analytics-data
+  pip3 install google-analytics-data
 """
 import argparse
 
