@@ -121,8 +121,16 @@ class AlphaAnalyticsDataTransport(abc.ABC):
                 default_timeout=60.0,
                 client_info=client_info,
             ),
+            self.get_universal_metadata: gapic_v1.method.wrap_method(
+                self.get_universal_metadata,
+                default_timeout=None,
+                client_info=client_info,
+            ),
             self.get_metadata: gapic_v1.method.wrap_method(
                 self.get_metadata, default_timeout=None, client_info=client_info,
+            ),
+            self.run_realtime_report: gapic_v1.method.wrap_method(
+                self.run_realtime_report, default_timeout=None, client_info=client_info,
             ),
         }
 
@@ -175,12 +183,36 @@ class AlphaAnalyticsDataTransport(abc.ABC):
         raise NotImplementedError()
 
     @property
+    def get_universal_metadata(
+        self,
+    ) -> typing.Callable[
+        [analytics_data_api.GetUniversalMetadataRequest],
+        typing.Union[
+            analytics_data_api.UniversalMetadata,
+            typing.Awaitable[analytics_data_api.UniversalMetadata],
+        ],
+    ]:
+        raise NotImplementedError()
+
+    @property
     def get_metadata(
         self,
     ) -> typing.Callable[
         [analytics_data_api.GetMetadataRequest],
         typing.Union[
             analytics_data_api.Metadata, typing.Awaitable[analytics_data_api.Metadata]
+        ],
+    ]:
+        raise NotImplementedError()
+
+    @property
+    def run_realtime_report(
+        self,
+    ) -> typing.Callable[
+        [analytics_data_api.RunRealtimeReportRequest],
+        typing.Union[
+            analytics_data_api.RunRealtimeReportResponse,
+            typing.Awaitable[analytics_data_api.RunRealtimeReportResponse],
         ],
     ]:
         raise NotImplementedError()

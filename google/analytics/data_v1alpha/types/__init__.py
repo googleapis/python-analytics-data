@@ -54,7 +54,11 @@ from .analytics_data_api import (
     BatchRunReportsResponse,
     BatchRunPivotReportsRequest,
     BatchRunPivotReportsResponse,
+    GetUniversalMetadataRequest,
+    UniversalMetadata,
     GetMetadataRequest,
+    RunRealtimeReportRequest,
+    RunRealtimeReportResponse,
 )
 
 
@@ -95,5 +99,9 @@ __all__ = (
     "BatchRunReportsResponse",
     "BatchRunPivotReportsRequest",
     "BatchRunPivotReportsResponse",
+    "GetUniversalMetadataRequest",
+    "UniversalMetadata",
     "GetMetadataRequest",
+    "RunRealtimeReportRequest",
+    "RunRealtimeReportResponse",
 )
