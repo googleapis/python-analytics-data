@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:googleapis/python-analytics-data",
-        "sha": "a7b4fe24abb4882f1b98cfd698cfc409b91ffad9"
+        "sha": "18c45b829791509a8ae08a14089803718fa7b388"
       }
     },
     {

@@ -81,8 +81,8 @@ def default(session):
     session.run(
         "py.test",
         "--quiet",
-        "--cov=google.cloud.area120tables",
-        "--cov=google.cloud",
+        "--cov=google.analytics.data",
+        "--cov=google.analytics",
         "--cov=tests.unit",
         "--cov-append",
         "--cov-config=.coveragerc",
