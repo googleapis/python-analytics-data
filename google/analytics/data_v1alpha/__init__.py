@@ -21,7 +21,6 @@ from .types.analytics_data_api import BatchRunPivotReportsResponse
 from .types.analytics_data_api import BatchRunReportsRequest
 from .types.analytics_data_api import BatchRunReportsResponse
 from .types.analytics_data_api import GetMetadataRequest
-from .types.analytics_data_api import GetUniversalMetadataRequest
 from .types.analytics_data_api import Metadata
 from .types.analytics_data_api import RunPivotReportRequest
 from .types.analytics_data_api import RunPivotReportResponse
@@ -29,7 +28,6 @@ from .types.analytics_data_api import RunRealtimeReportRequest
 from .types.analytics_data_api import RunRealtimeReportResponse
 from .types.analytics_data_api import RunReportRequest
 from .types.analytics_data_api import RunReportResponse
-from .types.analytics_data_api import UniversalMetadata
 from .types.data import Cohort
 from .types.data import CohortReportSettings
 from .types.data import CohortSpec
@@ -81,7 +79,6 @@ __all__ = (
     "FilterExpression",
     "FilterExpressionList",
     "GetMetadataRequest",
-    "GetUniversalMetadataRequest",
     "Metadata",
     "Metric",
     "MetricAggregation",
@@ -104,6 +101,5 @@ __all__ = (
     "RunRealtimeReportResponse",
     "RunReportRequest",
     "RunReportResponse",
-    "UniversalMetadata",
     "AlphaAnalyticsDataClient",
 )

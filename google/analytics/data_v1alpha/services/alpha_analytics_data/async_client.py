@@ -335,58 +335,6 @@ class AlphaAnalyticsDataAsyncClient:
         # Done; return the response.
         return response
 
-    async def get_universal_metadata(
-        self,
-        request: analytics_data_api.GetUniversalMetadataRequest = None,
-        *,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
-        metadata: Sequence[Tuple[str, str]] = (),
-    ) -> analytics_data_api.UniversalMetadata:
-        r"""Returns metadata for dimensions and metrics available in
-        reporting methods. Used to explore the dimensions and metrics.
-        Dimensions and metrics will be mostly added over time, but
-        renames and deletions may occur.
-
-        This method returns Universal Metadata. Universal Metadata are
-        dimensions and metrics applicable to any property such as
-        ``country`` and ``totalUsers``.
-
-        Args:
-            request (:class:`~.analytics_data_api.GetUniversalMetadataRequest`):
-                The request object. Request for the universal dimension
-                and metric metadata.
-
-            retry (google.api_core.retry.Retry): Designation of what errors, if any,
-                should be retried.
-            timeout (float): The timeout for this request.
-            metadata (Sequence[Tuple[str, str]]): Strings which should be
-                sent along with the request as metadata.
-
-        Returns:
-            ~.analytics_data_api.UniversalMetadata:
-                The dimensions and metrics currently
-                accepted in reporting methods.
-
-        """
-        # Create or coerce a protobuf request object.
-
-        request = analytics_data_api.GetUniversalMetadataRequest(request)
-
-        # Wrap the RPC method; this adds retry and timeout information,
-        # and friendly error handling.
-        rpc = gapic_v1.method_async.wrap_method(
-            self._client._transport.get_universal_metadata,
-            default_timeout=None,
-            client_info=DEFAULT_CLIENT_INFO,
-        )
-
-        # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
-
-        # Done; return the response.
-        return response
-
     async def get_metadata(
         self,
         request: analytics_data_api.GetMetadataRequest = None,
@@ -398,8 +346,8 @@ class AlphaAnalyticsDataAsyncClient:
     ) -> analytics_data_api.Metadata:
         r"""Returns metadata for dimensions and metrics available in
         reporting methods. Used to explore the dimensions and metrics.
-        In this method, a Google Analytics 4 (GA4) Property Identifier
-        is specified in the request, and the metadata response includes
+        In this method, a Google Analytics GA4 Property Identifier is
+        specified in the request, and the metadata response includes
         Custom dimensions and metrics as well as Universal metadata.
 
         For example if a custom metric with parameter name
@@ -413,12 +361,18 @@ class AlphaAnalyticsDataAsyncClient:
                 The request object. Request for a property's dimension
                 and metric metadata.
             name (:class:`str`):
-                Required. The resource name of the
-                metadata to retrieve. This name field is
-                specified in the URL path and not URL
-                parameters. Property is a numeric Google
-                Analytics 4 (GA4) Property identifier.
+                Required. The resource name of the metadata to retrieve.
+                This name field is specified in the URL path and not URL
+                parameters. Property is a numeric Google Analytics GA4
+                Property identifier. To learn more, see `where to find
+                your Property
+                ID <https://developers.google.com/analytics/trusted-testing/analytics-data/property-id>`__.
+
                 Example: properties/1234/metadata
+
+                Set the Property ID to 0 for dimensions and metrics
+                common to all properties. In this special mode, this
+                method will not return custom dimensions and metrics.
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.

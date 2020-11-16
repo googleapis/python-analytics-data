@@ -34,9 +34,6 @@ from google.analytics.data_v1alpha.types.analytics_data_api import (
     BatchRunReportsResponse,
 )
 from google.analytics.data_v1alpha.types.analytics_data_api import GetMetadataRequest
-from google.analytics.data_v1alpha.types.analytics_data_api import (
-    GetUniversalMetadataRequest,
-)
 from google.analytics.data_v1alpha.types.analytics_data_api import Metadata
 from google.analytics.data_v1alpha.types.analytics_data_api import RunPivotReportRequest
 from google.analytics.data_v1alpha.types.analytics_data_api import (
@@ -50,7 +47,6 @@ from google.analytics.data_v1alpha.types.analytics_data_api import (
 )
 from google.analytics.data_v1alpha.types.analytics_data_api import RunReportRequest
 from google.analytics.data_v1alpha.types.analytics_data_api import RunReportResponse
-from google.analytics.data_v1alpha.types.analytics_data_api import UniversalMetadata
 from google.analytics.data_v1alpha.types.data import Cohort
 from google.analytics.data_v1alpha.types.data import CohortReportSettings
 from google.analytics.data_v1alpha.types.data import CohortSpec
@@ -103,7 +99,6 @@ __all__ = (
     "FilterExpression",
     "FilterExpressionList",
     "GetMetadataRequest",
-    "GetUniversalMetadataRequest",
     "Metadata",
     "Metric",
     "MetricAggregation",
@@ -126,5 +121,4 @@ __all__ = (
     "RunRealtimeReportResponse",
     "RunReportRequest",
     "RunReportResponse",
-    "UniversalMetadata",
 )

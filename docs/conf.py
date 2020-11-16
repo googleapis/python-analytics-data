@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# google-analytics-data documentation build configuration file
+# google-area120-tables documentation build configuration file
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -67,7 +67,7 @@ source_suffix = [".rst", ".md"]
 master_doc = "index"
 
 # General information about the project.
-project = u"google-analytics-data"
+project = u"google-area120-tables"
 copyright = u"2019, Google"
 author = u"Google APIs"
 
@@ -140,9 +140,9 @@ html_theme = "alabaster"
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    "description": "Google Cloud Client Libraries for google-analytics-data",
+    "description": "Google Cloud Client Libraries for google-area120-tables",
     "github_user": "googleapis",
-    "github_repo": "python-analytics-data",
+    "github_repo": "python-area120-tables",
     "github_banner": True,
     "font_family": "'Roboto', Georgia, sans",
     "head_font_family": "'Roboto', Georgia, serif",
@@ -234,7 +234,7 @@ html_static_path = ["_static"]
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "google-analytics-data-doc"
+htmlhelp_basename = "google-area120-tables-doc"
 
 # -- Options for warnings ------------------------------------------------------
 
@@ -267,8 +267,8 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "google-analytics-data.tex",
-        u"google-analytics-data Documentation",
+        "google-area120-tables.tex",
+        u"google-area120-tables Documentation",
         author,
         "manual",
     )
@@ -302,8 +302,8 @@ latex_documents = [
 man_pages = [
     (
         master_doc,
-        "google-analytics-data",
-        u"google-analytics-data Documentation",
+        "google-area120-tables",
+        u"google-area120-tables Documentation",
         [author],
         1,
     )
@@ -321,11 +321,11 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "google-analytics-data",
-        u"google-analytics-data Documentation",
+        "google-area120-tables",
+        u"google-area120-tables Documentation",
         author,
-        "google-analytics-data",
-        "google-analytics-data Library",
+        "google-area120-tables",
+        "google-area120-tables Library",
         "APIs",
     )
 ]

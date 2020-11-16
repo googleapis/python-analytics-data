@@ -743,80 +743,6 @@ async def test_batch_run_pivot_reports_async_from_dict():
     await test_batch_run_pivot_reports_async(request_type=dict)
 
 
-def test_get_universal_metadata(
-    transport: str = "grpc", request_type=analytics_data_api.GetUniversalMetadataRequest
-):
-    client = AlphaAnalyticsDataClient(
-        credentials=credentials.AnonymousCredentials(), transport=transport,
-    )
-
-    # Everything is optional in proto3 as far as the runtime is concerned,
-    # and we are mocking out the actual API, so just send an empty request.
-    request = request_type()
-
-    # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(
-        type(client.transport.get_universal_metadata), "__call__"
-    ) as call:
-        # Designate an appropriate return value for the call.
-        call.return_value = analytics_data_api.UniversalMetadata()
-
-        response = client.get_universal_metadata(request)
-
-        # Establish that the underlying gRPC stub method was called.
-        assert len(call.mock_calls) == 1
-        _, args, _ = call.mock_calls[0]
-
-        assert args[0] == analytics_data_api.GetUniversalMetadataRequest()
-
-    # Establish that the response is the type that we expect.
-
-    assert isinstance(response, analytics_data_api.UniversalMetadata)
-
-
-def test_get_universal_metadata_from_dict():
-    test_get_universal_metadata(request_type=dict)
-
-
-@pytest.mark.asyncio
-async def test_get_universal_metadata_async(
-    transport: str = "grpc_asyncio",
-    request_type=analytics_data_api.GetUniversalMetadataRequest,
-):
-    client = AlphaAnalyticsDataAsyncClient(
-        credentials=credentials.AnonymousCredentials(), transport=transport,
-    )
-
-    # Everything is optional in proto3 as far as the runtime is concerned,
-    # and we are mocking out the actual API, so just send an empty request.
-    request = request_type()
-
-    # Mock the actual call within the gRPC stub, and fake the request.
-    with mock.patch.object(
-        type(client.transport.get_universal_metadata), "__call__"
-    ) as call:
-        # Designate an appropriate return value for the call.
-        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
-            analytics_data_api.UniversalMetadata()
-        )
-
-        response = await client.get_universal_metadata(request)
-
-        # Establish that the underlying gRPC stub method was called.
-        assert len(call.mock_calls)
-        _, args, _ = call.mock_calls[0]
-
-        assert args[0] == analytics_data_api.GetUniversalMetadataRequest()
-
-    # Establish that the response is the type that we expect.
-    assert isinstance(response, analytics_data_api.UniversalMetadata)
-
-
-@pytest.mark.asyncio
-async def test_get_universal_metadata_async_from_dict():
-    await test_get_universal_metadata_async(request_type=dict)
-
-
 def test_get_metadata(
     transport: str = "grpc", request_type=analytics_data_api.GetMetadataRequest
 ):
@@ -1250,7 +1176,6 @@ def test_alpha_analytics_data_base_transport():
         "run_pivot_report",
         "batch_run_reports",
         "batch_run_pivot_reports",
-        "get_universal_metadata",
         "get_metadata",
         "run_realtime_report",
     )

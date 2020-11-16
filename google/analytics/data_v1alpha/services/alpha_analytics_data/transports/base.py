@@ -121,11 +121,6 @@ class AlphaAnalyticsDataTransport(abc.ABC):
                 default_timeout=60.0,
                 client_info=client_info,
             ),
-            self.get_universal_metadata: gapic_v1.method.wrap_method(
-                self.get_universal_metadata,
-                default_timeout=None,
-                client_info=client_info,
-            ),
             self.get_metadata: gapic_v1.method.wrap_method(
                 self.get_metadata, default_timeout=None, client_info=client_info,
             ),
@@ -178,18 +173,6 @@ class AlphaAnalyticsDataTransport(abc.ABC):
         typing.Union[
             analytics_data_api.BatchRunPivotReportsResponse,
             typing.Awaitable[analytics_data_api.BatchRunPivotReportsResponse],
-        ],
-    ]:
-        raise NotImplementedError()
-
-    @property
-    def get_universal_metadata(
-        self,
-    ) -> typing.Callable[
-        [analytics_data_api.GetUniversalMetadataRequest],
-        typing.Union[
-            analytics_data_api.UniversalMetadata,
-            typing.Awaitable[analytics_data_api.UniversalMetadata],
         ],
     ]:
         raise NotImplementedError()

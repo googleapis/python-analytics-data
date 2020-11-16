@@ -360,42 +360,6 @@ class AlphaAnalyticsDataGrpcTransport(AlphaAnalyticsDataTransport):
         return self._stubs["batch_run_pivot_reports"]
 
     @property
-    def get_universal_metadata(
-        self,
-    ) -> Callable[
-        [analytics_data_api.GetUniversalMetadataRequest],
-        analytics_data_api.UniversalMetadata,
-    ]:
-        r"""Return a callable for the get universal metadata method over gRPC.
-
-        Returns metadata for dimensions and metrics available in
-        reporting methods. Used to explore the dimensions and metrics.
-        Dimensions and metrics will be mostly added over time, but
-        renames and deletions may occur.
-
-        This method returns Universal Metadata. Universal Metadata are
-        dimensions and metrics applicable to any property such as
-        ``country`` and ``totalUsers``.
-
-        Returns:
-            Callable[[~.GetUniversalMetadataRequest],
-                    ~.UniversalMetadata]:
-                A function that, when called, will call the underlying RPC
-                on the server.
-        """
-        # Generate a "stub function" on-the-fly which will actually make
-        # the request.
-        # gRPC handles serialization and deserialization, so we just need
-        # to pass in the functions for each.
-        if "get_universal_metadata" not in self._stubs:
-            self._stubs["get_universal_metadata"] = self.grpc_channel.unary_unary(
-                "/google.analytics.data.v1alpha.AlphaAnalyticsData/GetUniversalMetadata",
-                request_serializer=analytics_data_api.GetUniversalMetadataRequest.serialize,
-                response_deserializer=analytics_data_api.UniversalMetadata.deserialize,
-            )
-        return self._stubs["get_universal_metadata"]
-
-    @property
     def get_metadata(
         self,
     ) -> Callable[[analytics_data_api.GetMetadataRequest], analytics_data_api.Metadata]:
@@ -403,8 +367,8 @@ class AlphaAnalyticsDataGrpcTransport(AlphaAnalyticsDataTransport):
 
         Returns metadata for dimensions and metrics available in
         reporting methods. Used to explore the dimensions and metrics.
-        In this method, a Google Analytics 4 (GA4) Property Identifier
-        is specified in the request, and the metadata response includes
+        In this method, a Google Analytics GA4 Property Identifier is
+        specified in the request, and the metadata response includes
         Custom dimensions and metrics as well as Universal metadata.
 
         For example if a custom metric with parameter name

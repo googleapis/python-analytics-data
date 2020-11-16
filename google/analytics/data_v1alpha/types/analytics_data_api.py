@@ -33,8 +33,6 @@ __protobuf__ = proto.module(
         "BatchRunReportsResponse",
         "BatchRunPivotReportsRequest",
         "BatchRunPivotReportsResponse",
-        "GetUniversalMetadataRequest",
-        "UniversalMetadata",
         "GetMetadataRequest",
         "RunRealtimeReportRequest",
         "RunRealtimeReportResponse",
@@ -85,12 +83,17 @@ class RunReportRequest(proto.Message):
             both date ranges. In a cohort request, this ``dateRanges``
             must be unspecified.
         offset (int):
-            The row count of the start row. The first row
-            is counted as row 0.
+            The row count of the start row. The first row is counted as
+            row 0.
+
+            To learn more about this pagination parameter, see
+            `Pagination <basics#pagination>`__.
         limit (int):
-            The number of rows to return. If unspecified,
-            10 rows are returned. If -1, all rows are
-            returned.
+            The number of rows to return. If unspecified, 10 rows are
+            returned. If -1, all rows are returned.
+
+            To learn more about this pagination parameter, see
+            `Pagination <basics#pagination>`__.
         metric_aggregations (Sequence[~.data.MetricAggregation]):
             Aggregation of metrics. Aggregated metric values will be
             shown in rows where the dimension_values are set to
@@ -188,6 +191,9 @@ class RunReportResponse(proto.Message):
             a query returns 175 rows and includes limit = 50 in the API
             request, the response will contain row_count = 175 but only
             50 rows.
+
+            To learn more about this pagination parameter, see
+            `Pagination <basics#pagination>`__.
         metadata (~.data.ResponseMetaData):
             Metadata for the report.
         property_quota (~.data.PropertyQuota):
@@ -465,39 +471,23 @@ class BatchRunPivotReportsResponse(proto.Message):
     )
 
 
-class GetUniversalMetadataRequest(proto.Message):
-    r"""Request for the universal dimension and metric metadata."""
-
-
-class UniversalMetadata(proto.Message):
-    r"""The dimensions and metrics currently accepted in reporting
-    methods.
-
-    Attributes:
-        dimensions (Sequence[~.data.DimensionMetadata]):
-            The dimensions descriptions.
-        metrics (Sequence[~.data.MetricMetadata]):
-            The metric descriptions.
-    """
-
-    dimensions = proto.RepeatedField(
-        proto.MESSAGE, number=1, message=data.DimensionMetadata,
-    )
-
-    metrics = proto.RepeatedField(proto.MESSAGE, number=2, message=data.MetricMetadata,)
-
-
 class GetMetadataRequest(proto.Message):
     r"""Request for a property's dimension and metric metadata.
 
     Attributes:
         name (str):
-            Required. The resource name of the metadata
-            to retrieve. This name field is specified in the
-            URL path and not URL parameters. Property is a
-            numeric Google Analytics 4 (GA4) Property
-            identifier.
+            Required. The resource name of the metadata to retrieve.
+            This name field is specified in the URL path and not URL
+            parameters. Property is a numeric Google Analytics GA4
+            Property identifier. To learn more, see `where to find your
+            Property
+            ID <https://developers.google.com/analytics/trusted-testing/analytics-data/property-id>`__.
+
             Example: properties/1234/metadata
+
+            Set the Property ID to 0 for dimensions and metrics common
+            to all properties. In this special mode, this method will
+            not return custom dimensions and metrics.
     """
 
     name = proto.Field(proto.STRING, number=1)

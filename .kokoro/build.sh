@@ -15,7 +15,7 @@
 
 set -eo pipefail
 
-cd github/python-analytics-data
+cd github/python-area120-tables
 
 # Disable buffering, so that the logs stream through.
 export PYTHONUNBUFFERED=1
