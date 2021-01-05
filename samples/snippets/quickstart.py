@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright 2020 Google Inc. All Rights Reserved.
+# Copyright 2021 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -56,8 +56,6 @@ https://cloud.google.com/docs/authentication/production#passing_the_path_to_the_
 To install the latest published package dependency, execute the following:
   pip3 install google-analytics-data
 """
-import argparse
-
 # [START ga_data_run_report]
 from google.analytics.data import AlphaAnalyticsDataClient
 from google.analytics.data_v1alpha.types import DateRange
@@ -88,6 +86,8 @@ def sample_run_report(property_id):
 # [END ga_data_run_report]
 
 if __name__ == "__main__":
+    import argparse
+
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
     )
@@ -95,7 +95,11 @@ if __name__ == "__main__":
         "--property_id",
         type=str,
         required=True,
-        help="Google Analytics property ID to use for a query.",
+        help="Google Analytics 4 property ID to use for a query.",
     )
     args = parser.parse_args()
     sample_run_report(args.property_id)
+
+if __name__ == "__main__":
+    main()
+
