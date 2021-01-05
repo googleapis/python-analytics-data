@@ -55,7 +55,6 @@ https://cloud.google.com/docs/authentication/production#passing_the_path_to_the_
 
 To install the latest published package dependency, execute the following:
   pip3 install google-analytics-data
-"""
 # [START ga_data_run_report]
 from google.analytics.data import AlphaAnalyticsDataClient
 from google.analytics.data_v1alpha.types import DateRange
@@ -102,4 +101,3 @@ if __name__ == "__main__":
 
 if __name__ == "__main__":
     main()
-
