@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-analytics-data.git",
-        "sha": "054c81a64157c0a8ab213daac262e51ea5dfb072"
+        "sha": "97d76b915f264e462436fbb42d55b2ea9785f0a4"
       }
     },
     {
@@ -99,6 +99,7 @@
     "docs/data_v1alpha/services.rst",
     "docs/data_v1alpha/types.rst",
     "docs/multiprocessing.rst",
+    "google-analytics-data-v1alpha-py.tar.gz",
     "google/analytics/data/__init__.py",
     "google/analytics/data/py.typed",
     "google/analytics/data_v1alpha/__init__.py",
