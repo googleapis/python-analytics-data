@@ -22,24 +22,35 @@ from synthtool.languages import python
 gapic = gcp.GAPICBazel()
 common = gcp.CommonTemplates()
 
+versions = ["v1alpha", "v1beta"]
+
+# The targets are named inconsistently, so bazel target cannot be
+# constructed just from the string
+# TODO: fix bazel targets so both use either 'google-analytics' or 'analytics'
+bazel_targets = [
+    "//google/analytics/data/v1alpha:google-analytics-data-v1alpha-py",
+    "//google/analytics/data/v1beta:analytics-data-v1beta-py",
+]
+
 # ----------------------------------------------------------------------------
 # Generate analytics data GAPIC layer
 # ----------------------------------------------------------------------------
-library = gapic.py_library(
-    service="analyticsdata",
-    version="v1alpha1",
-    bazel_target="//google/analytics/data/v1alpha:google-analytics-data-v1alpha-py",
-)
+for version, bazel_target in zip(versions, bazel_targets):
+    library = gapic.py_library(
+        service="analyticsdata",
+        version=version,
+        bazel_target=bazel_target,
+    )
 
-s.move(
-    library,
-    excludes=[
-        "setup.py",
-        "README.rst",
-        "docs/index.rst",
-        "scripts/fixup_data_v1alpha_keywords.py",
-    ],
-)
+    s.move(
+        library,
+        excludes=[
+            "setup.py",
+            "README.rst",
+            "docs/index.rst",
+            f"scripts/fixup_data_{version}_keywords.py",
+        ],
+    )
 
 # ----------------------------------------------------------------------------
 # Add templated files
@@ -52,10 +63,15 @@ s.move(
 # fix coverage target
 s.replace(
     "noxfile.py",
-    """["']--cov=google\.cloud\.analyticsdata",
-(\s+)[""]--cov=google.cloud["'],""",
-    """"--cov=google.analytics.data",
-\g<1>"--cov=google.analytics",""",
+    """(\s+)["']--cov=google.cloud["'],""",
+    """"--cov=google.analytics",""",
+)
+
+# Fix regex in docstring that sphinx thinks is a link
+s.replace(
+    "google/**/data.py",
+    '''"\^\[a-zA-Z0-9_\]\$"''',
+    """``^[a-zA-Z0-9_]$``""",
 )
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)

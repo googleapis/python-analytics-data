@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:googleapis/python-analytics-data",
-        "sha": "8759bc15270982c87a5ee7c7366805de93dbec53"
+        "sha": "6bbd20988af082e28cb92bba62d38f22d564d8cf"
       }
     },
     {
@@ -35,7 +35,16 @@
       "client": {
         "source": "googleapis",
         "apiName": "analyticsdata",
-        "apiVersion": "v1alpha1",
+        "apiVersion": "v1alpha",
+        "language": "python",
+        "generator": "bazel"
+      }
+    },
+    {
+      "client": {
+        "source": "googleapis",
+        "apiName": "analyticsdata",
+        "apiVersion": "v1beta",
         "language": "python",
         "generator": "bazel"
       }
