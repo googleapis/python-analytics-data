@@ -4,29 +4,21 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:googleapis/python-analytics-data",
-        "sha": "6bbd20988af082e28cb92bba62d38f22d564d8cf"
-      }
-    },
-    {
-      "git": {
-        "name": "googleapis",
-        "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "eabec5a21219401bad79e1cc7d900c1658aee5fd",
-        "internalRef": "359130387"
+        "sha": "3b9a193edfba38c9e8f72580f400514fa283a79c"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "79ab0b44a2cc7d803d07c107f9faf07729fc4012"
+        "sha": "0199c79b8324fba66476300824aa931788c47e2d"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "79ab0b44a2cc7d803d07c107f9faf07729fc4012"
+        "sha": "0199c79b8324fba66476300824aa931788c47e2d"
       }
     }
   ],

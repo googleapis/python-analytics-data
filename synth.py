@@ -24,22 +24,14 @@ common = gcp.CommonTemplates()
 
 versions = ["v1alpha", "v1beta"]
 
-# The targets are named inconsistently, so bazel target cannot be
-# constructed just from the string
-# TODO: fix bazel targets so both use either 'google-analytics' or 'analytics'
-bazel_targets = [
-    "//google/analytics/data/v1alpha:google-analytics-data-v1alpha-py",
-    "//google/analytics/data/v1beta:analytics-data-v1beta-py",
-]
-
 # ----------------------------------------------------------------------------
 # Generate analytics data GAPIC layer
 # ----------------------------------------------------------------------------
-for version, bazel_target in zip(versions, bazel_targets):
+for version in versions:
     library = gapic.py_library(
         service="analyticsdata",
         version=version,
-        bazel_target=bazel_target,
+        bazel_target=f"//google/analytics/data/{version}:google-analytics-data-{version}-py",
     )
 
     s.move(
@@ -67,7 +59,7 @@ s.replace(
     """"--cov=google.analytics",""",
 )
 
-# Fix regex in docstring that sphinx thinks is a link
+# Wrap regex in docstring that sphinx thinks is a link with ``
 s.replace(
     "google/**/data.py",
     '''"\^\[a-zA-Z0-9_\]\$"''',
