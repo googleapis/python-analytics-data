@@ -15,89 +15,69 @@
 # limitations under the License.
 
 """Google Analytics Data API sample quickstart application.
-Example usage:
-    python3 quickstart.py --property_id <PROPERTY_ID>
-
-    where <PROPERTY_ID> is the Google Analytics property id to use for a query.
-
-Note: you need to have the Google Analytics Data API enabled in your project
-prior to running this sample. Please visit the following URL and make sure the
-API is enabled:
-
-https://console.developers.google.com/apis/library/analyticsdata.googleapis.com
 
 This application demonstrates the usage of the Analytics Data API using
-service account credentials. For more information on service accounts, see
+service account credentials.
 
-https://cloud.google.com/iam/docs/understanding-service-accounts
+Before you start the application, please review the comments starting with
+"TODO(developer)" and update the code to use correct values.
 
-The following document provides instructions on setting service account
-credentials for your application:
-
-  https://cloud.google.com/docs/authentication/production
-
-In a nutshell, you need to:
-1. Create a service account and download the key JSON file.
-
-https://cloud.google.com/docs/authentication/production#creating_a_service_account
-
-2. Provide service account credentials using one of the following options:
-- set the GOOGLE_APPLICATION_CREDENTIALS environment variable, the API
-client will use the value of this variable to find the service account key
-JSON file.
-
-https://cloud.google.com/docs/authentication/production#setting_the_environment_variable
-
-OR
-- manually pass the path to the service account key JSON file to the API client
-by specifying the keyFilename parameter in the constructor:
-https://cloud.google.com/docs/authentication/production#passing_the_path_to_the_service_account_key_in_code
-
-To install the latest published package dependency, execute the following:
-  pip3 install google-analytics-data
-# [START ga_data_run_report]
-from google.analytics.data import AlphaAnalyticsDataClient
-from google.analytics.data_v1alpha.types import DateRange
-from google.analytics.data_v1alpha.types import Dimension
-from google.analytics.data_v1alpha.types import Entity
-from google.analytics.data_v1alpha.types import Metric
-from google.analytics.data_v1alpha.types import RunReportRequest
+Usage:
+  pip3 install --upgrade google-analytics-data
+  python3 quickstart.py
+"""
+# [START google_analytics_data_quickstart]
+from google.analytics.data_v1beta import BetaAnalyticsDataClient
+from google.analytics.data_v1beta.types import DateRange
+from google.analytics.data_v1beta.types import Dimension
+from google.analytics.data_v1beta.types import Metric
+from google.analytics.data_v1beta.types import RunReportRequest
 
 
-def sample_run_report(property_id):
-    """Runs a simple report on a Google Analytics App+Web property."""
+def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID', credentials_json_path=''):
+    """Runs a simple report on a Google Analytics 4 property."""
+    # TODO(developer): Uncomment this variable and replace with your
+    #  Google Analytics 4 property ID before running the sample.
+    #property_id = 'YOUR-GA4-PROPERTY-ID'
 
-    # Using a default constructor instructs the client to use the credentials
-    # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
-    client = AlphaAnalyticsDataClient()
-    request = RunReportRequest(entity=Entity(property_id=property_id),
+    # [START google_analytics_data_initialize]
+
+    # TODO(developer): Uncomment this variable and replace with a valid path to
+    #  the credentials.json file for your service account downloaded from the
+    #  Cloud Console.
+    #  Otherwise, default service account credentials will be derived from
+    #  the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+    #credentials_json_path = '/path/to/credentials.json'
+
+    if credentials_json_path:
+      # Explicitly use service account credentials by specifying
+      # the private key file.
+      client = BetaAnalyticsDataClient().from_service_account_json(
+          credentials_json_path)
+    else:
+      # Using a default constructor instructs the client to use the credentials
+      # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
+      client = BetaAnalyticsDataClient()
+
+    # [END google_analytics_data_initialize]
+
+    # [START google_analytics_data_run_report]
+    request = RunReportRequest(property='properties/' + str(property_id),
                                dimensions=[Dimension(name='city')],
                                metrics=[Metric(name='activeUsers')],
                                date_ranges=[DateRange(start_date='2020-03-31',
                                                       end_date='today')])
     response = client.run_report(request)
+    # [END google_analytics_data_run_report]
 
     print("Report result:")
     for row in response.rows:
         print(row.dimension_values[0].value, row.metric_values[0].value)
 
+# [END google_analytics_data_quickstart]
 
-# [END ga_data_run_report]
-
-if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(
-        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
-    )
-    parser.add_argument(
-        "--property_id",
-        type=str,
-        required=True,
-        help="Google Analytics 4 property ID to use for a query.",
-    )
-    args = parser.parse_args()
-    sample_run_report(args.property_id)
+def main():
+    sample_run_report()
 
 if __name__ == "__main__":
     main()
