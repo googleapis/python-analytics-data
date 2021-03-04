@@ -28,8 +28,8 @@ from .data import (
     Pivot,
     CohortSpec,
     Cohort,
-    CohortReportSettings,
     CohortsRange,
+    CohortReportSettings,
     ResponseMetaData,
     DimensionHeader,
     MetricHeader,
@@ -43,6 +43,8 @@ from .data import (
     QuotaStatus,
     DimensionMetadata,
     MetricMetadata,
+    MetricAggregation,
+    MetricType,
 )
 from .analytics_data_api import (
     Metadata,
@@ -59,7 +61,6 @@ from .analytics_data_api import (
     RunRealtimeReportResponse,
 )
 
-
 __all__ = (
     "DateRange",
     "Entity",
@@ -73,8 +74,8 @@ __all__ = (
     "Pivot",
     "CohortSpec",
     "Cohort",
-    "CohortReportSettings",
     "CohortsRange",
+    "CohortReportSettings",
     "ResponseMetaData",
     "DimensionHeader",
     "MetricHeader",
@@ -88,6 +89,8 @@ __all__ = (
     "QuotaStatus",
     "DimensionMetadata",
     "MetricMetadata",
+    "MetricAggregation",
+    "MetricType",
     "Metadata",
     "RunReportRequest",
     "RunReportResponse",
