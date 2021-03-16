@@ -23,6 +23,7 @@ Before you start the application, please review the comments starting with
 "TODO(developer)" and update the code to use correct values.
 
 Usage:
+  pip3 install --upgrade google-auth-oauthlib
   pip3 install --upgrade google-analytics-data
   python3 quickstart_oauth2.py
 """
