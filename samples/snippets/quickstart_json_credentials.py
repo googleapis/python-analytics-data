@@ -34,16 +34,24 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
 
 
-def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID'):
+def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID', credentials_json_path=''):
     """Runs a simple report on a Google Analytics 4 property."""
     # TODO(developer): Uncomment this variable and replace with your
     #  Google Analytics 4 property ID before running the sample.
     #property_id = 'YOUR-GA4-PROPERTY-ID'
 
     # [START google_analytics_data_initialize]
-    # Using a default constructor instructs the client to use the credentials
-    # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
-    client = BetaAnalyticsDataClient()
+    # TODO(developer): Uncomment this variable and replace with a valid path to
+    #  the credentials.json file for your service account downloaded from the
+    #  Cloud Console.
+    #  Otherwise, default service account credentials will be derived from
+    #  the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+    #credentials_json_path = '/path/to/credentials.json'
+
+    # Explicitly use service account credentials by specifying
+    # the private key file.
+    client = BetaAnalyticsDataClient().from_service_account_json(
+        credentials_json_path)
     # [END google_analytics_data_initialize]
 
     # [START google_analytics_data_run_report]
@@ -55,11 +63,9 @@ def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID'):
     response = client.run_report(request)
     # [END google_analytics_data_run_report]
 
-    # [START google_analytics_data_run_report_response]
     print("Report result:")
     for row in response.rows:
         print(row.dimension_values[0].value, row.metric_values[0].value)
-    # [END google_analytics_data_run_report_response]
 # [END google_analytics_data_quickstart]
 
 def main():

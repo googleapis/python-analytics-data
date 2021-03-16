@@ -24,9 +24,9 @@ Before you start the application, please review the comments starting with
 
 Usage:
   pip3 install --upgrade google-analytics-data
-  python3 quickstart.py
+  python3 quickstart_oauth2.py
 """
-# [START ga_data_run_report]
+# [START google_analytics_data_quickstart]
 from google_auth_oauthlib import flow
 
 from google.analytics.data import BetaAnalyticsDataClient
@@ -53,7 +53,6 @@ def sample_run_report(credentials):
   print("Report result:")
   for row in response.rows:
     print(row.dimension_values[0].value, row.metric_values[0].value)
-# [END ga_data_run_report]
 
 def main():
   appflow = flow.InstalledAppFlow.from_client_secrets_file(
@@ -75,6 +74,7 @@ def main():
   credentials = appflow.credentials
   sample_run_report(credentials)
 
+# [END google_analytics_data_quickstart]
 
 if __name__ == "__main__":
   main()
