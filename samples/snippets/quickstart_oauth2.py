@@ -56,7 +56,8 @@ def sample_run_report(credentials=None, property_id='YOUR-GA4-PROPERTY-ID'):
   for row in response.rows:
     print(row.dimension_values[0].value, row.metric_values[0].value)
 
-def main():
+def get_credentials():
+  """Creates an OAuth2 credentials instance."""
   # [START google_analytics_data_initialize]
   appflow = flow.InstalledAppFlow.from_client_secrets_file(
       "client_secrets.json",
@@ -72,10 +73,12 @@ def main():
     appflow.run_local_server()
   else:
     appflow.run_console()
-
-  credentials = appflow.credentials
-  sample_run_report(credentials)
+  return appflow.credentials
   # [END google_analytics_data_initialize]
+
+def main():
+  credentials = get_credentials()
+  sample_run_report(credentials)
 # [END google_analytics_data_quickstart]
 
 if __name__ == "__main__":
