@@ -24,9 +24,9 @@ Before you start the application, please review the comments starting with
 
 Usage:
   pip3 install --upgrade google-analytics-data
-  python3 quickstart.py
+  python3 quickstart_oauth2.py
 """
-# [START ga_data_run_report]
+# [START google_analytics_data_quickstart]
 from google_auth_oauthlib import flow
 
 from google.analytics.data import BetaAnalyticsDataClient
@@ -50,23 +50,23 @@ def sample_run_report(credentials):
                                                     end_date='today')])
 
   response = client.run_report(request)
+
   print("Report result:")
   for row in response.rows:
     print(row.dimension_values[0].value, row.metric_values[0].value)
-# [END ga_data_run_report]
 
 def main():
+  # [START google_analytics_data_initialize]
   appflow = flow.InstalledAppFlow.from_client_secrets_file(
       "client_secrets.json",
       scopes=["https://www.googleapis.com/auth/analytics.readonly"]
   )
-  # TODO: Uncomment the line below to set the `launch_browser` variable.
-  launch_browser = True
+  # TODO(developer): Update the line below to set the `launch_browser` variable.
   # The `launch_browser` boolean variable indicates if a local server is used
   # as the callback URL in the auth flow. A value of `True` is recommended,
   # but a local server does not work if accessing the application remotely,
   # such as over SSH or from a remote Jupyter notebook.
-
+  launch_browser = True
   if launch_browser:
     appflow.run_local_server()
   else:
@@ -74,7 +74,8 @@ def main():
 
   credentials = appflow.credentials
   sample_run_report(credentials)
-
+  # [END google_analytics_data_initialize]
+# [END google_analytics_data_quickstart]
 
 if __name__ == "__main__":
   main()
