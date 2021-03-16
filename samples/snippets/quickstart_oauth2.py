@@ -37,7 +37,7 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
 
 
-def sample_run_report(credentials):
+def sample_run_report(credentials=None, property_id='YOUR-GA4-PROPERTY-ID'):
   """Runs a simple report on a Google Analytics 4 property."""
   # TODO(developer): Uncomment this variable and replace with your
   #  Google Analytics 4 property ID before running the sample.

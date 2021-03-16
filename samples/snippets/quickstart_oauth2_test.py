@@ -17,6 +17,6 @@ import quickstart_oauth2
 
 def test_quickstart(capsys):
     TEST_PROPERTY_ID = '222596558'
-    quickstart_oauth2.sample_run_report(TEST_PROPERTY_ID)
+    quickstart_oauth2.sample_run_report(None, TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
