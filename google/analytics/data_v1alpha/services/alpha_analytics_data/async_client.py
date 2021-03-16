@@ -76,7 +76,36 @@ class AlphaAnalyticsDataAsyncClient:
         AlphaAnalyticsDataClient.parse_common_location_path
     )
 
-    from_service_account_file = AlphaAnalyticsDataClient.from_service_account_file
+    @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            AlphaAnalyticsDataAsyncClient: The constructed client.
+        """
+        return AlphaAnalyticsDataClient.from_service_account_info.__func__(AlphaAnalyticsDataAsyncClient, info, *args, **kwargs)  # type: ignore
+
+    @classmethod
+    def from_service_account_file(cls, filename: str, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials
+        file.
+
+        Args:
+            filename (str): The path to the service account private key json
+                file.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            AlphaAnalyticsDataAsyncClient: The constructed client.
+        """
+        return AlphaAnalyticsDataClient.from_service_account_file.__func__(AlphaAnalyticsDataAsyncClient, filename, *args, **kwargs)  # type: ignore
+
     from_service_account_json = from_service_account_file
 
     @property
@@ -160,7 +189,7 @@ class AlphaAnalyticsDataAsyncClient:
         criteria, such as country or event name.
 
         Args:
-            request (:class:`~.analytics_data_api.RunReportRequest`):
+            request (:class:`google.analytics.data_v1alpha.types.RunReportRequest`):
                 The request object. The request to generate a report.
 
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -170,7 +199,7 @@ class AlphaAnalyticsDataAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.analytics_data_api.RunReportResponse:
+            google.analytics.data_v1alpha.types.RunReportResponse:
                 The response report table
                 corresponding to a request.
 
@@ -209,7 +238,7 @@ class AlphaAnalyticsDataAsyncClient:
         dissect your data.
 
         Args:
-            request (:class:`~.analytics_data_api.RunPivotReportRequest`):
+            request (:class:`google.analytics.data_v1alpha.types.RunPivotReportRequest`):
                 The request object. The request to generate a pivot
                 report.
 
@@ -220,7 +249,7 @@ class AlphaAnalyticsDataAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.analytics_data_api.RunPivotReportResponse:
+            google.analytics.data_v1alpha.types.RunPivotReportResponse:
                 The response pivot report table
                 corresponding to a pivot request.
 
@@ -255,7 +284,7 @@ class AlphaAnalyticsDataAsyncClient:
         be for the same Entity.
 
         Args:
-            request (:class:`~.analytics_data_api.BatchRunReportsRequest`):
+            request (:class:`google.analytics.data_v1alpha.types.BatchRunReportsRequest`):
                 The request object. The batch request containing
                 multiple report requests.
 
@@ -266,7 +295,7 @@ class AlphaAnalyticsDataAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.analytics_data_api.BatchRunReportsResponse:
+            google.analytics.data_v1alpha.types.BatchRunReportsResponse:
                 The batch response containing
                 multiple reports.
 
@@ -301,7 +330,7 @@ class AlphaAnalyticsDataAsyncClient:
         reports must be for the same Entity.
 
         Args:
-            request (:class:`~.analytics_data_api.BatchRunPivotReportsRequest`):
+            request (:class:`google.analytics.data_v1alpha.types.BatchRunPivotReportsRequest`):
                 The request object. The batch request containing
                 multiple pivot report requests.
 
@@ -312,7 +341,7 @@ class AlphaAnalyticsDataAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.analytics_data_api.BatchRunPivotReportsResponse:
+            google.analytics.data_v1alpha.types.BatchRunPivotReportsResponse:
                 The batch response containing
                 multiple pivot reports.
 
@@ -357,7 +386,7 @@ class AlphaAnalyticsDataAsyncClient:
         such as ``country`` and ``totalUsers``.
 
         Args:
-            request (:class:`~.analytics_data_api.GetMetadataRequest`):
+            request (:class:`google.analytics.data_v1alpha.types.GetMetadataRequest`):
                 The request object. Request for a property's dimension
                 and metric metadata.
             name (:class:`str`):
@@ -373,6 +402,7 @@ class AlphaAnalyticsDataAsyncClient:
                 Set the Property ID to 0 for dimensions and metrics
                 common to all properties. In this special mode, this
                 method will not return custom dimensions and metrics.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -384,7 +414,7 @@ class AlphaAnalyticsDataAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.analytics_data_api.Metadata:
+            google.analytics.data_v1alpha.types.Metadata:
                 The dimensions and metrics currently
                 accepted in reporting methods.
 
@@ -441,7 +471,7 @@ class AlphaAnalyticsDataAsyncClient:
         last 30 minutes.
 
         Args:
-            request (:class:`~.analytics_data_api.RunRealtimeReportRequest`):
+            request (:class:`google.analytics.data_v1alpha.types.RunRealtimeReportRequest`):
                 The request object. The request to generate a realtime
                 report.
 
@@ -452,7 +482,7 @@ class AlphaAnalyticsDataAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.analytics_data_api.RunRealtimeReportResponse:
+            google.analytics.data_v1alpha.types.RunRealtimeReportResponse:
                 The response realtime report table
                 corresponding to a request.
 

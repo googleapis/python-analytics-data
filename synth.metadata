@@ -4,29 +4,29 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-analytics-data.git",
-        "sha": "da441177164284a1262e44d9165d735fa83b352b"
+        "sha": "8fd57a340b7e052dc9c4d6c33882add75405eb8b"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "dd372aa22ded7a8ba6f0e03a80e06358a3fa0907",
-        "internalRef": "347055288"
+        "sha": "28a591963253d52ce3a25a918cafbdd9928de8cf",
+        "internalRef": "361662015"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "373861061648b5fe5e0ac4f8a38b32d639ee93e4"
+        "sha": "2c54c473779ea731128cea61a3a6c975a08a5378"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "373861061648b5fe5e0ac4f8a38b32d639ee93e4"
+        "sha": "2c54c473779ea731128cea61a3a6c975a08a5378"
       }
     }
   ],
@@ -35,19 +35,30 @@
       "client": {
         "source": "googleapis",
         "apiName": "analyticsdata",
-        "apiVersion": "v1alpha1",
+        "apiVersion": "v1alpha",
+        "language": "python",
+        "generator": "bazel"
+      }
+    },
+    {
+      "client": {
+        "source": "googleapis",
+        "apiName": "analyticsdata",
+        "apiVersion": "v1beta",
         "language": "python",
         "generator": "bazel"
       }
     }
   ],
   "generatedFiles": [
+    ".coveragerc",
     ".flake8",
     ".github/CONTRIBUTING.md",
     ".github/ISSUE_TEMPLATE/bug_report.md",
     ".github/ISSUE_TEMPLATE/feature_request.md",
     ".github/ISSUE_TEMPLATE/support_request.md",
     ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/header-checker-lint.yml",
     ".github/release-please.yml",
     ".github/snippet-bot.yml",
     ".gitignore",
@@ -94,8 +105,12 @@
     "docs/_static/custom.css",
     "docs/_templates/layout.html",
     "docs/conf.py",
+    "docs/data_v1alpha/alpha_analytics_data.rst",
     "docs/data_v1alpha/services.rst",
     "docs/data_v1alpha/types.rst",
+    "docs/data_v1beta/beta_analytics_data.rst",
+    "docs/data_v1beta/services.rst",
+    "docs/data_v1beta/types.rst",
     "docs/multiprocessing.rst",
     "google/analytics/data/__init__.py",
     "google/analytics/data/py.typed",
@@ -112,6 +127,19 @@
     "google/analytics/data_v1alpha/types/__init__.py",
     "google/analytics/data_v1alpha/types/analytics_data_api.py",
     "google/analytics/data_v1alpha/types/data.py",
+    "google/analytics/data_v1beta/__init__.py",
+    "google/analytics/data_v1beta/py.typed",
+    "google/analytics/data_v1beta/services/__init__.py",
+    "google/analytics/data_v1beta/services/beta_analytics_data/__init__.py",
+    "google/analytics/data_v1beta/services/beta_analytics_data/async_client.py",
+    "google/analytics/data_v1beta/services/beta_analytics_data/client.py",
+    "google/analytics/data_v1beta/services/beta_analytics_data/transports/__init__.py",
+    "google/analytics/data_v1beta/services/beta_analytics_data/transports/base.py",
+    "google/analytics/data_v1beta/services/beta_analytics_data/transports/grpc.py",
+    "google/analytics/data_v1beta/services/beta_analytics_data/transports/grpc_asyncio.py",
+    "google/analytics/data_v1beta/types/__init__.py",
+    "google/analytics/data_v1beta/types/analytics_data_api.py",
+    "google/analytics/data_v1beta/types/data.py",
     "mypy.ini",
     "noxfile.py",
     "renovate.json",
@@ -125,6 +153,8 @@
     "setup.cfg",
     "testing/.gitignore",
     "tests/unit/gapic/data_v1alpha/__init__.py",
-    "tests/unit/gapic/data_v1alpha/test_alpha_analytics_data.py"
+    "tests/unit/gapic/data_v1alpha/test_alpha_analytics_data.py",
+    "tests/unit/gapic/data_v1beta/__init__.py",
+    "tests/unit/gapic/data_v1beta/test_beta_analytics_data.py"
   ]
 }
