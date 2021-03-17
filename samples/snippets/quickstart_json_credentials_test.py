@@ -12,13 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 
 import quickstart_json_credentials
 
 
 def test_quickstart(capsys):
-    TEST_PROPERTY_ID = "222596558"
+    TEST_PROPERTY_ID = os.getenv("TEST_PROPERTY_ID", "222596558")
     quickstart_json_credentials.sample_run_report(
         BetaAnalyticsDataClient(), TEST_PROPERTY_ID
     )

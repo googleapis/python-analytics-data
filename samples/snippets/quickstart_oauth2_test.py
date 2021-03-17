@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 import quickstart_oauth2
 
 
 def test_quickstart(capsys):
-    TEST_PROPERTY_ID = "222596558"
+    TEST_PROPERTY_ID = os.getenv("TEST_PROPERTY_ID", "222596558")
     quickstart_oauth2.sample_run_report(None, TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
