@@ -35,25 +35,22 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
 
 
-def get_client(credentials_json_path=""):
-    """Creates an API client instance."""
+def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID", credentials_json_path=""):
+    """Runs a simple report on a Google Analytics 4 property."""
+    # TODO(developer): Uncomment this variable and replace with your
+    #  Google Analytics 4 property ID before running the sample.
+    # property_id = "YOUR-GA4-PROPERTY-ID"
+
     # [START google_analytics_data_initialize]
     # TODO(developer): Uncomment this variable and replace with a valid path to
     #  the credentials.json file for your service account downloaded from the
     #  Cloud Console.
-    # credentials_json_path = '/path/to/credentials.json'
+    # credentials_json_path = "/path/to/credentials.json"
 
     # Explicitly use service account credentials by specifying
     # the private key file.
-    return BetaAnalyticsDataClient().from_service_account_json(credentials_json_path)
+    client = BetaAnalyticsDataClient().from_service_account_json(credentials_json_path)
     # [END google_analytics_data_initialize]
-
-
-def sample_run_report(client, property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report on a Google Analytics 4 property."""
-    # TODO(developer): Uncomment this variable and replace with your
-    #  Google Analytics 4 property ID before running the sample.
-    # property_id = 'YOUR-GA4-PROPERTY-ID'
 
     # [START google_analytics_data_run_report]
     request = RunReportRequest(
@@ -70,12 +67,7 @@ def sample_run_report(client, property_id="YOUR-GA4-PROPERTY-ID"):
         print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-def main():
-    client = get_client()
-    sample_run_report(client)
-
-
 # [END google_analytics_data_quickstart]
 
 if __name__ == "__main__":
-    main()
+    sample_run_report(client)

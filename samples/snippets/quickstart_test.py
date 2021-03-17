@@ -18,7 +18,7 @@ import quickstart
 
 
 def test_quickstart(capsys):
-    TEST_PROPERTY_ID = os.getenv("TEST_PROPERTY_ID")
+    TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
     quickstart.sample_run_report(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
