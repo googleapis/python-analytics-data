@@ -14,15 +14,16 @@
 
 import os
 
-from google.analytics.data_v1beta import BetaAnalyticsDataClient
-
 import quickstart_json_credentials
 
 
 def test_quickstart(capsys):
-    TEST_PROPERTY_ID = os.getenv("TEST_PROPERTY_ID")
+    # Create a temporary service account credentials JSON file to be used by
+    # the test.
+    TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
+    CREDENTIALS_JSON_PATH = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
     quickstart_json_credentials.sample_run_report(
-        BetaAnalyticsDataClient(), TEST_PROPERTY_ID
+        TEST_PROPERTY_ID, CREDENTIALS_JSON_PATH
     )
     out, _ = capsys.readouterr()
     assert "Report result" in out

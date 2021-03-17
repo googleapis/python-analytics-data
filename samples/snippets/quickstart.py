@@ -38,7 +38,7 @@ def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
     # TODO(developer): Uncomment this variable and replace with your
     #  Google Analytics 4 property ID before running the sample.
-    # property_id = 'YOUR-GA4-PROPERTY-ID'
+    # property_id = "YOUR-GA4-PROPERTY-ID"
 
     # [START google_analytics_data_initialize]
     # Using a default constructor instructs the client to use the credentials
