@@ -20,7 +20,7 @@ import quickstart_json_credentials
 
 
 def test_quickstart(capsys):
-    TEST_PROPERTY_ID = os.getenv("TEST_PROPERTY_ID", "222596558")
+    TEST_PROPERTY_ID = os.getenv("TEST_PROPERTY_ID")
     quickstart_json_credentials.sample_run_report(
         BetaAnalyticsDataClient(), TEST_PROPERTY_ID
     )
