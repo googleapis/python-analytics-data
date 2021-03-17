@@ -61,6 +61,8 @@ def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID"):
     for row in response.rows:
         print(row.dimension_values[0].value, row.metric_values[0].value)
     # [END google_analytics_data_run_report_response]
+
+
 # [END google_analytics_data_quickstart]
 
 
