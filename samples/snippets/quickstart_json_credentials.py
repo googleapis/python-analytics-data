@@ -34,32 +34,34 @@ from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
 
-def get_client(credentials_json_path=''):
-  """Creates an API client instance."""
-  # [START google_analytics_data_initialize]
-  # TODO(developer): Uncomment this variable and replace with a valid path to
-  #  the credentials.json file for your service account downloaded from the
-  #  Cloud Console.
-  #credentials_json_path = '/path/to/credentials.json'
 
-  # Explicitly use service account credentials by specifying
-  # the private key file.
-  return BetaAnalyticsDataClient().from_service_account_json(
-      credentials_json_path)
-  # [END google_analytics_data_initialize]
+def get_client(credentials_json_path=""):
+    """Creates an API client instance."""
+    # [START google_analytics_data_initialize]
+    # TODO(developer): Uncomment this variable and replace with a valid path to
+    #  the credentials.json file for your service account downloaded from the
+    #  Cloud Console.
+    # credentials_json_path = '/path/to/credentials.json'
 
-def sample_run_report(client, property_id='YOUR-GA4-PROPERTY-ID'):
+    # Explicitly use service account credentials by specifying
+    # the private key file.
+    return BetaAnalyticsDataClient().from_service_account_json(credentials_json_path)
+    # [END google_analytics_data_initialize]
+
+
+def sample_run_report(client, property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
     # TODO(developer): Uncomment this variable and replace with your
     #  Google Analytics 4 property ID before running the sample.
-    #property_id = 'YOUR-GA4-PROPERTY-ID'
+    # property_id = 'YOUR-GA4-PROPERTY-ID'
 
     # [START google_analytics_data_run_report]
-    request = RunReportRequest(property='properties/' + str(property_id),
-                               dimensions=[Dimension(name='city')],
-                               metrics=[Metric(name='activeUsers')],
-                               date_ranges=[DateRange(start_date='2020-03-31',
-                                                      end_date='today')])
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        dimensions=[Dimension(name="city")],
+        metrics=[Metric(name="activeUsers")],
+        date_ranges=[DateRange(start_date="2020-03-31", end_date="today")],
+    )
     response = client.run_report(request)
     # [END google_analytics_data_run_report]
 
@@ -67,9 +69,12 @@ def sample_run_report(client, property_id='YOUR-GA4-PROPERTY-ID'):
     for row in response.rows:
         print(row.dimension_values[0].value, row.metric_values[0].value)
 
+
 def main():
     client = get_client()
     sample_run_report(client)
+
+
 # [END google_analytics_data_quickstart]
 
 if __name__ == "__main__":

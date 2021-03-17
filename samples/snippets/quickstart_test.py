@@ -16,7 +16,7 @@ import quickstart
 
 
 def test_quickstart(capsys):
-    TEST_PROPERTY_ID = '222596558'
+    TEST_PROPERTY_ID = "222596558"
     quickstart.sample_run_report(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out

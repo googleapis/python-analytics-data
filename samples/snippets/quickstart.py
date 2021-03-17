@@ -34,11 +34,11 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
 
 
-def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID'):
+def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
     # TODO(developer): Uncomment this variable and replace with your
     #  Google Analytics 4 property ID before running the sample.
-    #property_id = 'YOUR-GA4-PROPERTY-ID'
+    # property_id = 'YOUR-GA4-PROPERTY-ID'
 
     # [START google_analytics_data_initialize]
     # Using a default constructor instructs the client to use the credentials
@@ -47,11 +47,12 @@ def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID'):
     # [END google_analytics_data_initialize]
 
     # [START google_analytics_data_run_report]
-    request = RunReportRequest(property='properties/' + str(property_id),
-                               dimensions=[Dimension(name='city')],
-                               metrics=[Metric(name='activeUsers')],
-                               date_ranges=[DateRange(start_date='2020-03-31',
-                                                      end_date='today')])
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        dimensions=[Dimension(name="city")],
+        metrics=[Metric(name="activeUsers")],
+        date_ranges=[DateRange(start_date="2020-03-31", end_date="today")],
+    )
     response = client.run_report(request)
     # [END google_analytics_data_run_report]
 
@@ -62,8 +63,6 @@ def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID'):
     # [END google_analytics_data_run_report_response]
 # [END google_analytics_data_quickstart]
 
-def main():
-    sample_run_report()
 
 if __name__ == "__main__":
-    main()
+    sample_run_report()

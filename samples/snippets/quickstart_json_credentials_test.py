@@ -13,12 +13,14 @@
 # limitations under the License.
 
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
+
 import quickstart_json_credentials
 
 
 def test_quickstart(capsys):
-  TEST_PROPERTY_ID = '222596558'
-  quickstart_json_credentials.sample_run_report(BetaAnalyticsDataClient(),
-                                                TEST_PROPERTY_ID)
-  out, _ = capsys.readouterr()
-  assert "Report result" in out
+    TEST_PROPERTY_ID = "222596558"
+    quickstart_json_credentials.sample_run_report(
+        BetaAnalyticsDataClient(), TEST_PROPERTY_ID
+    )
+    out, _ = capsys.readouterr()
+    assert "Report result" in out
