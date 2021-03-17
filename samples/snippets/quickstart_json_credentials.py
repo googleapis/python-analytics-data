@@ -67,7 +67,5 @@ def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID", credentials_json_path=
         print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-# [END google_analytics_data_quickstart]
-
 if __name__ == "__main__":
-    sample_run_report(client)
+    sample_run_report()
