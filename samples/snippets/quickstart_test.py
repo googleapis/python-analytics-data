@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 import quickstart
 
 
 def test_quickstart(capsys):
-    TEST_PROPERTY_ID = '222596558'
+    TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
     quickstart.sample_run_report(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out

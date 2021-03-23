@@ -14,17 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample quickstart application.
-
-This application demonstrates the usage of the Analytics Data API using
-service account credentials.
-
-Before you start the application, please review the comments starting with
-"TODO(developer)" and update the code to use correct values.
-
-Usage:
-  pip3 install --upgrade google-analytics-data
-  python3 runReport.py
+"""Google Analytics Data API sample reporting application using metric
+aggregations.
 """
 # [START google_analytics_data_sample]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
@@ -43,7 +34,7 @@ def run_report_aggregations(property_id='YOUR-GA4-PROPERTY-ID'):
 
   client = BetaAnalyticsDataClient()
 
-  # [START google_analytics_data_run_report]
+  # [START analyticsdata_run_report_with_aggregations]
   # Runs a report of active users grouped by three dimensions.
   request = RunReportRequest(property='properties/' + str(property_id),
                              dimensions=[Dimension(name='country')],
@@ -54,16 +45,11 @@ def run_report_aggregations(property_id='YOUR-GA4-PROPERTY-ID'):
                                                   MetricAggregation.MAXIMUM,
                                                   MetricAggregation.MINIMUM])
   response = client.run_report(request)
-  # [END google_analytics_data_run_report]
+  # [END analyticsdata_run_report_with_aggregations]
 
   print("Report result:")
   for row in response.rows:
     print(row.dimension_values[0].value, row.metric_values[0].value)
 
-
-def main():
-  sample_run_report()
-
-
 if __name__ == "__main__":
-  main()
+  sample_run_report()

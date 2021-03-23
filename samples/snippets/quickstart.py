@@ -15,13 +15,10 @@
 # limitations under the License.
 
 """Google Analytics Data API sample quickstart application.
-
 This application demonstrates the usage of the Analytics Data API using
 service account credentials.
-
 Before you start the application, please review the comments starting with
 "TODO(developer)" and update the code to use correct values.
-
 Usage:
   pip3 install --upgrade google-analytics-data
   python3 quickstart.py
@@ -34,50 +31,37 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
 
 
-def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID', credentials_json_path=''):
-    """Runs a simple report on a Google Analytics 4 property."""
-    # TODO(developer): Uncomment this variable and replace with your
-    #  Google Analytics 4 property ID before running the sample.
-    #property_id = 'YOUR-GA4-PROPERTY-ID'
+def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID"):
+  """Runs a simple report on a Google Analytics 4 property."""
+  # TODO(developer): Uncomment this variable and replace with your
+  #  Google Analytics 4 property ID before running the sample.
+  # property_id = "YOUR-GA4-PROPERTY-ID"
 
-    # [START google_analytics_data_initialize]
+  # [START google_analytics_data_initialize]
+  # Using a default constructor instructs the client to use the credentials
+  # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
+  client = BetaAnalyticsDataClient()
+  # [END google_analytics_data_initialize]
 
-    # TODO(developer): Uncomment this variable and replace with a valid path to
-    #  the credentials.json file for your service account downloaded from the
-    #  Cloud Console.
-    #  Otherwise, default service account credentials will be derived from
-    #  the GOOGLE_APPLICATION_CREDENTIALS environment variable.
-    #credentials_json_path = '/path/to/credentials.json'
+  # [START google_analytics_data_run_report]
+  request = RunReportRequest(
+      property="properties/" + str(property_id),
+      dimensions=[Dimension(name="city")],
+      metrics=[Metric(name="activeUsers")],
+      date_ranges=[DateRange(start_date="2020-03-31", end_date="today")],
+  )
+  response = client.run_report(request)
+  # [END google_analytics_data_run_report]
 
-    if credentials_json_path:
-      # Explicitly use service account credentials by specifying
-      # the private key file.
-      client = BetaAnalyticsDataClient().from_service_account_json(
-          credentials_json_path)
-    else:
-      # Using a default constructor instructs the client to use the credentials
-      # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
-      client = BetaAnalyticsDataClient()
+  # [START google_analytics_data_run_report_response]
+  print("Report result:")
+  for row in response.rows:
+    print(row.dimension_values[0].value, row.metric_values[0].value)
+  # [END google_analytics_data_run_report_response]
 
-    # [END google_analytics_data_initialize]
-
-    # [START google_analytics_data_run_report]
-    request = RunReportRequest(property='properties/' + str(property_id),
-                               dimensions=[Dimension(name='city')],
-                               metrics=[Metric(name='activeUsers')],
-                               date_ranges=[DateRange(start_date='2020-03-31',
-                                                      end_date='today')])
-    response = client.run_report(request)
-    # [END google_analytics_data_run_report]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
 
 # [END google_analytics_data_quickstart]
 
-def main():
-    sample_run_report()
 
 if __name__ == "__main__":
-    main()
+  sample_run_report()

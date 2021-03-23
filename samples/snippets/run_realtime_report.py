@@ -14,51 +14,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample application.
-
-This application demonstrates the usage of dimension and metric filters in the
-Analytics Data API using service account credentials.
-
-Before you start the application, please review the comments starting with
-"TODO(developer)" and update the code to use correct values.
-
-Usage:
-  pip3 install --upgrade google-analytics-data
-  python3 runReport_filter.py
+"""Google Analytics Data API real time report sample application.
 """
-# [START google_analytics_data_sample]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunRealtimeReportRequest
 
 
-def sample_run_report(property_id='YOUR-GA4-PROPERTY-ID'):
-  """Runs a simple report on a Google Analytics 4 property."""
+def sample_run_realtime_report(property_id='YOUR-GA4-PROPERTY-ID'):
+  """Runs a realtime report on a Google Analytics 4 property."""
   # TODO(developer): Uncomment this variable and replace with your
   #  Google Analytics 4 property ID before running the sample.
   # property_id = 'YOUR-GA4-PROPERTY-ID'
 
   client = BetaAnalyticsDataClient()
 
-  # [START google_analytics_data_run_report]
+  # [START analyticsdata_run_realtime_report]
   request = RunRealtimeReportRequest(property='properties/' + str(property_id),
                                      dimensions=[Dimension(name='country')],
                                      metrics=[Metric(name='activeUsers')]
                                      )
   response = client.run_realtime_report(request)
-  # [END google_analytics_data_run_report]
+  # [END analyticsdata_run_realtime_report]
 
   print("Report result:")
   for row in response.rows:
     print(row.dimension_values[0].value, row.metric_values[0].value)
 
-
-# [END google_analytics_data_sample]
-
-def main():
-  sample_run_report()
-
-
 if __name__ == "__main__":
-  main()
+  sample_run_realtime_report()
