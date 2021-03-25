@@ -81,6 +81,8 @@ def get_credentials():
 def main():
     credentials = get_credentials()
     sample_run_report(credentials)
+
+
 # [END analyticsdata_quickstart_oauth2]
 
 if __name__ == "__main__":
