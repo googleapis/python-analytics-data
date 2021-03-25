@@ -22,25 +22,26 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunRealtimeReportRequest
 
 
-def sample_run_realtime_report(property_id='YOUR-GA4-PROPERTY-ID'):
-  """Runs a realtime report on a Google Analytics 4 property."""
-  # TODO(developer): Uncomment this variable and replace with your
-  #  Google Analytics 4 property ID before running the sample.
-  # property_id = 'YOUR-GA4-PROPERTY-ID'
+def sample_run_realtime_report(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a realtime report on a Google Analytics 4 property."""
+    client = BetaAnalyticsDataClient()
 
-  client = BetaAnalyticsDataClient()
+    # [START analyticsdata_run_realtime_report]
+    request = RunRealtimeReportRequest(
+        property="properties/" + str(property_id),
+        dimensions=[Dimension(name="country")],
+        metrics=[Metric(name="activeUsers")],
+    )
+    response = client.run_realtime_report(request)
+    # [END analyticsdata_run_realtime_report]
 
-  # [START analyticsdata_run_realtime_report]
-  request = RunRealtimeReportRequest(property='properties/' + str(property_id),
-                                     dimensions=[Dimension(name='country')],
-                                     metrics=[Metric(name='activeUsers')]
-                                     )
-  response = client.run_realtime_report(request)
-  # [END analyticsdata_run_realtime_report]
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
 
-  print("Report result:")
-  for row in response.rows:
-    print(row.dimension_values[0].value, row.metric_values[0].value)
 
 if __name__ == "__main__":
-  sample_run_realtime_report()
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    sample_run_realtime_report(property_id)

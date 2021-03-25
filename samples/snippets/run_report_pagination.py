@@ -18,50 +18,71 @@
 
 This application demonstrates the usage of the Analytics Data API using
 service account credentials.
-
-Before you start the application, please review the comments starting with
-"TODO(developer)" and update the code to use correct values.
-
-Usage:
-  pip3 install --upgrade google-analytics-data
-  python3 runReport.py
 """
-# [START google_analytics_data_sample]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
-from google.analytics.data_v1beta.types import OrderBy
-
-def run_report_pagination(property_id='YOUR-GA4-PROPERTY-ID'):
-  """Runs a simple report on a Google Analytics 4 property."""
-  # TODO(developer): Uncomment this variable and replace with your
-  #  Google Analytics 4 property ID before running the sample.
-  # property_id = 'YOUR-GA4-PROPERTY-ID'
-
-  client = BetaAnalyticsDataClient()
-
-  # [START google_analytics_data_run_report]
-  # Runs a report of active users grouped by three dimensions.
-  request = RunReportRequest(property='properties/' + str(property_id),
-                             dimensions=[Dimension(name='date')],
-                             metrics=[Metric(name='activeUsers'),
-                                      Metric(name='newUsers'),
-                                      Metric(name='totalRevenue')],
-                             date_ranges=[DateRange(start_date='7daysAgo',
-                                                    end_date='today')])
-  response = client.run_report(request)
-  # [END google_analytics_data_run_report]
-
-  print("Report result:")
-  for row in response.rows:
-    print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-def main():
-  sample_run_report()
+def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a simple report on a Google Analytics 4 property."""
+    client = BetaAnalyticsDataClient()
+
+    # [START analyticsdata_run_report_with_pagination_page1]
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        date_ranges=[DateRange(start_date="365daysAgo", end_date="yesterday")],
+        dimensions=[
+            Dimension(name="firstUserSource"),
+            Dimension(name="firstUserMedium"),
+            Dimension(name="firstUserCampaignName"),
+        ],
+        metrics=[
+            Metric(name="sessions"),
+            Metric(name="conversions"),
+            Metric(name="totalRevenue"),
+        ],
+        limit=100000,
+        offset=0,
+    )
+    response = client.run_report(request)
+    # [END analyticsdata_run_report_with_pagination_page1]
+
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
+
+    # Run the same report with a different offset value to retrieve the second
+    # page of a response.
+    # [START analyticsdata_run_report_with_pagination_page2]
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        date_ranges=[DateRange(start_date="365daysAgo", end_date="yesterday")],
+        dimensions=[
+            Dimension(name="firstUserSource"),
+            Dimension(name="firstUserMedium"),
+            Dimension(name="firstUserCampaignName"),
+        ],
+        metrics=[
+            Metric(name="sessions"),
+            Metric(name="conversions"),
+            Metric(name="totalRevenue"),
+        ],
+        limit=100000,
+        offset=100000,
+    )
+    response = client.run_report(request)
+    # [END analyticsdata_run_report_with_pagination_page2]
+
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
 if __name__ == "__main__":
-  main()
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_report_with_pagination(property_id)

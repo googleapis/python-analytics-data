@@ -14,35 +14,57 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample reporting application using metric
-aggregations.
+"""Google Analytics Data API sample application.
+
+This application demonstrates the usage of dimension and metric filters in the
+Analytics Data API using service account credentials.
+
+Before you start the application, please review the comments starting with
+"TODO(developer)" and update the code to use correct values.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
+from google.analytics.data_v1beta.types import CohortsRange
+from google.analytics.data_v1beta.types import CohortSpec
+from google.analytics.data_v1beta.types import Cohort
 
 
-def run_report_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
+def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_report_with_aggregations]
-    # Runs a report of active users grouped by three dimensions.
+    # [START analyticsdata_run_report_with_cohorts]
     request = RunReportRequest(
         property="properties/" + str(property_id),
-        dimensions=[Dimension(name="country")],
-        metrics=[Metric(name="sessions")],
-        date_ranges=[DateRange(start_date="yesterday", end_date="today")],
-        metric_aggregations=[
-            MetricAggregation.TOTAL,
-            MetricAggregation.MAXIMUM,
-            MetricAggregation.MINIMUM,
+        dimensions=[Dimension(name="cohort"), Dimension(name="cohortNthWeek")],
+        metrics=[
+            Metric(name="cohortActiveUsers"),
+            Metric(
+                name="cohortRetentionRate",
+                expression="cohortActiveUsers/cohortTotalUsers",
+            ),
         ],
+        cohorts_spec=CohortSpec(
+            cohorts=[
+                Cohort(
+                    dimension="firstSessionDate",
+                    name="cohort",
+                    date_range=DateRange(
+                        start_date="2021-01-03", end_date="2021-01-09"
+                    ),
+                )
+            ]
+        ),
+        cohorts_range=CohortsRange(
+            start_offset=0, end_offset=4, granularity=CohortsRange.Granularity.WEEKLY
+        ),
     )
+
     response = client.run_report(request)
-    # [END analyticsdata_run_report_with_aggregations]
+    # [END analyticsdata_run_report_with_cohorts]
 
     print("Report result:")
     for row in response.rows:
@@ -53,4 +75,4 @@ if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
-    sample_run_report(property_id)
+    run_report_with_cohorts(property_id)

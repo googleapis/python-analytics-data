@@ -18,81 +18,87 @@
 
 This application demonstrates the usage of the Analytics Data API using
 service account credentials.
-
-Before you start the application, please review the comments starting with
-"TODO(developer)" and update the code to use correct values.
-
-Usage:
-  pip3 install --upgrade google-analytics-data
-  python3 runReport.py
 """
-# [START google_analytics_data_sample]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
-from google.analytics.data_v1beta.types import OrderBy
 
 
-def run_report_with_multiple_dimensions(property_id='YOUR-GA4-PROPERTY-ID'):
-  """Runs a simple report on a Google Analytics 4 property."""
-  # TODO(developer): Uncomment this variable and replace with your
-  #  Google Analytics 4 property ID before running the sample.
-  # property_id = 'YOUR-GA4-PROPERTY-ID'
+def run_report_simple(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a simple report on a Google Analytics 4 property."""
+    client = BetaAnalyticsDataClient()
 
-  client = BetaAnalyticsDataClient()
+    # [START analyticsdata_run_report_simple]
+    # Runs a report of active users grouped by three dimensions.
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        dimensions=[Dimension(name="country")],
+        metrics=[Metric(name="activeUsers")],
+        date_ranges=[DateRange(start_date="2020-09-01", end_date="2020-09-15")],
+    )
+    response = client.run_report(request)
+    # [END analyticsdata_run_report_simple]
 
-  # [START google_analytics_data_run_report]
-  # Runs a report of active users grouped by three dimensions.
-  request = RunReportRequest(property='properties/' + str(property_id),
-                             dimensions=[Dimension(name='country'),
-                                         Dimension(name='region'),
-                                         Dimension(name='city')],
-                             metrics=[Metric(name='activeUsers')],
-                             date_ranges=[DateRange(start_date='7daysAgo',
-                                                    end_date='today')])
-  response = client.run_report(request)
-  # [END google_analytics_data_run_report]
-
-  print("Report result:")
-  for row in response.rows:
-    print(row.dimension_values[0].value, row.metric_values[0].value)
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-# [END google_analytics_data_sample]
+def run_report_with_multiple_dimensions(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a report using multiple dimensions on a Google Analytics 4 property."""
+    client = BetaAnalyticsDataClient()
 
-def run_report_with_multiple_metrics(property_id='YOUR-GA4-PROPERTY-ID'):
-  """Runs a simple report on a Google Analytics 4 property."""
-  # TODO(developer): Uncomment this variable and replace with your
-  #  Google Analytics 4 property ID before running the sample.
-  # property_id = 'YOUR-GA4-PROPERTY-ID'
+    # [START analyticsdata_run_report_with_multiple_dimensions]
+    # Runs a report of active users grouped by three dimensions.
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        dimensions=[
+            Dimension(name="country"),
+            Dimension(name="region"),
+            Dimension(name="city"),
+        ],
+        metrics=[Metric(name="activeUsers")],
+        date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
+    )
+    response = client.run_report(request)
+    # [END analyticsdata_run_report_with_multiple_dimensions]
 
-  client = BetaAnalyticsDataClient()
-
-  # [START google_analytics_data_run_report]
-  # Runs a report of active users grouped by three dimensions.
-  request = RunReportRequest(property='properties/' + str(property_id),
-                             dimensions=[Dimension(name='date')],
-                             metrics=[Metric(name='activeUsers'),
-                                      Metric(name='newUsers'),
-                                      Metric(name='totalRevenue')],
-                             date_ranges=[DateRange(start_date='7daysAgo',
-                                                    end_date='today')])
-  response = client.run_report(request)
-  # [END google_analytics_data_run_report]
-
-  print("Report result:")
-  for row in response.rows:
-    print(row.dimension_values[0].value, row.metric_values[0].value)
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-# [END google_analytics_data_sample]
+def run_report_with_multiple_metrics(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a simple report using multiple metrics on a Google Analytics 4 property."""
+    client = BetaAnalyticsDataClient()
 
+    # [START analyticsdata_run_report_with_multiple_metrics]
+    # Runs a report of active users grouped by three dimensions.
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        dimensions=[Dimension(name="date")],
+        metrics=[
+            Metric(name="activeUsers"),
+            Metric(name="newUsers"),
+            Metric(name="totalRevenue"),
+        ],
+        date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
+    )
+    response = client.run_report(request)
+    # [END analyticsdata_run_report_with_multiple_metrics]
 
-def main():
-  sample_run_report()
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
 if __name__ == "__main__":
-  main()
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+
+    run_report_simple(property_id)
+    run_report_with_multiple_metrics(property_id)
+    run_report_with_multiple_dimensions(property_id)

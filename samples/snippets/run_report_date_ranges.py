@@ -18,53 +18,64 @@
 
 This application demonstrates the usage of the Analytics Data API using
 service account credentials.
-
-Before you start the application, please review the comments starting with
-"TODO(developer)" and update the code to use correct values.
-
-Usage:
-  pip3 install --upgrade google-analytics-data
-  python3 runReport.py
 """
-# [START google_analytics_data_sample]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
-from google.analytics.data_v1beta.types import OrderBy
 
 
-def run_report_date_ranges(property_id='YOUR-GA4-PROPERTY-ID'):
-  """Runs a simple report on a Google Analytics 4 property."""
-  # TODO(developer): Uncomment this variable and replace with your
-  #  Google Analytics 4 property ID before running the sample.
-  # property_id = 'YOUR-GA4-PROPERTY-ID'
+def run_report_with_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a simple report on a Google Analytics 4 property."""
+    client = BetaAnalyticsDataClient()
 
-  client = BetaAnalyticsDataClient()
+    # [START analyticsdata_run_report_with_date_ranges]
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        date_ranges=[
+            DateRange(start_date="2019-08-01", end_date="2019-08-14"),
+            DateRange(start_date="2020-08-01", end_date="2020-08-14"),
+        ],
+        dimensions=[Dimension(name="platform")],
+        metrics=[Metric(name="activeUsers")],
+    )
+    response = client.run_report(request)
+    # [END analyticsdata_run_report_with_date_ranges]
 
-  # [START google_analytics_data_run_report]
-  # Runs a report of active users grouped by three dimensions.
-  request = RunReportRequest(property='properties/' + str(property_id),
-                             dimensions=[Dimension(name='country')],
-                             metrics=[Metric(name='sessions')],
-                             date_ranges=[DateRange(start_date='2020-01-01',
-                                                    end_date='2020-01-31',
-                                                    name='year_ago'),
-                                          DateRange(start_date='2021-01-01',
-                                                    end_date='2021-01-31',
-                                                    name='current_year')])
-  response = client.run_report(request)
-  # [END google_analytics_data_run_report]
-
-  print("Report result:")
-  for row in response.rows:
-    print(row.dimension_values[0].value, row.metric_values[0].value)
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-def main():
-  sample_run_report()
+def run_report_with_named_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a simple report on a Google Analytics 4 property."""
+    client = BetaAnalyticsDataClient()
+
+    # [START analyticsdata_run_report_with_date_ranges]
+    # Runs a report of active users grouped by three dimensions.
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        date_ranges=[
+            DateRange(start_date="2020-01-01", end_date="2020-01-31", name="year_ago"),
+            DateRange(
+                start_date="2021-01-01", end_date="2021-01-31", name="current_year"
+            ),
+        ],
+        dimensions=[Dimension(name="country")],
+        metrics=[Metric(name="sessions")],
+    )
+    response = client.run_report(request)
+    # [END analyticsdata_run_report_with_date_ranges]
+
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
 if __name__ == "__main__":
-  main()
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_report_with_date_ranges(property_id)
+    run_report_with_named_date_ranges(property_id)
