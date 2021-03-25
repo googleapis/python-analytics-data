@@ -31,8 +31,9 @@ def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_report_with_sorting]
-    # Runs a report of active users grouped by three dimensions.
+    # [START analyticsdata_run_report_with_ordering]
+    # Runs a report of active users grouped by three dimensions, ordered by the
+    # number of sessions in descending order.
     request = RunReportRequest(
         property="properties/" + str(property_id),
         dimensions=[Dimension(name="date")],
@@ -47,7 +48,7 @@ def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
         ],
     )
     response = client.run_report(request)
-    # [END google_analytics_data_run_report]
+    # [END analyticsdata_run_report_with_ordering]
 
     print("Report result:")
     for row in response.rows:

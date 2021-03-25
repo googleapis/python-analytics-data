@@ -24,7 +24,7 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
 
 
-def run_report_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
+def run_report_with_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
     client = BetaAnalyticsDataClient()
 
@@ -53,4 +53,4 @@ if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
-    sample_run_report(property_id)
+    run_report_with_aggregations(property_id)

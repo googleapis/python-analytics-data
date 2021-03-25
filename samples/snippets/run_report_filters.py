@@ -210,6 +210,7 @@ if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
+
     run_report_with_dimension_filter(property_id)
     run_report_with_multiple_dimension_filters(property_id)
     run_report_with_dimension_exclude_filter(property_id)

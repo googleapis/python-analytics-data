@@ -22,7 +22,7 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunRealtimeReportRequest
 
 
-def sample_run_realtime_report(property_id="YOUR-GA4-PROPERTY-ID"):
+def run_realtime_report(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a realtime report on a Google Analytics 4 property."""
     client = BetaAnalyticsDataClient()
 
@@ -44,4 +44,4 @@ if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
-    sample_run_realtime_report(property_id)
+    run_realtime_report(property_id)
