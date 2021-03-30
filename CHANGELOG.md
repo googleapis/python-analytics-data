@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.4.2](https://www.github.com/googleapis/python-analytics-data/compare/v0.4.1...v0.4.2) (2021-03-30)
+
+
+### Documentation
+
+* update quickstart samples to support the Data API v1 beta ([#50](https://www.github.com/googleapis/python-analytics-data/issues/50)) ([ad51cf2](https://www.github.com/googleapis/python-analytics-data/commit/ad51cf28f6c3e306780ca48eb26299b4158068ad))
+* update region tag names to match the convention ([#55](https://www.github.com/googleapis/python-analytics-data/issues/55)) ([747f551](https://www.github.com/googleapis/python-analytics-data/commit/747f551c4b3a2f5b3d4602788b8f9c19cbd9904b))
+
 ### [0.4.1](https://www.github.com/googleapis/python-analytics-data/compare/v0.4.0...v0.4.1) (2021-03-16)
 
 
