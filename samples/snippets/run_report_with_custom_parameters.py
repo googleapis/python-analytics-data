@@ -17,11 +17,7 @@
 """Google Analytics Data API sample application.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import DateRange
-from google.analytics.data_v1beta.types import Dimension
-from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
-from google.analytics.data_v1beta.types import OrderBy
 
 
 def run_report_with_custom_parameters(property_id="YOUR-GA4-PROPERTY-ID"):

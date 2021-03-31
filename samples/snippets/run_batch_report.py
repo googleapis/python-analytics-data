@@ -18,11 +18,12 @@
 of multiple reports.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
+from google.analytics.data_v1beta.types import BatchRunReportsRequest
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
-from google.analytics.data_v1beta.types import BatchRunReportsRequest
+
 from run_report import print_run_report_response
 
 
