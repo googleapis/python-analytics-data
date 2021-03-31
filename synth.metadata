@@ -117,7 +117,6 @@
     "docs/data_v1beta/services.rst",
     "docs/data_v1beta/types.rst",
     "docs/multiprocessing.rst",
-    "google-analytics-data-v1beta-py.tar.gz",
     "google/analytics/data/__init__.py",
     "google/analytics/data/py.typed",
     "google/analytics/data_v1alpha/__init__.py",
