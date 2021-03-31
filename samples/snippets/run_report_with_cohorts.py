@@ -56,7 +56,7 @@ def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
                 )
             ]
         ),
-        cohorts_range=CohortsRange(
+        cohort_range=CohortsRange(
             start_offset=0, end_offset=4, granularity=CohortsRange.Granularity.WEEKLY
         ),
     )

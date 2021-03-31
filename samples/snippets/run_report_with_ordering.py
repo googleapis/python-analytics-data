@@ -28,7 +28,7 @@ from run_report import print_run_report_response
 
 def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report of active users grouped by three dimensions, ordered by
-    the number of sessions in descending order."""
+    the total revenue in descending order."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_run_report_with_ordering]
@@ -42,7 +42,7 @@ def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
         ],
         date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
         order_bys=[
-            OrderBy(metric=OrderBy.MetricOrderBy(metric_name="sessions"), desc=True)
+            OrderBy(metric=OrderBy.MetricOrderBy(metric_name="totalRevenue"), desc=True)
         ],
     )
     response = client.run_report(request)

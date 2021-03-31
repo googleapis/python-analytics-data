@@ -24,7 +24,6 @@ from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunPivotReportRequest
 from google.analytics.data_v1beta.types import OrderBy
 from google.analytics.data_v1beta.types import Pivot
-from run_report import print_run_report_response
 
 
 def run_pivot_report(property_id="YOUR-GA4-PROPERTY-ID"):
@@ -67,7 +66,28 @@ def run_pivot_report(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     response = client.run_pivot_report(request)
     # [END analyticsdata_run_pivot_report]
-    print_run_report_response(response)
+    print_run_pivot_report_response(response)
+
+def print_run_pivot_report_response(response):
+    """Prints results of a runPivotReport call."""
+    # [START analyticsdata_rprint_run_pivot_report_response]
+    for dimensionHeader in response.dimension_headers:
+        print("Dimension header name: {name}".format(name=dimensionHeader.name))
+    for metricHeader in response.metric_headers:
+        print(
+            "Metric header name: {name} ({type})".format(
+                name=metricHeader.name, type=MetricType(metricHeader.type_).name
+            )
+        )
+
+    print("Report result:")
+    for row in response.rows:
+        for dimension_value in row.dimension_values:
+            print(dimension_value.value)
+
+        for metric_value in row.metric_values:
+            print(metric_value.value)
+    # [END analyticsdata_rprint_run_pivot_report_response]
 
 
 if __name__ == "__main__":

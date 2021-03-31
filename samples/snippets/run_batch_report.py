@@ -56,7 +56,7 @@ def run_batch_report(property_id="YOUR-GA4-PROPERTY-ID"):
     # [END analyticsdata_run_batch_report]
 
     print("Batch report results:")
-    for report in response:
+    for report in response.reports:
         print_run_report_response(report)
 
 
