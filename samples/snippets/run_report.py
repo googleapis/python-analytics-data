@@ -14,24 +14,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample quickstart application.
-
-This application demonstrates the usage of the Analytics Data API using
-service account credentials.
+"""Google Analytics Data API sample application demonstrating the creation
+of a basic report.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
+from google.analytics.data_v1beta.types import MetricType
 from google.analytics.data_v1beta.types import RunReportRequest
 
 
 def run_report_simple(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report on a Google Analytics 4 property."""
+    """Runs a report of active users grouped by country."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_run_report_simple]
-    # Runs a report of active users grouped by three dimensions.
     request = RunReportRequest(
         property="properties/" + str(property_id),
         dimensions=[Dimension(name="country")],
@@ -40,18 +38,14 @@ def run_report_simple(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     response = client.run_report(request)
     # [END analyticsdata_run_report_simple]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+    print_run_report_response(response)
 
 
 def run_report_with_multiple_dimensions(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a report using multiple dimensions on a Google Analytics 4 property."""
+    """Runs a report of active users grouped by three dimensions."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_run_report_with_multiple_dimensions]
-    # Runs a report of active users grouped by three dimensions.
     request = RunReportRequest(
         property="properties/" + str(property_id),
         dimensions=[
@@ -64,14 +58,12 @@ def run_report_with_multiple_dimensions(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     response = client.run_report(request)
     # [END analyticsdata_run_report_with_multiple_dimensions]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+    print_run_report_response(response)
 
 
 def run_report_with_multiple_metrics(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report using multiple metrics on a Google Analytics 4 property."""
+    """Runs a report of active users, new users and total revenue grouped by
+    date dimension."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_run_report_with_multiple_metrics]
@@ -88,16 +80,38 @@ def run_report_with_multiple_metrics(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     response = client.run_report(request)
     # [END analyticsdata_run_report_with_multiple_metrics]
+    print_run_report_response(response)
 
+
+def print_run_report_response(response):
+    """Prints results of a runReport call."""
+    # [START analyticsdata_print_run_report_response_header]
+    print("{} rows received".format(response.row_count))
+    for dimensionHeader in response.dimension_headers:
+        print("Dimension header name: {name}".format(name=dimensionHeader.name))
+    for metricHeader in response.metric_headers:
+        print(
+            "Metric header name: {name} ({type})".format(
+                name=metricHeader.name, type=MetricType(metricHeader.type_).name
+            )
+        )
+    # [END analyticsdata_print_run_report_response_header]
+
+    # [START analyticsdata_print_run_report_response_rows]
     print("Report result:")
     for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+        for dimension_value in row.dimension_values:
+            print(dimension_value.value)
+
+        for metric_value in row.metric_values:
+            print(metric_value.value)
+    # [END analyticsdata_print_run_report_response_rows]
 
 
 if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
+    property_id = "222596558"
 
     run_report_simple(property_id)
     run_report_with_multiple_metrics(property_id)

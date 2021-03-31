@@ -32,34 +32,36 @@ from google.analytics.data_v1beta.types import RunReportRequest
 
 
 def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID"):
-  """Runs a simple report on a Google Analytics 4 property."""
-  # TODO(developer): Uncomment this variable and replace with your
-  #  Google Analytics 4 property ID before running the sample.
-  # property_id = "YOUR-GA4-PROPERTY-ID"
+    """Runs a simple report on a Google Analytics 4 property."""
+    # TODO(developer): Uncomment this variable and replace with your
+    #  Google Analytics 4 property ID before running the sample.
+    # property_id = "YOUR-GA4-PROPERTY-ID"
 
-  # [START analyticsdata_run_report_initialize]
-  # Using a default constructor instructs the client to use the credentials
-  # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
-  client = BetaAnalyticsDataClient()
-  # [END analyticsdata_run_report_initialize]
+    # [START analyticsdata_run_report_initialize]
+    # Using a default constructor instructs the client to use the credentials
+    # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
+    client = BetaAnalyticsDataClient()
+    # [END analyticsdata_run_report_initialize]
 
-  # [START analyticsdata_run_report]
-  request = RunReportRequest(
-      property="properties/" + str(property_id),
-      dimensions=[Dimension(name="city")],
-      metrics=[Metric(name="activeUsers")],
-      date_ranges=[DateRange(start_date="2020-03-31", end_date="today")],
-  )
-  response = client.run_report(request)
-  # [END analyticsdata_run_report]
+    # [START analyticsdata_run_report]
+    request = RunReportRequest(
+        property="properties/" + str(property_id),
+        dimensions=[Dimension(name="city")],
+        metrics=[Metric(name="activeUsers")],
+        date_ranges=[DateRange(start_date="2020-03-31", end_date="today")],
+    )
+    response = client.run_report(request)
+    # [END analyticsdata_run_report]
 
-  # [START analyticsdata_run_report_response]
-  print("Report result:")
-  for row in response.rows:
-    print(row.dimension_values[0].value, row.metric_values[0].value)
-  # [END analyticsdata_run_report_response]
+    # [START analyticsdata_run_report_response]
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value, row.metric_values[0].value)
+    # [END analyticsdata_run_report_response]
+
+
 # [END analyticsdata_quickstart]
 
 
 if __name__ == "__main__":
-  sample_run_report()
+    sample_run_report()

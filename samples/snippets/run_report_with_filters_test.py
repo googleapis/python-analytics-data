@@ -14,36 +14,38 @@
 
 import os
 
-import run_report_filters
+import run_report_with_filters
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
+
 def test_run_report_with_dimension_filter(capsys):
-    run_report_filters.run_report_with_dimension_filter(TEST_PROPERTY_ID)
+    run_report_with_filters.run_report_with_dimension_filter(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
 
 
 def test_run_report_with_multiple_dimension_filters(capsys):
-    run_report_filters.run_report_with_multiple_dimension_filters(TEST_PROPERTY_ID)
+    run_report_with_filters.run_report_with_multiple_dimension_filters(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
 
 
 def test_run_report_with_dimension_exclude_filter(capsys):
-    run_report_filters.run_report_with_dimension_exclude_filter(TEST_PROPERTY_ID)
+    run_report_with_filters.run_report_with_dimension_exclude_filter(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
 
 
 def run_report_with_dimension_in_list_filter(capsys):
-    run_report_filters.run_report_with_dimension_in_list_filter(TEST_PROPERTY_ID)
+    run_report_with_filters.run_report_with_dimension_in_list_filter(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
 
 
 def run_run_report_with_dimension_and_metric_filters(capsys):
-    run_report_filters.run_report_with_dimension_and_metric_filters(TEST_PROPERTY_ID)
+    run_report_with_filters.run_report_with_dimension_and_metric_filters(
+        TEST_PROPERTY_ID
+    )
     out, _ = capsys.readouterr()
     assert "Report result" in out
-

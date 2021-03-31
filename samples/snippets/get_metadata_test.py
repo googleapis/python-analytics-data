@@ -14,25 +14,18 @@
 
 import os
 
-import run_realtime_report
+import get_metadata
+
+TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
-def test_run_realtime_report(capsys):
-    TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
-    run_realtime_report.run_realtime_report(TEST_PROPERTY_ID)
+def test_get_common_metadata(capsys):
+    get_metadata.get_common_metadata(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
 
 
-def test_run_realtime_report_with_multiple_dimensions(capsys):
-    TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
-    run_realtime_report.run_realtime_report_with_multiple_dimensions(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out
-
-
-def test_run_realtime_report_with_multiple_metrics(capsys):
-    TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
-    run_realtime_report.run_realtime_report_with_multiple_metrics(TEST_PROPERTY_ID)
+def test_get_metadata_by_property_id(capsys):
+    get_metadata.get_metadata_by_property_id(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out

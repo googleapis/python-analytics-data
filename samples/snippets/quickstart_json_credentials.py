@@ -65,6 +65,8 @@ def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID", credentials_json_path=
     print("Report result:")
     for row in response.rows:
         print(row.dimension_values[0].value, row.metric_values[0].value)
+
+
 # [END analyticsdata_json_credentials_quickstart]
 
 

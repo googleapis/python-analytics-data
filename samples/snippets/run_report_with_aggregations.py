@@ -14,49 +14,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample quickstart application.
-
-This application demonstrates the usage of the Analytics Data API using
-service account credentials.
+"""Google Analytics Data API sample application demonstrating the usage of
+metric aggregations in a report.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
+from google.analytics.data_v1beta.types import MetricAggregation
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
-from google.analytics.data_v1beta.types import OrderBy
+from run_report import print_run_report_response
 
 
-def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report on a Google Analytics 4 property."""
+def run_report_with_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a report which includes total, maximum and minimum values for
+    each metric."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_report_with_ordering]
-    # Runs a report of active users grouped by three dimensions, ordered by the
-    # number of sessions in descending order.
+    # [START analyticsdata_run_report_with_aggregations]
     request = RunReportRequest(
         property="properties/" + str(property_id),
-        dimensions=[Dimension(name="date")],
-        metrics=[
-            Metric(name="activeUsers"),
-            Metric(name="newUsers"),
-            Metric(name="totalRevenue"),
-        ],
-        date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
-        order_bys=[
-            OrderBy(metric=OrderBy.MetricOrderBy(metric_name="sessions"), desc=true)
+        dimensions=[Dimension(name="country")],
+        metrics=[Metric(name="sessions")],
+        date_ranges=[DateRange(start_date="yesterday", end_date="today")],
+        metric_aggregations=[
+            MetricAggregation.TOTAL,
+            MetricAggregation.MAXIMUM,
+            MetricAggregation.MINIMUM,
         ],
     )
     response = client.run_report(request)
-    # [END analyticsdata_run_report_with_ordering]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+    # [END analyticsdata_run_report_with_aggregations]
+    print_run_report_response(response)
 
 
 if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
-    run_report_with_ordering(property_id)
+    run_report_with_aggregations(property_id)

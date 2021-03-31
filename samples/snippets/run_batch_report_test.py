@@ -14,24 +14,12 @@
 
 import os
 
-import run_report
+import run_batch_report
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
-def test_run_report(capsys):
-    run_report.run_report_simple(TEST_PROPERTY_ID)
+def test_run_batch_report(capsys):
+    run_batch_report.run_batch_report(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
-    assert "Report result" in out
-
-
-def test_run_report_with_multiple_metrics(capsys):
-    run_report.run_report_with_multiple_metrics(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out
-
-
-def test_run_report_with_multiple_dimensions(capsys):
-    run_report.run_report_with_multiple_dimensions(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out
+    assert "Batch report result" in out

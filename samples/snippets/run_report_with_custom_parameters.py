@@ -14,35 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample reporting application using metric
-aggregations.
+"""Google Analytics Data API sample application.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
+from google.analytics.data_v1beta.types import OrderBy
 
 
-def run_report_with_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
+def run_report_with_custom_parameters(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_report_with_aggregations]
-    # Runs a report of active users grouped by three dimensions.
-    request = RunReportRequest(
-        property="properties/" + str(property_id),
-        dimensions=[Dimension(name="country")],
-        metrics=[Metric(name="sessions")],
-        date_ranges=[DateRange(start_date="yesterday", end_date="today")],
-        metric_aggregations=[
-            MetricAggregation.TOTAL,
-            MetricAggregation.MAXIMUM,
-            MetricAggregation.MINIMUM,
-        ],
-    )
+    # [START run_report_with_custom_parameters]
+    request = RunReportRequest()
     response = client.run_report(request)
-    # [END analyticsdata_run_report_with_aggregations]
+    # [END run_report_with_custom_parameters]
 
     print("Report result:")
     for row in response.rows:
@@ -53,4 +42,4 @@ if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
-    run_report_with_aggregations(property_id)
+    run_report_with_custom_parameters(property_id)

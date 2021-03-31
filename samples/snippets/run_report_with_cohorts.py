@@ -14,13 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample application.
-
-This application demonstrates the usage of dimension and metric filters in the
-Analytics Data API using service account credentials.
-
-Before you start the application, please review the comments starting with
-"TODO(developer)" and update the code to use correct values.
+"""Google Analytics Data API sample application demonstratinf the usage of
+cohort specification in a report.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
@@ -30,10 +25,13 @@ from google.analytics.data_v1beta.types import RunReportRequest
 from google.analytics.data_v1beta.types import CohortsRange
 from google.analytics.data_v1beta.types import CohortSpec
 from google.analytics.data_v1beta.types import Cohort
+from run_report import print_run_report_response
 
 
 def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report on a Google Analytics 4 property."""
+    """Runs a report on a cohort of users whose first session happened on the
+    same week. The number of active users and user retention rate is calculated
+    for the cohort using WEEKLY granularity."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_run_report_with_cohorts]
@@ -47,7 +45,7 @@ def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
                 expression="cohortActiveUsers/cohortTotalUsers",
             ),
         ],
-        cohorts_spec=CohortSpec(
+        cohort_spec=CohortSpec(
             cohorts=[
                 Cohort(
                     dimension="firstSessionDate",
@@ -62,13 +60,9 @@ def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
             start_offset=0, end_offset=4, granularity=CohortsRange.Granularity.WEEKLY
         ),
     )
-
     response = client.run_report(request)
     # [END analyticsdata_run_report_with_cohorts]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+    print_run_report_response(response)
 
 
 if __name__ == "__main__":

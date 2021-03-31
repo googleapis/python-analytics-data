@@ -14,20 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample quickstart application.
-
-This application demonstrates the usage of the Analytics Data API using
-service account credentials.
+"""Google Analytics Data API sample application demonstrating the usage of
+date ranges in a report.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
+from run_report import print_run_report_response
 
 
 def run_report_with_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report on a Google Analytics 4 property."""
+    """Runs a report using two date ranges."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_run_report_with_date_ranges]
@@ -42,18 +41,14 @@ def run_report_with_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     response = client.run_report(request)
     # [END analyticsdata_run_report_with_date_ranges]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+    print_run_report_response(response)
 
 
 def run_report_with_named_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report on a Google Analytics 4 property."""
+    """Runs a report using named date ranges."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_run_report_with_date_ranges]
-    # Runs a report of active users grouped by three dimensions.
     request = RunReportRequest(
         property="properties/" + str(property_id),
         date_ranges=[
@@ -67,10 +62,7 @@ def run_report_with_named_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     response = client.run_report(request)
     # [END analyticsdata_run_report_with_date_ranges]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+    print_run_report_response(response)
 
 
 if __name__ == "__main__":

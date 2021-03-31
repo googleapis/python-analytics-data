@@ -14,20 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample quickstart application.
-
-This application demonstrates the usage of the Analytics Data API using
-service account credentials.
+"""Google Analytics Data API sample application demonstrating the use of
+pagination to retrieve large result sets.
 """
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
+from run_report import print_run_report_response
 
 
 def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report on a Google Analytics 4 property."""
+    """Runs a report several times, each time retrieving a portion of result
+    using pagination."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_run_report_with_pagination_page1]
@@ -49,10 +49,7 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     response = client.run_report(request)
     # [END analyticsdata_run_report_with_pagination_page1]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+    print_run_report_response(response)
 
     # Run the same report with a different offset value to retrieve the second
     # page of a response.
@@ -75,10 +72,7 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     response = client.run_report(request)
     # [END analyticsdata_run_report_with_pagination_page2]
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value, row.metric_values[0].value)
+    print_run_report_response(response)
 
 
 if __name__ == "__main__":

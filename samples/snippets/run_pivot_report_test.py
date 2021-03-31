@@ -14,17 +14,12 @@
 
 import os
 
-import run_report_date_ranges
+import run_pivot_report
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
-def test_run_report_with_date_ranges(capsys):
-    run_report_date_ranges.run_report_with_date_ranges(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out
 
-
-def test_run_report_with_named_date_ranges(capsys):
-    run_report_date_ranges.run_report_with_named_date_ranges(TEST_PROPERTY_ID)
+def test_run_pivot_report(capsys):
+    run_pivot_report.run_pivot_report(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out

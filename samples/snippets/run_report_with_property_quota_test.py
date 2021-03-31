@@ -14,12 +14,12 @@
 
 import os
 
-import run_report_pagination
+import run_report_with_property_quota
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
-def test_run_report_with_pagination(capsys):
-    run_report_pagination.run_report_with_pagination(TEST_PROPERTY_ID)
+
+def test_run_report_with_property_quota(capsys):
+    run_report_with_property_quota.run_report_with_property_quota(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
-
