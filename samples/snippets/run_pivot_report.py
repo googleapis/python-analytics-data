@@ -21,9 +21,9 @@ from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
-from google.analytics.data_v1beta.types import RunPivotReportRequest
 from google.analytics.data_v1beta.types import OrderBy
 from google.analytics.data_v1beta.types import Pivot
+from google.analytics.data_v1beta.types import RunPivotReportRequest
 
 
 def run_pivot_report(property_id="YOUR-GA4-PROPERTY-ID"):

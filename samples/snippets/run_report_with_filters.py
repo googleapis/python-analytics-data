@@ -20,12 +20,12 @@ dimension and metric filters in a report.
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
-from google.analytics.data_v1beta.types import Metric
-from google.analytics.data_v1beta.types import RunReportRequest
+from google.analytics.data_v1beta.types import Filter
 from google.analytics.data_v1beta.types import FilterExpression
 from google.analytics.data_v1beta.types import FilterExpressionList
-from google.analytics.data_v1beta.types import Filter
+from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import NumericValue
+from google.analytics.data_v1beta.types import RunReportRequest
 from run_report import print_run_report_response
 
 
