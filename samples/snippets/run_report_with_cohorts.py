@@ -54,10 +54,12 @@ def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
                         start_date="2021-01-03", end_date="2021-01-09"
                     ),
                 )
-            ]
-        ),
-        cohort_range=CohortsRange(
-            start_offset=0, end_offset=4, granularity=CohortsRange.Granularity.WEEKLY
+            ],
+            cohorts_range=CohortsRange(
+                start_offset=0,
+                end_offset=4,
+                granularity=CohortsRange.Granularity.WEEKLY,
+            ),
         ),
     )
     response = client.run_report(request)

@@ -68,18 +68,10 @@ def run_pivot_report(property_id="YOUR-GA4-PROPERTY-ID"):
     # [END analyticsdata_run_pivot_report]
     print_run_pivot_report_response(response)
 
+
 def print_run_pivot_report_response(response):
     """Prints results of a runPivotReport call."""
-    # [START analyticsdata_rprint_run_pivot_report_response]
-    for dimensionHeader in response.dimension_headers:
-        print("Dimension header name: {name}".format(name=dimensionHeader.name))
-    for metricHeader in response.metric_headers:
-        print(
-            "Metric header name: {name} ({type})".format(
-                name=metricHeader.name, type=MetricType(metricHeader.type_).name
-            )
-        )
-
+    # [START analyticsdata_print_run_pivot_report_response]
     print("Report result:")
     for row in response.rows:
         for dimension_value in row.dimension_values:
@@ -87,7 +79,7 @@ def print_run_pivot_report_response(response):
 
         for metric_value in row.metric_values:
             print(metric_value.value)
-    # [END analyticsdata_rprint_run_pivot_report_response]
+    # [END analyticsdata_print_run_pivot_report_response]
 
 
 if __name__ == "__main__":
