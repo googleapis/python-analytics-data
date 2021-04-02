@@ -37,7 +37,7 @@ def run_report_with_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
         property="properties/" + str(property_id),
         dimensions=[Dimension(name="country")],
         metrics=[Metric(name="sessions")],
-        date_ranges=[DateRange(start_date="yesterday", end_date="today")],
+        date_ranges=[DateRange(start_date="365daysAgo", end_date="today")],
         metric_aggregations=[
             MetricAggregation.TOTAL,
             MetricAggregation.MAXIMUM,
@@ -52,5 +52,5 @@ def run_report_with_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
 if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
+    property_id = "222596558"
     run_report_with_aggregations(property_id)
