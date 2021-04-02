@@ -111,7 +111,7 @@ def print_run_report_response(response):
 if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
-    property_id = "222596558"
+    property_id = "YOUR-GA4-PROPERTY-ID"
 
     run_report_simple(property_id)
     run_report_with_multiple_metrics(property_id)

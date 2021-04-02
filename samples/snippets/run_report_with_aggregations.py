@@ -52,5 +52,5 @@ def run_report_with_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
 if __name__ == "__main__":
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
-    property_id = "222596558"
+    property_id = "YOUR-GA4-PROPERTY-ID"
     run_report_with_aggregations(property_id)
