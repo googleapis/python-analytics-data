@@ -7,15 +7,15 @@
   "git": {
     "name": ".",
         "remote": "https://github.com/googleapis/python-analytics-data.git",
-        "sha": "e7fa3bd5817a51e852b47c427f598ef02f935437"
-    }
-},
-  {
+        "sha": "1c1d58f1ee88e50ce92c40b0ec58c19cec631297"
+      }
+    },
+    {
       "git": {
-      "name": "googleapis",
-          "remote": "https://github.com/googleapis/googleapis.git",
-          "sha": "28a591963253d52ce3a25a918cafbdd9928de8cf",
-      "internalRef": "361662015"
+        "name": "googleapis",
+        "remote": "https://github.com/googleapis/googleapis.git",
+        "sha": "95dd24960cf9f794ef583e59ad9f1fabe1c4a924",
+        "internalRef": "365882072"
       }
       },
   {
