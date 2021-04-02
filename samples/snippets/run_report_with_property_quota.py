@@ -74,12 +74,6 @@ def run_report_with_property_quota(property_id="YOUR-GA4-PROPERTY-ID"):
                 response.property_quota.server_errors_per_project_per_hour.remaining,
             )
         )
-        print(
-            "Potentially thresholded requests per hour quota consumed: {}, remaining: {}.".format(
-                response.property_quota.potentially_thresholded_requests_per_hour.consumed,
-                response.property_quota.potentially_thresholded_requests_per_hour.remaining,
-            )
-        )
     # [END analyticsdata_run_report_with_property_quota_print_response]
 
 
