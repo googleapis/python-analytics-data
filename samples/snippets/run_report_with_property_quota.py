@@ -26,6 +26,14 @@ from google.analytics.data_v1beta.types import RunReportRequest
 from run_report import print_run_report_response
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_report_with_property_quota(property_id)
+
+
 def run_report_with_property_quota(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report and prints property quota information."""
     client = BetaAnalyticsDataClient()
@@ -48,43 +56,30 @@ def run_report_with_property_quota(property_id="YOUR-GA4-PROPERTY-ID"):
     # [START analyticsdata_run_report_with_property_quota_print_response]
     if response.property_quota:
         print(
-            "Tokens per day quota consumed: {}, remaining: {}.".format(
-                response.property_quota.tokens_per_day.consumed,
-                response.property_quota.tokens_per_day.remaining,
-            )
+            f"Tokens per day quota consumed: {response.property_quota.tokens_per_day.consumed}, "
+            f"remaining: {response.property_quota.tokens_per_day.remaining}."
         )
 
         print(
-            "Tokens per hour quota consumed: {}, remaining: {}.".format(
-                response.property_quota.tokens_per_hour.consumed,
-                response.property_quota.tokens_per_hour.remaining,
-            )
+            f"Tokens per hour quota consumed: {response.property_quota.tokens_per_hour.consumed}, "
+            f"remaining: {response.property_quota.tokens_per_hour.remaining}."
         )
 
         print(
-            "Concurrent requests quota consumed: {}, remaining: {}.".format(
-                response.property_quota.concurrent_requests.consumed,
-                response.property_quota.concurrent_requests.remaining,
-            )
+            f"Concurrent requests quota consumed: {response.property_quota.concurrent_requests.consumed}, "
+            f"remaining: {response.property_quota.concurrent_requests.remaining}."
         )
 
         print(
-            "Server errors per project per hour quota consumed: {}, remaining: {}.".format(
-                response.property_quota.server_errors_per_project_per_hour.consumed,
-                response.property_quota.server_errors_per_project_per_hour.remaining,
-            )
+            f"Server errors per project per hour quota consumed: {response.property_quota.server_errors_per_project_per_hour.consumed}, "
+            f"remaining: {response.property_quota.server_errors_per_project_per_hour.remaining}."
         )
         print(
-            "Potentially thresholded requests per hour quota consumed: {}, remaining: {}.".format(
-                response.property_quota.potentially_thresholded_requests_per_hour.consumed,
-                response.property_quota.potentially_thresholded_requests_per_hour.remaining,
-            )
+            f"Potentially thresholded requests per hour quota consumed: {response.property_quota.potentially_thresholded_requests_per_hour.consumed}, "
+            f"remaining: {response.property_quota.potentially_thresholded_requests_per_hour.remaining}."
         )
     # [END analyticsdata_run_report_with_property_quota_print_response]
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-    run_report_with_property_quota(property_id)
+    run_sample()

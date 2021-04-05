@@ -22,23 +22,28 @@ from google.analytics.data_v1beta.types import GetMetadataRequest
 from google.analytics.data_v1beta.types import MetricType
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    get_metadata_by_property_id(property_id)
+    get_common_metadata()
+
+
 def get_metadata_by_property_id(property_id="YOUR-GA4-PROPERTY-ID"):
     """Retrieves dimensions and metrics available for a Google Analytics 4
     property, including custom fields."""
     client = BetaAnalyticsDataClient()
 
     # [START analyticsdata_get_metadata_by_property_id]
-    request = GetMetadataRequest(
-        name="properties/{property_id}/metadata".format(property_id=property_id)
-    )
+    request = GetMetadataRequest(name=f"properties/{property_id}/metadata")
     response = client.get_metadata(request)
     # [END analyticsdata_get_metadata_by_property_id]
 
     print(
-        "Dimensions and metrics available for Google Analytics 4 "
-        "property {property_id} (including custom fields):".format(
-            property_id=property_id
-        )
+        f"Dimensions and metrics available for Google Analytics 4 "
+        f"property {property_id} (including custom fields):"
     )
     print_get_metadata_response(response)
 
@@ -53,9 +58,7 @@ def get_common_metadata():
     # to all properties. In this special mode, this method will
     # not return custom dimensions and metrics.
     property_id = 0
-    request = GetMetadataRequest(
-        name="properties/{property_id}/metadata".format(property_id=property_id)
-    )
+    request = GetMetadataRequest(name=f"properties/{property_id}/metadata")
     response = client.get_metadata(request)
     # [END analyticsdata_get_common_metadata]
 
@@ -68,50 +71,27 @@ def print_get_metadata_response(response):
     # [START analyticsdata_print_get_metadata_response]
     for dimension in response.dimensions:
         print("DIMENSION")
-        print(
-            "{api_name} ({ui_name}): {description}".format(
-                api_name=dimension.api_name,
-                ui_name=dimension.ui_name,
-                description=dimension.description,
-            )
-        )
-        if dimension.custom_definition:
-            print("This is a custom definition")
+        print(f"{dimension.api_name} ({dimension.ui_name}): {dimension.description}")
+        print(f"custom_definition: {dimension.custom_definition}")
         if dimension.deprecated_api_names:
-            print(
-                "Deprecated API names: {deprecated_api_names}".format(
-                    deprecated_api_names=dimension.deprecated_api_names
-                )
-            )
+            print(f"Deprecated API names: {dimension.deprecated_api_names}")
         print("")
 
     for metric in response.metrics:
         print("METRIC")
-        print(
-            "{api_name} ({ui_name}): {description}".format(
-                api_name=metric.api_name,
-                ui_name=metric.ui_name,
-                description=metric.description,
-            )
-        )
-        if metric.custom_definition:
-            print("This is a custom definition")
+        print(f"{metric.api_name} ({metric.ui_name}): {metric.description}")
+        print(f"custom_definition: {dimension.custom_definition}")
         if metric.expression:
-            print("Expression: {expression}".format(expression=metric.expression))
-        print("Type: {metric_type}".format(metric_type=MetricType(metric.type_).name))
+            print(f"Expression: {metric.expression}")
+
+        metric_type = MetricType(metric.type_).name
+        print(f"Type: {metric_type}")
+
         if metric.deprecated_api_names:
-            print(
-                "Deprecated API names: {deprecated_api_names}".format(
-                    deprecated_api_names=metric.deprecated_api_names
-                )
-            )
+            print(f"Deprecated API names: {metric.deprecated_api_names}")
         print("")
     # [END analyticsdata_print_get_metadata_response]
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-    get_metadata_by_property_id(property_id)
-    get_common_metadata()
+    run_sample()

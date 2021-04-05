@@ -26,6 +26,14 @@ from google.analytics.data_v1beta.types import Pivot
 from google.analytics.data_v1beta.types import RunPivotReportRequest
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_pivot_report(property_id)
+
+
 def run_pivot_report(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a pivot query to build a report of session counts by country,
     pivoted by the browser dimension.."""
@@ -83,7 +91,4 @@ def print_run_pivot_report_response(response):
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-    run_pivot_report(property_id)
+    run_sample()

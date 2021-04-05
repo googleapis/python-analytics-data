@@ -25,6 +25,16 @@ from google.analytics.data_v1beta.types import MetricType
 from google.analytics.data_v1beta.types import RunReportRequest
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_report_simple(property_id)
+    run_report_with_multiple_metrics(property_id)
+    run_report_with_multiple_dimensions(property_id)
+
+
 def run_report_simple(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report of active users grouped by country."""
     client = BetaAnalyticsDataClient()
@@ -86,15 +96,12 @@ def run_report_with_multiple_metrics(property_id="YOUR-GA4-PROPERTY-ID"):
 def print_run_report_response(response):
     """Prints results of a runReport call."""
     # [START analyticsdata_print_run_report_response_header]
-    print("{} rows received".format(response.row_count))
+    print(f"{response.row_count} rows received")
     for dimensionHeader in response.dimension_headers:
-        print("Dimension header name: {name}".format(name=dimensionHeader.name))
+        print(f"Dimension header name: {dimensionHeader.name}")
     for metricHeader in response.metric_headers:
-        print(
-            "Metric header name: {name} ({type})".format(
-                name=metricHeader.name, type=MetricType(metricHeader.type_).name
-            )
-        )
+        metric_type = MetricType(metricHeader.type_).name
+        print(f"Metric header name: {metricHeader.name} ({metric_type})")
     # [END analyticsdata_print_run_report_response_header]
 
     # [START analyticsdata_print_run_report_response_rows]
@@ -109,10 +116,4 @@ def print_run_report_response(response):
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-
-    run_report_simple(property_id)
-    run_report_with_multiple_metrics(property_id)
-    run_report_with_multiple_dimensions(property_id)
+    run_sample()

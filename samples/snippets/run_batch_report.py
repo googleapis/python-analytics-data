@@ -27,6 +27,14 @@ from google.analytics.data_v1beta.types import RunReportRequest
 from run_report import print_run_report_response
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_batch_report(property_id)
+
+
 def run_batch_report(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a batch report on a Google Analytics 4 property."""
     client = BetaAnalyticsDataClient()
@@ -42,14 +50,14 @@ def run_batch_report(property_id="YOUR-GA4-PROPERTY-ID"):
                     Dimension(name="city"),
                 ],
                 metrics=[Metric(name="activeUsers")],
-                date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
+                date_ranges=[DateRange(start_date="2021-01-03", end_date="2021-01-09")],
             ),
             RunReportRequest(
                 dimensions=[
                     Dimension(name="browser"),
                 ],
                 metrics=[Metric(name="activeUsers")],
-                date_ranges=[DateRange(start_date="14daysAgo", end_date="today")],
+                date_ranges=[DateRange(start_date="2021-01-01", end_date="2021-01-31")],
             ),
         ],
     )
@@ -62,7 +70,4 @@ def run_batch_report(property_id="YOUR-GA4-PROPERTY-ID"):
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-    run_batch_report(property_id)
+    run_sample()

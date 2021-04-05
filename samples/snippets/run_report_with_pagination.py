@@ -26,6 +26,14 @@ from google.analytics.data_v1beta.types import RunReportRequest
 from run_report import print_run_report_response
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_report_with_pagination(property_id)
+
+
 def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report several times, each time retrieving a portion of result
     using pagination."""
@@ -77,7 +85,4 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-    run_report_with_pagination(property_id)
+    run_sample()

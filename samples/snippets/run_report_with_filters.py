@@ -30,6 +30,18 @@ from google.analytics.data_v1beta.types import RunReportRequest
 from run_report import print_run_report_response
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_report_with_dimension_filter(property_id)
+    run_report_with_multiple_dimension_filters(property_id)
+    run_report_with_dimension_exclude_filter(property_id)
+    run_report_with_dimension_in_list_filter(property_id)
+    run_report_with_dimension_and_metric_filters(property_id)
+
+
 def run_report_with_dimension_filter(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report using a dimension filter. The call returns a time series
     report of `eventCount` when `eventName` is `first_open` for each date."""
@@ -197,12 +209,4 @@ def run_report_with_dimension_and_metric_filters(property_id="YOUR-GA4-PROPERTY-
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-
-    run_report_with_dimension_filter(property_id)
-    run_report_with_multiple_dimension_filters(property_id)
-    run_report_with_dimension_exclude_filter(property_id)
-    run_report_with_dimension_in_list_filter(property_id)
-    run_report_with_dimension_and_metric_filters(property_id)
+    run_sample()

@@ -29,6 +29,14 @@ from google.analytics.data_v1beta.types import RunReportRequest
 from run_report import print_run_report_response
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_report_with_cohorts(property_id)
+
+
 def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report on a cohort of users whose first session happened on the
     same week. The number of active users and user retention rate is calculated
@@ -69,7 +77,4 @@ def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-    run_report_with_cohorts(property_id)
+    run_sample()

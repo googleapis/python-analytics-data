@@ -27,6 +27,14 @@ from google.analytics.data_v1beta.types import RunReportRequest
 from run_report import print_run_report_response
 
 
+def run_sample():
+    """Runs the sample."""
+    # TODO(developer): Replace this variable with your Google Analytics 4
+    #  property ID before running the sample.
+    property_id = "YOUR-GA4-PROPERTY-ID"
+    run_report_with_ordering(property_id)
+
+
 def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report of active users grouped by three dimensions, ordered by
     the total revenue in descending order."""
@@ -52,7 +60,4 @@ def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
 
 
 if __name__ == "__main__":
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-    run_report_with_ordering(property_id)
+    run_sample()
