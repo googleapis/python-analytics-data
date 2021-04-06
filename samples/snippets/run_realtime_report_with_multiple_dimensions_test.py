@@ -14,12 +14,14 @@
 
 import os
 
-import run_report
+import run_report_with_multiple_dimensions
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
 def test_run_report_with_multiple_dimensions(capsys):
-    run_report.run_report_with_multiple_dimensions(TEST_PROPERTY_ID)
+    run_report_with_multiple_dimensions.run_report_with_multiple_dimensions(
+        TEST_PROPERTY_ID
+    )
     out, _ = capsys.readouterr()
     assert "Report result" in out

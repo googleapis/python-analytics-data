@@ -20,6 +20,6 @@ TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
 def test_get_metadata_by_property_id(capsys):
-    get_metadata_by_property_id.get_metadata_by_property_id()
+    get_metadata_by_property_id.get_metadata_by_property_id(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Dimensions and metrics" in out
