@@ -20,7 +20,7 @@ metadata.
 See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/getMetadata
 for more information.
 """
-# [END analyticsdata_get_metadata_by_property_id]
+# [START analyticsdata_get_metadata_by_property_id]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import GetMetadataRequest
 
@@ -49,6 +49,8 @@ def get_metadata_by_property_id(property_id="YOUR-GA4-PROPERTY-ID"):
     )
     print_get_metadata_response(response)
 
+
+# [END analyticsdata_get_metadata_by_property_id]
 
 if __name__ == "__main__":
     run_sample()

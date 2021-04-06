@@ -73,7 +73,7 @@ def print_run_report_response(response):
     # [END analyticsdata_print_run_report_response_rows]
 
 
-# [END analyticsdata_run_report_basic]
+# [END analyticsdata_run_report]
 
 
 if __name__ == "__main__":
