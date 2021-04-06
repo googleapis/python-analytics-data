@@ -16,7 +16,11 @@
 
 """Google Analytics Data API sample application demonstrating the creation of
 a pivot report.
+
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runPivotReport
+for more information.
 """
+# [START analyticsdata_run_pivot_report]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
@@ -39,9 +43,8 @@ def run_pivot_report(property_id="YOUR-GA4-PROPERTY-ID"):
     pivoted by the browser dimension.."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_pivot_report]
     request = RunPivotReportRequest(
-        property="properties/" + str(property_id),
+        property=f"properties/{property_id}",
         date_ranges=[
             DateRange(start_date="2021-01-01", end_date="2021-01-30"),
         ],
@@ -73,7 +76,6 @@ def run_pivot_report(property_id="YOUR-GA4-PROPERTY-ID"):
         ],
     )
     response = client.run_pivot_report(request)
-    # [END analyticsdata_run_pivot_report]
     print_run_pivot_report_response(response)
 
 
@@ -88,6 +90,9 @@ def print_run_pivot_report_response(response):
         for metric_value in row.metric_values:
             print(metric_value.value)
     # [END analyticsdata_print_run_pivot_report_response]
+
+
+# [END analyticsdata_run_pivot_report]
 
 
 if __name__ == "__main__":

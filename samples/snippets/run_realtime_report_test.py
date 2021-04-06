@@ -23,15 +23,3 @@ def test_run_realtime_report(capsys):
     run_realtime_report.run_realtime_report(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
-
-
-def test_run_realtime_report_with_multiple_dimensions(capsys):
-    run_realtime_report.run_realtime_report_with_multiple_dimensions(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out
-
-
-def test_run_realtime_report_with_multiple_metrics(capsys):
-    run_realtime_report.run_realtime_report_with_multiple_metrics(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out

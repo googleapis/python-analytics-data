@@ -14,12 +14,12 @@
 
 import os
 
-import run_report
+import run_report_with_multiple_metrics
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
-def test_run_report_basic(capsys):
-    run_report.run_report(TEST_PROPERTY_ID)
+def test_run_report_with_multiple_metrics(capsys):
+    run_report_with_multiple_metrics.run_report_with_multiple_metrics(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out

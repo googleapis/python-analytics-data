@@ -14,18 +14,14 @@
 
 import os
 
-import get_metadata
+import run_report_with_dimension_and_metric_filters
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
-def test_get_common_metadata(capsys):
-    get_metadata.get_common_metadata()
+def test_run_report_with_dimension_and_metric_filters(capsys):
+    run_report_with_dimension_and_metric_filters.run_report_with_dimension_and_metric_filters(
+        TEST_PROPERTY_ID
+    )
     out, _ = capsys.readouterr()
-    assert "Dimensions and metrics" in out
-
-
-def test_get_metadata_by_property_id(capsys):
-    get_metadata.get_metadata_by_property_id(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Dimensions and metrics" in out
+    assert "Report result" in out

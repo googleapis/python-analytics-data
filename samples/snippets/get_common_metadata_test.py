@@ -12,14 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
-
-import run_report
-
-TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
+import get_common_metadata
 
 
-def test_run_report_basic(capsys):
-    run_report.run_report(TEST_PROPERTY_ID)
+def test_get_common_metadata(capsys):
+    get_common_metadata.get_common_metadata()
     out, _ = capsys.readouterr()
-    assert "Report result" in out
+    assert "Dimensions and metrics" in out

@@ -14,19 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample application demonstrating the usage of
-metric aggregations in a report.
+"""Google Analytics Data API sample application demonstrating the creation of
+a realtime report.
 
-See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#body.request_body.FIELDS.metric_aggregations
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport
 for more information.
 """
-# [START analyticsdata_run_report_with_aggregations]
+# [START analyticsdata_run_realtime_report_with_multiple_metrics]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
-from google.analytics.data_v1beta.types import MetricAggregation
-from google.analytics.data_v1beta.types import RunReportRequest
+from google.analytics.data_v1beta.types import RunRealtimeReportRequest
 
 from run_report import print_run_report_response
 
@@ -36,30 +34,23 @@ def run_sample():
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
-    run_report_with_aggregations(property_id)
+    run_realtime_report_with_multiple_metrics(property_id)
 
 
-def run_report_with_aggregations(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a report which includes total, maximum and minimum values for
-    each metric."""
+def run_realtime_report_with_multiple_metrics(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a realtime report on a Google Analytics 4 property."""
     client = BetaAnalyticsDataClient()
 
-    request = RunReportRequest(
+    request = RunRealtimeReportRequest(
         property=f"properties/{property_id}",
-        dimensions=[Dimension(name="country")],
-        metrics=[Metric(name="sessions")],
-        date_ranges=[DateRange(start_date="365daysAgo", end_date="today")],
-        metric_aggregations=[
-            MetricAggregation.TOTAL,
-            MetricAggregation.MAXIMUM,
-            MetricAggregation.MINIMUM,
-        ],
+        dimensions=[Dimension(name="unifiedScreenName")],
+        metrics=[Metric(name="screenPageViews"), Metric(name="conversions")],
     )
-    response = client.run_report(request)
+    response = client.run_realtime_report(request)
     print_run_report_response(response)
 
 
-# [END analyticsdata_run_report_with_aggregations]
+# [END analyticsdata_run_realtime_report_with_multiple_metrics]
 
 
 if __name__ == "__main__":

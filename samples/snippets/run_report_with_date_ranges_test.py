@@ -23,9 +23,3 @@ def test_run_report_with_date_ranges(capsys):
     run_report_with_date_ranges.run_report_with_date_ranges(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
-
-
-def test_run_report_with_named_date_ranges(capsys):
-    run_report_with_date_ranges.run_report_with_named_date_ranges(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out

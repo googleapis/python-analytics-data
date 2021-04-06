@@ -22,4 +22,4 @@ TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 def test_run_report_with_property_quota(capsys):
     run_report_with_property_quota.run_report_with_property_quota(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
-    assert "Report result" in out
+    assert "Tokens per day quota consumed" in out

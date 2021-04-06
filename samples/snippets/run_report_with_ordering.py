@@ -16,7 +16,11 @@
 
 """Google Analytics Data API sample application demonstrating the ordering of
  report rows.
+
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#body.request_body.FIELDS.order_bys
+for more information.
 """
+# [START analyticsdata_run_report_with_ordering]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
@@ -40,9 +44,8 @@ def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
     the total revenue in descending order."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_report_with_ordering]
     request = RunReportRequest(
-        property="properties/" + str(property_id),
+        property=f"properties/{property_id}",
         dimensions=[Dimension(name="date")],
         metrics=[
             Metric(name="activeUsers"),
@@ -55,8 +58,10 @@ def run_report_with_ordering(property_id="YOUR-GA4-PROPERTY-ID"):
         ],
     )
     response = client.run_report(request)
-    # [END analyticsdata_run_report_with_ordering]
     print_run_report_response(response)
+
+
+# [END analyticsdata_run_report_with_ordering]
 
 
 if __name__ == "__main__":

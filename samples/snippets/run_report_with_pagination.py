@@ -16,7 +16,11 @@
 
 """Google Analytics Data API sample application demonstrating the use of
 pagination to retrieve large result sets.
+
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#body.request_body.FIELDS.offset
+for more information.
 """
+# [START analyticsdata_run_report_with_pagination]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
@@ -41,7 +45,7 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
 
     # [START analyticsdata_run_report_with_pagination_page1]
     request = RunReportRequest(
-        property="properties/" + str(property_id),
+        property=f"properties/{property_id}",
         date_ranges=[DateRange(start_date="365daysAgo", end_date="yesterday")],
         dimensions=[
             Dimension(name="firstUserSource"),
@@ -64,7 +68,7 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
     # page of a response.
     # [START analyticsdata_run_report_with_pagination_page2]
     request = RunReportRequest(
-        property="properties/" + str(property_id),
+        property=f"properties/{property_id}",
         date_ranges=[DateRange(start_date="365daysAgo", end_date="yesterday")],
         dimensions=[
             Dimension(name="firstUserSource"),
@@ -82,6 +86,9 @@ def run_report_with_pagination(property_id="YOUR-GA4-PROPERTY-ID"):
     response = client.run_report(request)
     # [END analyticsdata_run_report_with_pagination_page2]
     print_run_report_response(response)
+
+
+# [END analyticsdata_run_report_with_pagination]
 
 
 if __name__ == "__main__":

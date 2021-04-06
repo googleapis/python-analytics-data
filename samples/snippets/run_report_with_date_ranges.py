@@ -16,7 +16,11 @@
 
 """Google Analytics Data API sample application demonstrating the usage of
 date ranges in a report.
+
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#body.request_body.FIELDS.date_ranges
+for more information.
 """
+# [START analyticsdata_run_report_with_date_ranges]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
@@ -32,16 +36,14 @@ def run_sample():
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
     run_report_with_date_ranges(property_id)
-    run_report_with_named_date_ranges(property_id)
 
 
 def run_report_with_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report using two date ranges."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_report_with_date_ranges]
     request = RunReportRequest(
-        property="properties/" + str(property_id),
+        property=f"properties/{property_id}",
         date_ranges=[
             DateRange(start_date="2019-08-01", end_date="2019-08-14"),
             DateRange(start_date="2020-08-01", end_date="2020-08-14"),
@@ -50,29 +52,10 @@ def run_report_with_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
         metrics=[Metric(name="activeUsers")],
     )
     response = client.run_report(request)
-    # [END analyticsdata_run_report_with_date_ranges]
     print_run_report_response(response)
 
 
-def run_report_with_named_date_ranges(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a report using named date ranges."""
-    client = BetaAnalyticsDataClient()
-
-    # [START analyticsdata_run_report_with_date_ranges]
-    request = RunReportRequest(
-        property="properties/" + str(property_id),
-        date_ranges=[
-            DateRange(start_date="2020-01-01", end_date="2020-01-31", name="year_ago"),
-            DateRange(
-                start_date="2021-01-01", end_date="2021-01-31", name="current_year"
-            ),
-        ],
-        dimensions=[Dimension(name="country")],
-        metrics=[Metric(name="sessions")],
-    )
-    response = client.run_report(request)
-    # [END analyticsdata_run_report_with_date_ranges]
-    print_run_report_response(response)
+# [END analyticsdata_run_report_with_date_ranges]
 
 
 if __name__ == "__main__":

@@ -16,7 +16,11 @@
 
 """Google Analytics Data API sample application demonstrating the batch creation
 of multiple reports.
+
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/batchRunReports
+for more information.
 """
+# [START analyticsdata_run_batch_report]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import BatchRunReportsRequest
 from google.analytics.data_v1beta.types import DateRange
@@ -39,9 +43,8 @@ def run_batch_report(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a batch report on a Google Analytics 4 property."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_batch_report]
     request = BatchRunReportsRequest(
-        property="properties/" + str(property_id),
+        property=f"properties/{property_id}",
         requests=[
             RunReportRequest(
                 dimensions=[
@@ -62,11 +65,13 @@ def run_batch_report(property_id="YOUR-GA4-PROPERTY-ID"):
         ],
     )
     response = client.batch_run_reports(request)
-    # [END analyticsdata_run_batch_report]
 
     print("Batch report results:")
     for report in response.reports:
         print_run_report_response(report)
+
+
+# [END analyticsdata_run_batch_report]
 
 
 if __name__ == "__main__":
