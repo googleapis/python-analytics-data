@@ -47,6 +47,7 @@ def run_report_with_dimension_filter(property_id="YOUR-GA4-PROPERTY-ID"):
     This sample uses relative date range values. See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/DateRange
     for more information.
     """
+
     client = BetaAnalyticsDataClient()
 
     request = RunReportRequest(
