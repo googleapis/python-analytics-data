@@ -16,7 +16,11 @@
 
 """Google Analytics Data API sample application demonstratinf the usage of
 cohort specification in a report.
+
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#body.request_body.FIELDS.cohort_spec
+for more information.
 """
+# [START analyticsdata_run_report_with_cohorts]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import Cohort
 from google.analytics.data_v1beta.types import CohortSpec
@@ -43,9 +47,8 @@ def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
     for the cohort using WEEKLY granularity."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_report_with_cohorts]
     request = RunReportRequest(
-        property="properties/" + str(property_id),
+        property=f"properties/{property_id}",
         dimensions=[Dimension(name="cohort"), Dimension(name="cohortNthWeek")],
         metrics=[
             Metric(name="cohortActiveUsers"),
@@ -72,8 +75,10 @@ def run_report_with_cohorts(property_id="YOUR-GA4-PROPERTY-ID"):
         ),
     )
     response = client.run_report(request)
-    # [END analyticsdata_run_report_with_cohorts]
     print_run_report_response(response)
+
+
+# [END analyticsdata_run_report_with_cohorts]
 
 
 if __name__ == "__main__":

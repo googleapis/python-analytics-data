@@ -1,4 +1,4 @@
-# Copyright 2020 Google Inc. All Rights Reserved.
+# Copyright 2021 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,11 +21,5 @@ TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 def test_run_report_with_date_ranges(capsys):
     run_report_with_date_ranges.run_report_with_date_ranges(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out
-
-
-def test_run_report_with_named_date_ranges(capsys):
-    run_report_with_date_ranges.run_report_with_named_date_ranges(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out

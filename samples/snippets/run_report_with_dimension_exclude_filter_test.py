@@ -14,12 +14,14 @@
 
 import os
 
-import run_report_with_cohorts
+import run_report_with_dimension_exclude_filter
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
-def test_run_report_with_cohorts(capsys):
-    run_report_with_cohorts.run_report_with_cohorts(TEST_PROPERTY_ID)
+def test_run_report_with_dimension_exclude_filter(capsys):
+    run_report_with_dimension_exclude_filter.run_report_with_dimension_exclude_filter(
+        TEST_PROPERTY_ID
+    )
     out, _ = capsys.readouterr()
     assert "Report result" in out

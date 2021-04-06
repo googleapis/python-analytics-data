@@ -14,12 +14,12 @@
 
 import os
 
-import run_report_with_cohorts
+import get_metadata_by_property_id
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
-def test_run_report_with_cohorts(capsys):
-    run_report_with_cohorts.run_report_with_cohorts(TEST_PROPERTY_ID)
+def test_get_metadata_by_property_id(capsys):
+    get_metadata_by_property_id.get_metadata_by_property_id()
     out, _ = capsys.readouterr()
-    assert "Report result" in out
+    assert "Dimensions and metrics" in out

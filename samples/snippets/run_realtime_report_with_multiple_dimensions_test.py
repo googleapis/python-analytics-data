@@ -1,4 +1,4 @@
-# Copyright 2020 Google Inc. All Rights Reserved.
+# Copyright 2021 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,18 +14,12 @@
 
 import os
 
-import get_metadata
+import run_report
 
 TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
-def test_get_common_metadata(capsys):
-    get_metadata.get_common_metadata()
+def test_run_report_with_multiple_dimensions(capsys):
+    run_report.run_report_with_multiple_dimensions(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
-    assert "Dimensions and metrics" in out
-
-
-def test_get_metadata_by_property_id(capsys):
-    get_metadata.get_metadata_by_property_id(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Dimensions and metrics" in out
+    assert "Report result" in out

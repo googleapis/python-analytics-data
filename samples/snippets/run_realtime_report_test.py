@@ -1,4 +1,4 @@
-# Copyright 2020 Google Inc. All Rights Reserved.
+# Copyright 2021 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,17 +21,5 @@ TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 def test_run_realtime_report(capsys):
     run_realtime_report.run_realtime_report(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out
-
-
-def test_run_realtime_report_with_multiple_dimensions(capsys):
-    run_realtime_report.run_realtime_report_with_multiple_dimensions(TEST_PROPERTY_ID)
-    out, _ = capsys.readouterr()
-    assert "Report result" in out
-
-
-def test_run_realtime_report_with_multiple_metrics(capsys):
-    run_realtime_report.run_realtime_report_with_multiple_metrics(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out

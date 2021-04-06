@@ -16,7 +16,11 @@
 
 """Google Analytics Data API sample application retrieving dimension and metrics
 metadata.
+
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/getMetadata
+for more information.
 """
+# [START analyticsdata_get_common_metadata]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import GetMetadataRequest
 from google.analytics.data_v1beta.types import MetricType
@@ -24,28 +28,7 @@ from google.analytics.data_v1beta.types import MetricType
 
 def run_sample():
     """Runs the sample."""
-    # TODO(developer): Replace this variable with your Google Analytics 4
-    #  property ID before running the sample.
-    property_id = "YOUR-GA4-PROPERTY-ID"
-    get_metadata_by_property_id(property_id)
     get_common_metadata()
-
-
-def get_metadata_by_property_id(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Retrieves dimensions and metrics available for a Google Analytics 4
-    property, including custom fields."""
-    client = BetaAnalyticsDataClient()
-
-    # [START analyticsdata_get_metadata_by_property_id]
-    request = GetMetadataRequest(name=f"properties/{property_id}/metadata")
-    response = client.get_metadata(request)
-    # [END analyticsdata_get_metadata_by_property_id]
-
-    print(
-        f"Dimensions and metrics available for Google Analytics 4 "
-        f"property {property_id} (including custom fields):"
-    )
-    print_get_metadata_response(response)
 
 
 def get_common_metadata():
@@ -53,14 +36,12 @@ def get_common_metadata():
     properties."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_get_common_metadata]
     # Set the Property ID to 0 for dimensions and metrics common
     # to all properties. In this special mode, this method will
     # not return custom dimensions and metrics.
     property_id = 0
     request = GetMetadataRequest(name=f"properties/{property_id}/metadata")
     response = client.get_metadata(request)
-    # [END analyticsdata_get_common_metadata]
 
     print("Dimensions and metrics available for all Google Analytics 4 properties:")
     print_get_metadata_response(response)
@@ -91,6 +72,9 @@ def print_get_metadata_response(response):
             print(f"Deprecated API names: {metric.deprecated_api_names}")
         print("")
     # [END analyticsdata_print_get_metadata_response]
+
+
+# [END analyticsdata_get_common_metadata]
 
 
 if __name__ == "__main__":

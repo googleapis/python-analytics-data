@@ -14,19 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Google Analytics Data API sample application demonstrating the creation of
-a realtime report.
+"""Google Analytics Data API sample application retrieving dimension and metrics
+metadata.
 
-See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runRealtimeReport
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/getMetadata
 for more information.
 """
-# [START analyticsdata_run_realtime_report]
+# [END analyticsdata_get_metadata_by_property_id]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import Dimension
-from google.analytics.data_v1beta.types import Metric
-from google.analytics.data_v1beta.types import RunRealtimeReportRequest
+from google.analytics.data_v1beta.types import GetMetadataRequest
 
-from run_report import print_run_report_response
+from get_common_metadata import print_get_metadata_response
 
 
 def run_sample():
@@ -34,23 +32,22 @@ def run_sample():
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
     property_id = "YOUR-GA4-PROPERTY-ID"
-    run_realtime_report(property_id)
+    get_metadata_by_property_id(property_id)
 
 
-def run_realtime_report(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a realtime report on a Google Analytics 4 property."""
+def get_metadata_by_property_id(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Retrieves dimensions and metrics available for a Google Analytics 4
+    property, including custom fields."""
     client = BetaAnalyticsDataClient()
 
-    request = RunRealtimeReportRequest(
-        property=f"properties/{property_id}",
-        dimensions=[Dimension(name="country")],
-        metrics=[Metric(name="activeUsers")],
+    request = GetMetadataRequest(name=f"properties/{property_id}/metadata")
+    response = client.get_metadata(request)
+
+    print(
+        f"Dimensions and metrics available for Google Analytics 4 "
+        f"property {property_id} (including custom fields):"
     )
-    response = client.run_realtime_report(request)
-    print_run_report_response(response)
-
-
-# [END analyticsdata_run_realtime_report]
+    print_get_metadata_response(response)
 
 
 if __name__ == "__main__":

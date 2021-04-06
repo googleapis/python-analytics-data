@@ -16,14 +16,16 @@
 
 """Google Analytics Data API sample application demonstrating the usage of
 property quota metadata.
+
+See https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#body.request_body.FIELDS.return_property_quota
+for more information.
 """
+# [START analyticsdata_run_report_with_property_quota]
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
 from google.analytics.data_v1beta.types import Dimension
 from google.analytics.data_v1beta.types import Metric
 from google.analytics.data_v1beta.types import RunReportRequest
-
-from run_report import print_run_report_response
 
 
 def run_sample():
@@ -38,9 +40,8 @@ def run_report_with_property_quota(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a report and prints property quota information."""
     client = BetaAnalyticsDataClient()
 
-    # [START analyticsdata_run_report_with_property_quota]
     request = RunReportRequest(
-        property="properties/" + str(property_id),
+        property=f"properties/{property_id}",
         return_property_quota=True,
         dimensions=[Dimension(name="country")],
         metrics=[
@@ -49,9 +50,6 @@ def run_report_with_property_quota(property_id="YOUR-GA4-PROPERTY-ID"):
         date_ranges=[DateRange(start_date="7daysAgo", end_date="today")],
     )
     response = client.run_report(request)
-    # [END analyticsdata_run_report_with_property_quota]
-
-    print_run_report_response(response)
 
     # [START analyticsdata_run_report_with_property_quota_print_response]
     if response.property_quota:
@@ -79,6 +77,9 @@ def run_report_with_property_quota(property_id="YOUR-GA4-PROPERTY-ID"):
             f"remaining: {response.property_quota.potentially_thresholded_requests_per_hour.remaining}."
         )
     # [END analyticsdata_run_report_with_property_quota_print_response]
+
+
+# [END analyticsdata_run_report_with_property_quota]
 
 
 if __name__ == "__main__":
