@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "36a84fe3eaf841f56c4b6683d1c0403f7b503092",
-        "internalRef": "370523741"
+        "sha": "60e129d0672a1be2c70b41bf76aadc7ad1b1ca0f",
+        "internalRef": "370525906"
       }
     }
   ],
@@ -106,6 +106,7 @@
     "google/analytics/data/__init__.py",
     "google/analytics/data/py.typed",
     "google/analytics/data_v1alpha/__init__.py",
+    "google/analytics/data_v1alpha/gapic_metadata.json",
     "google/analytics/data_v1alpha/py.typed",
     "google/analytics/data_v1alpha/services/__init__.py",
     "google/analytics/data_v1alpha/services/alpha_analytics_data/__init__.py",
@@ -119,6 +120,7 @@
     "google/analytics/data_v1alpha/types/analytics_data_api.py",
     "google/analytics/data_v1alpha/types/data.py",
     "google/analytics/data_v1beta/__init__.py",
+    "google/analytics/data_v1beta/gapic_metadata.json",
     "google/analytics/data_v1beta/py.typed",
     "google/analytics/data_v1beta/services/__init__.py",
     "google/analytics/data_v1beta/services/beta_analytics_data/__init__.py",
@@ -143,6 +145,9 @@
     "scripts/readme-gen/templates/install_portaudio.tmpl.rst",
     "setup.cfg",
     "testing/.gitignore",
+    "tests/__init__.py",
+    "tests/unit/__init__.py",
+    "tests/unit/gapic/__init__.py",
     "tests/unit/gapic/data_v1alpha/__init__.py",
     "tests/unit/gapic/data_v1alpha/test_alpha_analytics_data.py",
     "tests/unit/gapic/data_v1beta/__init__.py",

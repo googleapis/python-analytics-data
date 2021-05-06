@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,21 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import warnings
-from typing import Awaitable, Callable, Dict, Optional, Sequence, Tuple
+from typing import Awaitable, Callable, Dict, Optional, Sequence, Tuple, Union
 
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import grpc_helpers_async  # type: ignore
 from google import auth  # type: ignore
 from google.auth import credentials  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
+import packaging.version
 
 import grpc  # type: ignore
 from grpc.experimental import aio  # type: ignore
 
 from google.analytics.data_v1beta.types import analytics_data_api
-
 from .base import BetaAnalyticsDataTransport, DEFAULT_CLIENT_INFO
 from .grpc import BetaAnalyticsDataGrpcTransport
 
@@ -80,13 +78,15 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
         Returns:
             aio.Channel: A gRPC AsyncIO channel object.
         """
-        scopes = scopes or cls.AUTH_SCOPES
+
+        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
+
         return grpc_helpers_async.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
-            scopes=scopes,
             quota_project_id=quota_project_id,
+            **self_signed_jwt_kwargs,
             **kwargs,
         )
 
@@ -108,7 +108,8 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
         """Instantiate the transport.
 
         Args:
-            host (Optional[str]): The hostname to connect to.
+            host (Optional[str]):
+                 The hostname to connect to.
             credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify the application to the service; if none
@@ -166,7 +167,6 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
             # If a channel was explicitly provided, set it.
             self._grpc_channel = channel
             self._ssl_channel_credentials = None
-
         else:
             if api_mtls_endpoint:
                 host = api_mtls_endpoint
@@ -232,7 +232,9 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.RunReportRequest],
         Awaitable[analytics_data_api.RunReportResponse],
     ]:
-        r"""Return a callable for the run report method over gRPC.
+        r"""Return a callable for the
+        run report
+          method over gRPC.
 
         Returns a customized report of your Google Analytics
         event data. Reports contain statistics derived from data
@@ -269,7 +271,9 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.RunPivotReportRequest],
         Awaitable[analytics_data_api.RunPivotReportResponse],
     ]:
-        r"""Return a callable for the run pivot report method over gRPC.
+        r"""Return a callable for the
+        run pivot report
+          method over gRPC.
 
         Returns a customized pivot report of your Google
         Analytics event data. Pivot reports are more advanced
@@ -303,7 +307,9 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.BatchRunReportsRequest],
         Awaitable[analytics_data_api.BatchRunReportsResponse],
     ]:
-        r"""Return a callable for the batch run reports method over gRPC.
+        r"""Return a callable for the
+        batch run reports
+          method over gRPC.
 
         Returns multiple reports in a batch. All reports must
         be for the same GA4 Property.
@@ -333,7 +339,9 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.BatchRunPivotReportsRequest],
         Awaitable[analytics_data_api.BatchRunPivotReportsResponse],
     ]:
-        r"""Return a callable for the batch run pivot reports method over gRPC.
+        r"""Return a callable for the
+        batch run pivot reports
+          method over gRPC.
 
         Returns multiple pivot reports in a batch. All
         reports must be for the same GA4 Property.
@@ -362,7 +370,9 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
     ) -> Callable[
         [analytics_data_api.GetMetadataRequest], Awaitable[analytics_data_api.Metadata]
     ]:
-        r"""Return a callable for the get metadata method over gRPC.
+        r"""Return a callable for the
+        get metadata
+          method over gRPC.
 
         Returns metadata for dimensions and metrics available in
         reporting methods. Used to explore the dimensions and metrics.
@@ -401,7 +411,9 @@ class BetaAnalyticsDataGrpcAsyncIOTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.RunRealtimeReportRequest],
         Awaitable[analytics_data_api.RunRealtimeReportResponse],
     ]:
-        r"""Return a callable for the run realtime report method over gRPC.
+        r"""Return a callable for the
+        run realtime report
+          method over gRPC.
 
         The Google Analytics Realtime API returns a
         customized report of realtime event data for your
