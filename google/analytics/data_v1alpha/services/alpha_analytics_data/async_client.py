@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 import functools
 import re
@@ -22,15 +20,14 @@ from typing import Dict, Sequence, Tuple, Type, Union
 import pkg_resources
 
 import google.api_core.client_options as ClientOptions  # type: ignore
-from google.api_core import exceptions  # type: ignore
+from google.api_core import exceptions as core_exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
-from google.auth import credentials  # type: ignore
+from google.auth import credentials as ga_credentials  # type: ignore
 from google.oauth2 import service_account  # type: ignore
 
 from google.analytics.data_v1alpha.types import analytics_data_api
 from google.analytics.data_v1alpha.types import data
-
 from .transports.base import AlphaAnalyticsDataTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import AlphaAnalyticsDataGrpcAsyncIOTransport
 from .client import AlphaAnalyticsDataClient
@@ -46,31 +43,26 @@ class AlphaAnalyticsDataAsyncClient:
 
     metadata_path = staticmethod(AlphaAnalyticsDataClient.metadata_path)
     parse_metadata_path = staticmethod(AlphaAnalyticsDataClient.parse_metadata_path)
-
     common_billing_account_path = staticmethod(
         AlphaAnalyticsDataClient.common_billing_account_path
     )
     parse_common_billing_account_path = staticmethod(
         AlphaAnalyticsDataClient.parse_common_billing_account_path
     )
-
     common_folder_path = staticmethod(AlphaAnalyticsDataClient.common_folder_path)
     parse_common_folder_path = staticmethod(
         AlphaAnalyticsDataClient.parse_common_folder_path
     )
-
     common_organization_path = staticmethod(
         AlphaAnalyticsDataClient.common_organization_path
     )
     parse_common_organization_path = staticmethod(
         AlphaAnalyticsDataClient.parse_common_organization_path
     )
-
     common_project_path = staticmethod(AlphaAnalyticsDataClient.common_project_path)
     parse_common_project_path = staticmethod(
         AlphaAnalyticsDataClient.parse_common_project_path
     )
-
     common_location_path = staticmethod(AlphaAnalyticsDataClient.common_location_path)
     parse_common_location_path = staticmethod(
         AlphaAnalyticsDataClient.parse_common_location_path
@@ -125,7 +117,7 @@ class AlphaAnalyticsDataAsyncClient:
     def __init__(
         self,
         *,
-        credentials: credentials.Credentials = None,
+        credentials: ga_credentials.Credentials = None,
         transport: Union[str, AlphaAnalyticsDataTransport] = "grpc_asyncio",
         client_options: ClientOptions = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
@@ -162,7 +154,6 @@ class AlphaAnalyticsDataAsyncClient:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
                 creation failed for any reason.
         """
-
         self._client = AlphaAnalyticsDataClient(
             credentials=credentials,
             transport=transport,
@@ -191,7 +182,6 @@ class AlphaAnalyticsDataAsyncClient:
         Args:
             request (:class:`google.analytics.data_v1alpha.types.RunReportRequest`):
                 The request object. The request to generate a report.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -205,7 +195,6 @@ class AlphaAnalyticsDataAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = analytics_data_api.RunReportRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -241,7 +230,6 @@ class AlphaAnalyticsDataAsyncClient:
             request (:class:`google.analytics.data_v1alpha.types.RunPivotReportRequest`):
                 The request object. The request to generate a pivot
                 report.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -255,7 +243,6 @@ class AlphaAnalyticsDataAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = analytics_data_api.RunPivotReportRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -287,7 +274,6 @@ class AlphaAnalyticsDataAsyncClient:
             request (:class:`google.analytics.data_v1alpha.types.BatchRunReportsRequest`):
                 The request object. The batch request containing
                 multiple report requests.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -301,7 +287,6 @@ class AlphaAnalyticsDataAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = analytics_data_api.BatchRunReportsRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -333,7 +318,6 @@ class AlphaAnalyticsDataAsyncClient:
             request (:class:`google.analytics.data_v1alpha.types.BatchRunPivotReportsRequest`):
                 The request object. The batch request containing
                 multiple pivot report requests.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -347,7 +331,6 @@ class AlphaAnalyticsDataAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = analytics_data_api.BatchRunPivotReportsRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -406,7 +389,6 @@ class AlphaAnalyticsDataAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -433,7 +415,6 @@ class AlphaAnalyticsDataAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -474,7 +455,6 @@ class AlphaAnalyticsDataAsyncClient:
             request (:class:`google.analytics.data_v1alpha.types.RunRealtimeReportRequest`):
                 The request object. The request to generate a realtime
                 report.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -488,7 +468,6 @@ class AlphaAnalyticsDataAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = analytics_data_api.RunRealtimeReportRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
