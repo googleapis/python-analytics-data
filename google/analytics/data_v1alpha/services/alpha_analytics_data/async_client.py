@@ -181,8 +181,7 @@ class AlphaAnalyticsDataAsyncClient:
 
         Args:
             request (:class:`google.analytics.data_v1alpha.types.RunReportRequest`):
-                The request object.
-                The request to generate a report.
+                The request object. The request to generate a report.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -229,8 +228,7 @@ class AlphaAnalyticsDataAsyncClient:
 
         Args:
             request (:class:`google.analytics.data_v1alpha.types.RunPivotReportRequest`):
-                The request object.
-                The request to generate a pivot
+                The request object. The request to generate a pivot
                 report.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -274,8 +272,7 @@ class AlphaAnalyticsDataAsyncClient:
 
         Args:
             request (:class:`google.analytics.data_v1alpha.types.BatchRunReportsRequest`):
-                The request object.
-                The batch request containing
+                The request object. The batch request containing
                 multiple report requests.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -319,8 +316,7 @@ class AlphaAnalyticsDataAsyncClient:
 
         Args:
             request (:class:`google.analytics.data_v1alpha.types.BatchRunPivotReportsRequest`):
-                The request object.
-                The batch request containing
+                The request object. The batch request containing
                 multiple pivot report requests.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -374,8 +370,7 @@ class AlphaAnalyticsDataAsyncClient:
 
         Args:
             request (:class:`google.analytics.data_v1alpha.types.GetMetadataRequest`):
-                The request object.
-                Request for a property's dimension
+                The request object. Request for a property's dimension
                 and metric metadata.
             name (:class:`str`):
                 Required. The resource name of the metadata to retrieve.
@@ -458,8 +453,7 @@ class AlphaAnalyticsDataAsyncClient:
 
         Args:
             request (:class:`google.analytics.data_v1alpha.types.RunRealtimeReportRequest`):
-                The request object.
-                The request to generate a realtime
+                The request object. The request to generate a realtime
                 report.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
