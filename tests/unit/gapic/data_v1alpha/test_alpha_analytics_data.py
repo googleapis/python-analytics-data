@@ -1430,7 +1430,7 @@ def test_alpha_analytics_data_transport_create_channel(transport_class, grpc_hel
         transport_class(quota_project_id="octopus", scopes=["1", "2"])
 
         create_channel.assert_called_with(
-            "analyticsdata.googleapis.com:443",
+            "analyticsdata.googleapis.com",
             credentials=creds,
             credentials_file=None,
             quota_project_id="octopus",
