@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import warnings
-from typing import Callable, Dict, Optional, Sequence, Tuple, Union
+from typing import Callable, Dict, Optional, Sequence, Tuple
 
 from google.api_core import grpc_helpers  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
@@ -25,6 +27,7 @@ from google.auth.transport.grpc import SslCredentials  # type: ignore
 import grpc  # type: ignore
 
 from google.analytics.data_v1beta.types import analytics_data_api
+
 from .base import BetaAnalyticsDataTransport, DEFAULT_CLIENT_INFO
 
 
@@ -61,8 +64,7 @@ class BetaAnalyticsDataGrpcTransport(BetaAnalyticsDataTransport):
         """Instantiate the transport.
 
         Args:
-            host (Optional[str]):
-                 The hostname to connect to.
+            host (Optional[str]): The hostname to connect to.
             credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify the application to the service; if none
@@ -203,15 +205,13 @@ class BetaAnalyticsDataGrpcTransport(BetaAnalyticsDataTransport):
             google.api_core.exceptions.DuplicateCredentialArgs: If both ``credentials``
               and ``credentials_file`` are passed.
         """
-
-        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
-
+        scopes = scopes or cls.AUTH_SCOPES
         return grpc_helpers.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
+            scopes=scopes,
             quota_project_id=quota_project_id,
-            **self_signed_jwt_kwargs,
             **kwargs,
         )
 
@@ -227,9 +227,7 @@ class BetaAnalyticsDataGrpcTransport(BetaAnalyticsDataTransport):
     ) -> Callable[
         [analytics_data_api.RunReportRequest], analytics_data_api.RunReportResponse
     ]:
-        r"""Return a callable for the
-        run report
-          method over gRPC.
+        r"""Return a callable for the run report method over gRPC.
 
         Returns a customized report of your Google Analytics
         event data. Reports contain statistics derived from data
@@ -266,9 +264,7 @@ class BetaAnalyticsDataGrpcTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.RunPivotReportRequest],
         analytics_data_api.RunPivotReportResponse,
     ]:
-        r"""Return a callable for the
-        run pivot report
-          method over gRPC.
+        r"""Return a callable for the run pivot report method over gRPC.
 
         Returns a customized pivot report of your Google
         Analytics event data. Pivot reports are more advanced
@@ -302,9 +298,7 @@ class BetaAnalyticsDataGrpcTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.BatchRunReportsRequest],
         analytics_data_api.BatchRunReportsResponse,
     ]:
-        r"""Return a callable for the
-        batch run reports
-          method over gRPC.
+        r"""Return a callable for the batch run reports method over gRPC.
 
         Returns multiple reports in a batch. All reports must
         be for the same GA4 Property.
@@ -334,9 +328,7 @@ class BetaAnalyticsDataGrpcTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.BatchRunPivotReportsRequest],
         analytics_data_api.BatchRunPivotReportsResponse,
     ]:
-        r"""Return a callable for the
-        batch run pivot reports
-          method over gRPC.
+        r"""Return a callable for the batch run pivot reports method over gRPC.
 
         Returns multiple pivot reports in a batch. All
         reports must be for the same GA4 Property.
@@ -363,9 +355,7 @@ class BetaAnalyticsDataGrpcTransport(BetaAnalyticsDataTransport):
     def get_metadata(
         self,
     ) -> Callable[[analytics_data_api.GetMetadataRequest], analytics_data_api.Metadata]:
-        r"""Return a callable for the
-        get metadata
-          method over gRPC.
+        r"""Return a callable for the get metadata method over gRPC.
 
         Returns metadata for dimensions and metrics available in
         reporting methods. Used to explore the dimensions and metrics.
@@ -404,9 +394,7 @@ class BetaAnalyticsDataGrpcTransport(BetaAnalyticsDataTransport):
         [analytics_data_api.RunRealtimeReportRequest],
         analytics_data_api.RunRealtimeReportResponse,
     ]:
-        r"""Return a callable for the
-        run realtime report
-          method over gRPC.
+        r"""Return a callable for the run realtime report method over gRPC.
 
         The Google Analytics Realtime API returns a
         customized report of realtime event data for your

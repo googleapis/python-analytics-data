@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 from collections import OrderedDict
 from distutils import util
 import os
@@ -32,6 +34,7 @@ from google.oauth2 import service_account  # type: ignore
 
 from google.analytics.data_v1alpha.types import analytics_data_api
 from google.analytics.data_v1alpha.types import data
+
 from .transports.base import AlphaAnalyticsDataTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import AlphaAnalyticsDataGrpcTransport
 from .transports.grpc_asyncio import AlphaAnalyticsDataGrpcAsyncIOTransport
@@ -357,8 +360,8 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         Args:
             request (google.analytics.data_v1alpha.types.RunReportRequest):
-                The request object.
-                The request to generate a report.
+                The request object. The request to generate a report.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -372,6 +375,7 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
+
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.RunReportRequest.
         # There's no risk of modifying the input as we've already verified
@@ -406,9 +410,9 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         Args:
             request (google.analytics.data_v1alpha.types.RunPivotReportRequest):
-                The request object.
-                The request to generate a pivot
+                The request object. The request to generate a pivot
                 report.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -422,6 +426,7 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
+
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.RunPivotReportRequest.
         # There's no risk of modifying the input as we've already verified
@@ -452,9 +457,9 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         Args:
             request (google.analytics.data_v1alpha.types.BatchRunReportsRequest):
-                The request object.
-                The batch request containing
+                The request object. The batch request containing
                 multiple report requests.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -468,6 +473,7 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
+
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.BatchRunReportsRequest.
         # There's no risk of modifying the input as we've already verified
@@ -498,9 +504,9 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         Args:
             request (google.analytics.data_v1alpha.types.BatchRunPivotReportsRequest):
-                The request object.
-                The batch request containing
+                The request object. The batch request containing
                 multiple pivot report requests.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -514,6 +520,7 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
+
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.BatchRunPivotReportsRequest.
         # There's no risk of modifying the input as we've already verified
@@ -554,8 +561,7 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         Args:
             request (google.analytics.data_v1alpha.types.GetMetadataRequest):
-                The request object.
-                Request for a property's dimension
+                The request object. Request for a property's dimension
                 and metric metadata.
             name (str):
                 Required. The resource name of the metadata to retrieve.
@@ -574,6 +580,7 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -602,8 +609,10 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
         # there are no flattened fields.
         if not isinstance(request, analytics_data_api.GetMetadataRequest):
             request = analytics_data_api.GetMetadataRequest(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if name is not None:
                 request.name = name
 
@@ -638,9 +647,9 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         Args:
             request (google.analytics.data_v1alpha.types.RunRealtimeReportRequest):
-                The request object.
-                The request to generate a realtime
+                The request object. The request to generate a realtime
                 report.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -654,6 +663,7 @@ class AlphaAnalyticsDataClient(metaclass=AlphaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
+
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.RunRealtimeReportRequest.
         # There's no risk of modifying the input as we've already verified

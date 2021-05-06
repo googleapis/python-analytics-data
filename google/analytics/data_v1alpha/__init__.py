@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +16,6 @@
 #
 
 from .services.alpha_analytics_data import AlphaAnalyticsDataClient
-
 from .types.analytics_data_api import BatchRunPivotReportsRequest
 from .types.analytics_data_api import BatchRunPivotReportsResponse
 from .types.analytics_data_api import BatchRunReportsRequest
@@ -57,6 +57,7 @@ from .types.data import PropertyQuota
 from .types.data import QuotaStatus
 from .types.data import ResponseMetaData
 from .types.data import Row
+
 
 __all__ = (
     "BatchRunPivotReportsRequest",
