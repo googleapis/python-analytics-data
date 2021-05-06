@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "e9886b1b37612509746d5c299a3a6db698aed7ca",
-        "internalRef": "371783191"
+        "sha": "5efeb79eed444f14cf2cf89516dbf9ece86a4a0c",
+        "internalRef": "371848474"
       }
     }
   ],
@@ -103,7 +103,6 @@
     "docs/data_v1beta/services.rst",
     "docs/data_v1beta/types.rst",
     "docs/multiprocessing.rst",
-    "google-analytics-data-v1beta-py.tar.gz",
     "google/analytics/data/__init__.py",
     "google/analytics/data/py.typed",
     "google/analytics/data_v1alpha/__init__.py",
