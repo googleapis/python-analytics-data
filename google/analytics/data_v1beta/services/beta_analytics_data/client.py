@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 from distutils import util
 import os
@@ -23,10 +21,10 @@ from typing import Callable, Dict, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib  # type: ignore
-from google.api_core import exceptions  # type: ignore
+from google.api_core import exceptions as core_exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
-from google.auth import credentials  # type: ignore
+from google.auth import credentials as ga_credentials  # type: ignore
 from google.auth.transport import mtls  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
 from google.auth.exceptions import MutualTLSChannelError  # type: ignore
@@ -34,7 +32,6 @@ from google.oauth2 import service_account  # type: ignore
 
 from google.analytics.data_v1beta.types import analytics_data_api
 from google.analytics.data_v1beta.types import data
-
 from .transports.base import BetaAnalyticsDataTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import BetaAnalyticsDataGrpcTransport
 from .transports.grpc_asyncio import BetaAnalyticsDataGrpcAsyncIOTransport
@@ -230,7 +227,7 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
     def __init__(
         self,
         *,
-        credentials: Optional[credentials.Credentials] = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, BetaAnalyticsDataTransport, None] = None,
         client_options: Optional[client_options_lib.ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
@@ -361,7 +358,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
         Args:
             request (google.analytics.data_v1beta.types.RunReportRequest):
                 The request object. The request to generate a report.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -375,7 +371,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.RunReportRequest.
         # There's no risk of modifying the input as we've already verified
@@ -418,7 +413,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
             request (google.analytics.data_v1beta.types.RunPivotReportRequest):
                 The request object. The request to generate a pivot
                 report.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -432,7 +426,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.RunPivotReportRequest.
         # There's no risk of modifying the input as we've already verified
@@ -471,7 +464,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
             request (google.analytics.data_v1beta.types.BatchRunReportsRequest):
                 The request object. The batch request containing
                 multiple report requests.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -485,7 +477,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.BatchRunReportsRequest.
         # There's no risk of modifying the input as we've already verified
@@ -524,7 +515,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
             request (google.analytics.data_v1beta.types.BatchRunPivotReportsRequest):
                 The request object. The batch request containing
                 multiple pivot report requests.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -538,7 +528,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.BatchRunPivotReportsRequest.
         # There's no risk of modifying the input as we've already verified
@@ -604,7 +593,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -633,10 +621,8 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
         # there are no flattened fields.
         if not isinstance(request, analytics_data_api.GetMetadataRequest):
             request = analytics_data_api.GetMetadataRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 
@@ -673,7 +659,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
             request (google.analytics.data_v1beta.types.RunRealtimeReportRequest):
                 The request object. The request to generate a realtime
                 report.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -687,7 +672,6 @@ class BetaAnalyticsDataClient(metaclass=BetaAnalyticsDataClientMeta):
 
         """
         # Create or coerce a protobuf request object.
-
         # Minor optimization to avoid making a copy if the user passes
         # in a analytics_data_api.RunRealtimeReportRequest.
         # There's no risk of modifying the input as we've already verified
