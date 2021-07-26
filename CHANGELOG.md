@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://www.github.com/googleapis/python-analytics-data/compare/v0.7.1...v0.8.0) (2021-07-26)
+
+
+### Features
+
+* add Samples section to CONTRIBUTING.rst ([#110](https://www.github.com/googleapis/python-analytics-data/issues/110)) ([6d3c10c](https://www.github.com/googleapis/python-analytics-data/commit/6d3c10cd2cffd98197dc32ce1290f8b2c4289485))
+
+
+### Bug Fixes
+
+* enable self signed jwt for grpc ([#114](https://www.github.com/googleapis/python-analytics-data/issues/114)) ([f3861ee](https://www.github.com/googleapis/python-analytics-data/commit/f3861ee3cafb7824b2c80f28b4d6e175cb3d7cfe))
+
 ### [0.7.1](https://www.github.com/googleapis/python-analytics-data/compare/v0.7.0...v0.7.1) (2021-07-20)
 
 
