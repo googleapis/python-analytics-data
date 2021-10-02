@@ -11,6 +11,6 @@
     "distribution_name": "google-analytics-data",
     "api_id": "analyticsdata.googleapis.com",
     "requires_billing": true,
-    "default_version": "",
+    "default_version": "v1beta",
     "codeowner_team": ""
 }
