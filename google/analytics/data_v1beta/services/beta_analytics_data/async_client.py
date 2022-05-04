@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -220,21 +220,20 @@ class BetaAnalyticsDataAsyncClient:
         Dimensions break down metrics across some common
         criteria, such as country or event name.
 
-
         .. code-block:: python
 
             from google.analytics import data_v1beta
 
-            def sample_run_report():
+            async def sample_run_report():
                 # Create a client
-                client = data_v1beta.BetaAnalyticsDataClient()
+                client = data_v1beta.BetaAnalyticsDataAsyncClient()
 
                 # Initialize request argument(s)
                 request = data_v1beta.RunReportRequest(
                 )
 
                 # Make the request
-                response = client.run_report(request=request)
+                response = await client.run_report(request=request)
 
                 # Handle the response
                 print(response)
@@ -297,21 +296,20 @@ class BetaAnalyticsDataAsyncClient:
         in a pivot. Multiple pivots can be specified to further
         dissect your data.
 
-
         .. code-block:: python
 
             from google.analytics import data_v1beta
 
-            def sample_run_pivot_report():
+            async def sample_run_pivot_report():
                 # Create a client
-                client = data_v1beta.BetaAnalyticsDataClient()
+                client = data_v1beta.BetaAnalyticsDataAsyncClient()
 
                 # Initialize request argument(s)
                 request = data_v1beta.RunPivotReportRequest(
                 )
 
                 # Make the request
-                response = client.run_pivot_report(request=request)
+                response = await client.run_pivot_report(request=request)
 
                 # Handle the response
                 print(response)
@@ -371,21 +369,20 @@ class BetaAnalyticsDataAsyncClient:
         r"""Returns multiple reports in a batch. All reports must
         be for the same GA4 Property.
 
-
         .. code-block:: python
 
             from google.analytics import data_v1beta
 
-            def sample_batch_run_reports():
+            async def sample_batch_run_reports():
                 # Create a client
-                client = data_v1beta.BetaAnalyticsDataClient()
+                client = data_v1beta.BetaAnalyticsDataAsyncClient()
 
                 # Initialize request argument(s)
                 request = data_v1beta.BatchRunReportsRequest(
                 )
 
                 # Make the request
-                response = client.batch_run_reports(request=request)
+                response = await client.batch_run_reports(request=request)
 
                 # Handle the response
                 print(response)
@@ -445,21 +442,20 @@ class BetaAnalyticsDataAsyncClient:
         r"""Returns multiple pivot reports in a batch. All
         reports must be for the same GA4 Property.
 
-
         .. code-block:: python
 
             from google.analytics import data_v1beta
 
-            def sample_batch_run_pivot_reports():
+            async def sample_batch_run_pivot_reports():
                 # Create a client
-                client = data_v1beta.BetaAnalyticsDataClient()
+                client = data_v1beta.BetaAnalyticsDataAsyncClient()
 
                 # Initialize request argument(s)
                 request = data_v1beta.BatchRunPivotReportsRequest(
                 )
 
                 # Make the request
-                response = client.batch_run_pivot_reports(request=request)
+                response = await client.batch_run_pivot_reports(request=request)
 
                 # Handle the response
                 print(response)
@@ -529,14 +525,13 @@ class BetaAnalyticsDataAsyncClient:
         metadata are dimensions and metrics applicable to any property
         such as ``country`` and ``totalUsers``.
 
-
         .. code-block:: python
 
             from google.analytics import data_v1beta
 
-            def sample_get_metadata():
+            async def sample_get_metadata():
                 # Create a client
-                client = data_v1beta.BetaAnalyticsDataClient()
+                client = data_v1beta.BetaAnalyticsDataAsyncClient()
 
                 # Initialize request argument(s)
                 request = data_v1beta.GetMetadataRequest(
@@ -544,7 +539,7 @@ class BetaAnalyticsDataAsyncClient:
                 )
 
                 # Make the request
-                response = client.get_metadata(request=request)
+                response = await client.get_metadata(request=request)
 
                 # Handle the response
                 print(response)
@@ -637,21 +632,20 @@ class BetaAnalyticsDataAsyncClient:
         property. These reports show events and usage from the
         last 30 minutes.
 
-
         .. code-block:: python
 
             from google.analytics import data_v1beta
 
-            def sample_run_realtime_report():
+            async def sample_run_realtime_report():
                 # Create a client
-                client = data_v1beta.BetaAnalyticsDataClient()
+                client = data_v1beta.BetaAnalyticsDataAsyncClient()
 
                 # Initialize request argument(s)
                 request = data_v1beta.RunRealtimeReportRequest(
                 )
 
                 # Make the request
-                response = client.run_realtime_report(request=request)
+                response = await client.run_realtime_report(request=request)
 
                 # Handle the response
                 print(response)
@@ -720,21 +714,20 @@ class BetaAnalyticsDataAsyncClient:
         compatibility rules. This method checks compatibility
         for Core reports.
 
-
         .. code-block:: python
 
             from google.analytics import data_v1beta
 
-            def sample_check_compatibility():
+            async def sample_check_compatibility():
                 # Create a client
-                client = data_v1beta.BetaAnalyticsDataClient()
+                client = data_v1beta.BetaAnalyticsDataAsyncClient()
 
                 # Initialize request argument(s)
                 request = data_v1beta.CheckCompatibilityRequest(
                 )
 
                 # Make the request
-                response = client.check_compatibility(request=request)
+                response = await client.check_compatibility(request=request)
 
                 # Handle the response
                 print(response)
