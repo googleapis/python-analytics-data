@@ -1,0 +1,33 @@
+ {
+  "comment": "This file maps proto services/RPCs to the corresponding library clients/methods",
+  "language": "python",
+  "libraryPackage": "google.analytics.data_v1alpha",
+  "protoPackage": "google.analytics.data.v1alpha",
+  "schema": "1.0",
+  "services": {
+    "AlphaAnalyticsData": {
+      "clients": {
+        "grpc": {
+          "libraryClient": "AlphaAnalyticsDataClient",
+          "rpcs": {
+            "RunFunnelReport": {
+              "methods": [
+                "run_funnel_report"
+              ]
+            }
+          }
+        },
+        "grpc-async": {
+          "libraryClient": "AlphaAnalyticsDataAsyncClient",
+          "rpcs": {
+            "RunFunnelReport": {
+              "methods": [
+                "run_funnel_report"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
