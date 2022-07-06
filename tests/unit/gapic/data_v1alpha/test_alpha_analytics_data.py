@@ -1095,7 +1095,6 @@ def test_alpha_analytics_data_transport_auth_adc(transport_class):
     [
         transports.AlphaAnalyticsDataGrpcTransport,
         transports.AlphaAnalyticsDataGrpcAsyncIOTransport,
-        transports.AlphaAnalyticsDataRestTransport,
     ],
 )
 def test_alpha_analytics_data_transport_auth_gdch_credentials(transport_class):

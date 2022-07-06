@@ -2120,7 +2120,6 @@ def test_beta_analytics_data_transport_auth_adc(transport_class):
     [
         transports.BetaAnalyticsDataGrpcTransport,
         transports.BetaAnalyticsDataGrpcAsyncIOTransport,
-        transports.BetaAnalyticsDataRestTransport,
     ],
 )
 def test_beta_analytics_data_transport_auth_gdch_credentials(transport_class):
