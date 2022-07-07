@@ -13,5 +13,6 @@
     "requires_billing": true,
     "default_version": "v1beta",
     "codeowner_team": "",
-    "api_shortname": "analyticsdata"
+    "api_shortname": "analyticsdata",
+    "api_description": "provides programmatic methods to access report data in Google Analytics App+Web properties."
 }
