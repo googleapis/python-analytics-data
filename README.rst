@@ -3,7 +3,7 @@ Python Client for Analytics Data API API
 
 |preview| |pypi| |versions|
 
-`Analytics Data API API`_: 
+`Analytics Data API API`_: provides programmatic methods to access report data in Google Analytics App+Web properties.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
