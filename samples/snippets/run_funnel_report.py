@@ -52,8 +52,8 @@ def run_funnel_report(property_id="YOUR-GA4-PROPERTY-ID"):
       Step 4: Screen/Page view (event name is `screen_view` or `page_view`).
       Step 5: Purchase (event name is `purchase` or `in_app_purchase`).
 
-    The report configuration reproduces a default funnel report provided in
-    the Funnel exploration template of the Google Analytics UI.
+    The report configuration reproduces the default funnel report provided in
+    the Funnel Exploration template of the Google Analytics UI.
     See more at https://support.google.com/analytics/answer/9327974
     """
     client = AlphaAnalyticsDataClient()
@@ -162,6 +162,7 @@ def print_funnel_sub_report(funnel_sub_report):
     for metric_header in funnel_sub_report.metric_headers:
         print(metric_header.name)
 
+    print("\nDimensions and metric values for each row in the report:")
     for row_idx, row in enumerate(funnel_sub_report.rows):
         print("\nRow #{}".format(row_idx))
         for field_idx, dimension_value in enumerate(row.dimension_values):
@@ -172,12 +173,23 @@ def print_funnel_sub_report(funnel_sub_report):
             metric_name = funnel_sub_report.metric_headers[field_idx].name
             print("{}: '{}'".format(metric_name, metric_value.value))
 
+    print("\nSampling metadata for each date range:")
+    for metadata_idx, metadata in enumerate(
+        funnel_sub_report.metadata.sampling_metadatas
+    ):
+        print(
+            "Sampling metadata for date range #{}: samplesReadCount={}, "
+            "samplingSpaceSize={}".format(
+                metadata_idx, metadata.samples_read_count, metadata.sampling_space_size
+            )
+        )
+
 
 def print_run_funnel_report_response(response):
     """Prints results of a runFunnelReport call."""
     print("Report result:")
     print("=== FUNNEL VISUALIZATION ===")
-    print_funnel_sub_report(response.funnel_table)
+    print_funnel_sub_report(response.funnel_visualization)
 
     print("=== FUNNEL TABLE ===")
     print_funnel_sub_report(response.funnel_table)
