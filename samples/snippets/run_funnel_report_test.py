@@ -20,6 +20,6 @@ TEST_PROPERTY_ID = os.getenv("GA_TEST_PROPERTY_ID")
 
 
 def test_run_funnel_report(capsys):
-    run_funnel_report.run_pivot_report(TEST_PROPERTY_ID)
+    run_funnel_report.run_funnel_report(TEST_PROPERTY_ID)
     out, _ = capsys.readouterr()
     assert "Report result" in out
