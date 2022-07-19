@@ -45,16 +45,16 @@ def run_sample():
 
 def run_funnel_report(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a funnel query to build a report with 5 funnel steps.
-         Step 1: First open/visit (event name is `first_open` or `first_visit`).
-         Step 2: Organic visitors (`firstUserMedium` dimension contains the term
-         "organic").
-         Step 3: Session start (event name is `session_start`).
-         Step 4: Screen/Page view (event name is `screen_view` or `page_view`).
-         Step 5: Purchase (event name is `purchase` or `in_app_purchase`).
+      Step 1: First open/visit (event name is `first_open` or `first_visit`).
+      Step 2: Organic visitors (`firstUserMedium` dimension contains the term
+      "organic").
+      Step 3: Session start (event name is `session_start`).
+      Step 4: Screen/Page view (event name is `screen_view` or `page_view`).
+      Step 5: Purchase (event name is `purchase` or `in_app_purchase`).
 
-       The report configuration reproduces a default funnel report provided in
-       the Funnel exploration template of the Google Analytics UI.
-       See more at https://support.google.com/analytics/answer/9327974
+    The report configuration reproduces a default funnel report provided in
+    the Funnel exploration template of the Google Analytics UI.
+    See more at https://support.google.com/analytics/answer/9327974
     """
     client = AlphaAnalyticsDataClient()
 
@@ -156,21 +156,21 @@ def print_funnel_sub_report(funnel_sub_report):
     """Prints the contents of a FunnelSubReport object."""
     print("Dimension headers:")
     for dimension_header in funnel_sub_report.dimension_headers:
-      print(dimension_header.name)
+        print(dimension_header.name)
 
     print("\nMetric headers:")
     for metric_header in funnel_sub_report.metric_headers:
-      print(metric_header.name)
+        print(metric_header.name)
 
     for row_idx, row in enumerate(funnel_sub_report.rows):
         print("\nRow #{}".format(row_idx))
         for field_idx, dimension_value in enumerate(row.dimension_values):
-          dimension_name = funnel_sub_report.dimension_headers[field_idx].name
-          print("{}: '{}'".format(dimension_name, dimension_value.value))
+            dimension_name = funnel_sub_report.dimension_headers[field_idx].name
+            print("{}: '{}'".format(dimension_name, dimension_value.value))
 
         for field_idx, metric_value in enumerate(row.metric_values):
-          metric_name = funnel_sub_report.metric_headers[field_idx].name
-          print("{}: '{}'".format(metric_name, metric_value.value))
+            metric_name = funnel_sub_report.metric_headers[field_idx].name
+            print("{}: '{}'".format(metric_name, metric_value.value))
 
 
 def print_run_funnel_report_response(response):
