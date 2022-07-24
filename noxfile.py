@@ -21,11 +21,9 @@ import os
 import pathlib
 import re
 import shutil
-import sys
 import warnings
 
 import nox
-from typing import Dict
 
 BLACK_VERSION = "black==22.3.0"
 ISORT_VERSION = "isort==5.10.1"
@@ -332,47 +330,11 @@ def docfx(session):
 @nox.session(python=SYSTEM_TEST_PYTHON_VERSIONS)
 def prerelease_deps(session):
     """Run all tests with prerelease versions of dependencies installed."""
-    # `TEST_CONFIG` dict is a configuration hook that allows users to
-    # modify the test configurations. The values here should be in sync
-    # with `noxfile_config.py`. Users will copy `noxfile_config.py` into
-    # their directory and modify it.
-
-    TEST_CONFIG = {
-        # An envvar key for determining the project id to use. Change it
-        # to 'BUILD_SPECIFIC_GCLOUD_PROJECT' if you want to opt in using a
-        # build specific Cloud project. You can also use your own string
-        # to use your own Cloud project.
-        "gcloud_project_env": "GOOGLE_CLOUD_PROJECT",
-    }
-
-    try:
-        # Ensure we can import noxfile_config in the project's directory.
-        sys.path.append("samples/snippets")
-        from samples.snippets.noxfile_config import TEST_CONFIG_OVERRIDE
-    except ImportError as e:
-        print("No user noxfile_config found: detail: {}".format(e))
-        TEST_CONFIG_OVERRIDE = {}
-
-    # Update the TEST_CONFIG with the user supplied values.
-    TEST_CONFIG.update(TEST_CONFIG_OVERRIDE)
-
-    def get_pytest_env_vars() -> Dict[str, str]:
-        """Returns a dict for pytest invocation."""
-        ret = {}
-
-        # Override the GCLOUD_PROJECT and the alias.
-        env_key = TEST_CONFIG["gcloud_project_env"]
-        # This should error out if not set.
-        ret["GOOGLE_CLOUD_PROJECT"] = os.environ[env_key]
-
-        # Apply user supplied envs.
-        ret.update(TEST_CONFIG["envs"])
-        return ret
 
     # Install all dependencies
     session.install("-e", ".[all, tests, tracing]")
-    unit_deps_all2 = UNIT_TEST_STANDARD_DEPENDENCIES + UNIT_TEST_DEPENDENCIES
-    session.install(*unit_deps_all2)
+    unit_deps_all = UNIT_TEST_STANDARD_DEPENDENCIES + UNIT_TEST_DEPENDENCIES
+    session.install(*unit_deps_all)
     system_deps_all = (
         SYSTEM_TEST_STANDARD_DEPENDENCIES
         + SYSTEM_TEST_EXTERNAL_DEPENDENCIES
@@ -400,12 +362,6 @@ def prerelease_deps(session):
     ]
 
     session.install(*constraints_deps)
-
-    if os.path.exists("samples/snippets/requirements.txt"):
-        session.install("-r", "samples/snippets/requirements.txt")
-
-    if os.path.exists("samples/snippets/requirements-test.txt"):
-        session.install("-r", "samples/snippets/requirements-test.txt")
 
     prerel_deps = [
         "protobuf",
@@ -458,17 +414,4 @@ def prerelease_deps(session):
             f"--junitxml=system_{session.python}_sponge_log.xml",
             system_test_folder_path,
             *session.posargs,
-        )
-
-    snippets_test_path = os.path.join("samples", "snippets")
-
-    # Only run samples tests if found.
-    if os.path.exists(snippets_test_path):
-        session.run(
-            "py.test",
-            "--verbose",
-            f"--junitxml=system_{session.python}_sponge_log.xml",
-            snippets_test_path,
-            *session.posargs,
-            env=get_pytest_env_vars(),
         )
