@@ -354,7 +354,7 @@ def prerelease_deps(session):
         TEST_CONFIG_OVERRIDE = {}
 
     # Update the TEST_CONFIG with the user supplied values.
-    TEST_CONFIG.update(TEST_CONFIG_OVERRIDE)    
+    TEST_CONFIG.update(TEST_CONFIG_OVERRIDE)
 
     def get_pytest_env_vars() -> Dict[str, str]:
         """Returns a dict for pytest invocation."""
@@ -368,7 +368,7 @@ def prerelease_deps(session):
         # Apply user supplied envs.
         ret.update(TEST_CONFIG["envs"])
         return ret
-        
+
     # Install all dependencies
     session.install("-e", ".[all, tests, tracing]")
     unit_deps_all2 = UNIT_TEST_STANDARD_DEPENDENCIES + UNIT_TEST_DEPENDENCIES
@@ -472,4 +472,3 @@ def prerelease_deps(session):
             *session.posargs,
             env=get_pytest_env_vars(),
         )
-
