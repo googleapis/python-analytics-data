@@ -75,8 +75,13 @@ for file in samples/**/requirements.txt; do
     echo "- testing $file"
     echo "------------------------------------------------------------"
 
+
     # Use nox to execute the tests for the project.
-    python3.9 -m nox -s "$RUN_TESTS_SESSION"
+    if [[ -z "${RUN_TESTS_SESSION}" ]]; then
+      python3.9 -m nox -s "$NOX_SESSION"
+    else
+      python3.9 -m nox -s "$RUN_TESTS_SESSION"
+    fi
     EXIT=$?
 
     # If this is a periodic build, send the test log to the FlakyBot.
