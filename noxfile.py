@@ -21,6 +21,7 @@ import os
 import pathlib
 import re
 import shutil
+import sys
 import warnings
 
 import nox
@@ -330,6 +331,43 @@ def docfx(session):
 @nox.session(python=SYSTEM_TEST_PYTHON_VERSIONS)
 def prerelease_deps(session):
     """Run all tests with prerelease versions of dependencies installed."""
+    # `TEST_CONFIG` dict is a configuration hook that allows users to
+    # modify the test configurations. The values here should be in sync
+    # with `noxfile_config.py`. Users will copy `noxfile_config.py` into
+    # their directory and modify it.
+
+    TEST_CONFIG = {
+        # You can opt out from the test for specific Python versions.
+        "ignored_versions": [],
+        # Old samples are opted out of enforcing Python type hints
+        # All new samples should feature them
+        "enforce_type_hints": False,
+        # An envvar key for determining the project id to use. Change it
+        # to 'BUILD_SPECIFIC_GCLOUD_PROJECT' if you want to opt in using a
+        # build specific Cloud project. You can also use your own string
+        # to use your own Cloud project.
+        "gcloud_project_env": "GOOGLE_CLOUD_PROJECT",
+        # 'gcloud_project_env': 'BUILD_SPECIFIC_GCLOUD_PROJECT',
+        # If you need to use a specific version of pip,
+        # change pip_version_override to the string representation
+        # of the version number, for example, "20.2.4"
+        "pip_version_override": None,
+        # A dictionary you want to inject into your test. Don't put any
+        # secrets here. These values will override predefined values.
+        "envs": {},
+    }
+
+
+    try:
+        # Ensure we can import noxfile_config in the project's directory.
+        sys.path.append("samples/snippets")
+        from samples.snippets.noxfile_config import TEST_CONFIG_OVERRIDE
+    except ImportError as e:
+        print("No user noxfile_config found: detail: {}".format(e))
+        TEST_CONFIG_OVERRIDE = {}
+
+    # Update the TEST_CONFIG with the user supplied values.
+    TEST_CONFIG.update(TEST_CONFIG_OVERRIDE)    
 
     # Install all dependencies
     session.install("-e", ".[all, tests, tracing]")
@@ -433,3 +471,4 @@ def prerelease_deps(session):
             snippets_test_path,
             *session.posargs,
         )
+
