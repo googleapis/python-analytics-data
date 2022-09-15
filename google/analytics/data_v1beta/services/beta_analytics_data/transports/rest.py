@@ -41,7 +41,10 @@ except AttributeError:  # pragma: NO COVER
 
 from google.analytics.data_v1beta.types import analytics_data_api
 
-from .base import BetaAnalyticsDataTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from .base import (
+    BetaAnalyticsDataTransport,
+    DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO,
+)
 
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
@@ -120,7 +123,14 @@ class BetaAnalyticsDataRestInterceptor:
 
 
     """
-    def pre_batch_run_pivot_reports(self, request: analytics_data_api.BatchRunPivotReportsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[analytics_data_api.BatchRunPivotReportsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_batch_run_pivot_reports(
+        self,
+        request: analytics_data_api.BatchRunPivotReportsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[
+        analytics_data_api.BatchRunPivotReportsRequest, Sequence[Tuple[str, str]]
+    ]:
         """Pre-rpc interceptor for batch_run_pivot_reports
 
         Override in a subclass to manipulate the request or metadata
@@ -128,7 +138,9 @@ class BetaAnalyticsDataRestInterceptor:
         """
         return request, metadata
 
-    def post_batch_run_pivot_reports(self, response: analytics_data_api.BatchRunPivotReportsResponse) -> analytics_data_api.BatchRunPivotReportsResponse:
+    def post_batch_run_pivot_reports(
+        self, response: analytics_data_api.BatchRunPivotReportsResponse
+    ) -> analytics_data_api.BatchRunPivotReportsResponse:
         """Post-rpc interceptor for batch_run_pivot_reports
 
         Override in a subclass to manipulate the response
@@ -136,7 +148,12 @@ class BetaAnalyticsDataRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_batch_run_reports(self, request: analytics_data_api.BatchRunReportsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[analytics_data_api.BatchRunReportsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_batch_run_reports(
+        self,
+        request: analytics_data_api.BatchRunReportsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[analytics_data_api.BatchRunReportsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for batch_run_reports
 
         Override in a subclass to manipulate the request or metadata
@@ -144,7 +161,9 @@ class BetaAnalyticsDataRestInterceptor:
         """
         return request, metadata
 
-    def post_batch_run_reports(self, response: analytics_data_api.BatchRunReportsResponse) -> analytics_data_api.BatchRunReportsResponse:
+    def post_batch_run_reports(
+        self, response: analytics_data_api.BatchRunReportsResponse
+    ) -> analytics_data_api.BatchRunReportsResponse:
         """Post-rpc interceptor for batch_run_reports
 
         Override in a subclass to manipulate the response
@@ -152,7 +171,12 @@ class BetaAnalyticsDataRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_check_compatibility(self, request: analytics_data_api.CheckCompatibilityRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[analytics_data_api.CheckCompatibilityRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_check_compatibility(
+        self,
+        request: analytics_data_api.CheckCompatibilityRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[analytics_data_api.CheckCompatibilityRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for check_compatibility
 
         Override in a subclass to manipulate the request or metadata
@@ -160,7 +184,9 @@ class BetaAnalyticsDataRestInterceptor:
         """
         return request, metadata
 
-    def post_check_compatibility(self, response: analytics_data_api.CheckCompatibilityResponse) -> analytics_data_api.CheckCompatibilityResponse:
+    def post_check_compatibility(
+        self, response: analytics_data_api.CheckCompatibilityResponse
+    ) -> analytics_data_api.CheckCompatibilityResponse:
         """Post-rpc interceptor for check_compatibility
 
         Override in a subclass to manipulate the response
@@ -168,7 +194,12 @@ class BetaAnalyticsDataRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_metadata(self, request: analytics_data_api.GetMetadataRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[analytics_data_api.GetMetadataRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_metadata(
+        self,
+        request: analytics_data_api.GetMetadataRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[analytics_data_api.GetMetadataRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_metadata
 
         Override in a subclass to manipulate the request or metadata
@@ -176,7 +207,9 @@ class BetaAnalyticsDataRestInterceptor:
         """
         return request, metadata
 
-    def post_get_metadata(self, response: analytics_data_api.Metadata) -> analytics_data_api.Metadata:
+    def post_get_metadata(
+        self, response: analytics_data_api.Metadata
+    ) -> analytics_data_api.Metadata:
         """Post-rpc interceptor for get_metadata
 
         Override in a subclass to manipulate the response
@@ -184,7 +217,12 @@ class BetaAnalyticsDataRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_run_pivot_report(self, request: analytics_data_api.RunPivotReportRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[analytics_data_api.RunPivotReportRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_run_pivot_report(
+        self,
+        request: analytics_data_api.RunPivotReportRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[analytics_data_api.RunPivotReportRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for run_pivot_report
 
         Override in a subclass to manipulate the request or metadata
@@ -192,7 +230,9 @@ class BetaAnalyticsDataRestInterceptor:
         """
         return request, metadata
 
-    def post_run_pivot_report(self, response: analytics_data_api.RunPivotReportResponse) -> analytics_data_api.RunPivotReportResponse:
+    def post_run_pivot_report(
+        self, response: analytics_data_api.RunPivotReportResponse
+    ) -> analytics_data_api.RunPivotReportResponse:
         """Post-rpc interceptor for run_pivot_report
 
         Override in a subclass to manipulate the response
@@ -200,7 +240,12 @@ class BetaAnalyticsDataRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_run_realtime_report(self, request: analytics_data_api.RunRealtimeReportRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[analytics_data_api.RunRealtimeReportRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_run_realtime_report(
+        self,
+        request: analytics_data_api.RunRealtimeReportRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[analytics_data_api.RunRealtimeReportRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for run_realtime_report
 
         Override in a subclass to manipulate the request or metadata
@@ -208,7 +253,9 @@ class BetaAnalyticsDataRestInterceptor:
         """
         return request, metadata
 
-    def post_run_realtime_report(self, response: analytics_data_api.RunRealtimeReportResponse) -> analytics_data_api.RunRealtimeReportResponse:
+    def post_run_realtime_report(
+        self, response: analytics_data_api.RunRealtimeReportResponse
+    ) -> analytics_data_api.RunRealtimeReportResponse:
         """Post-rpc interceptor for run_realtime_report
 
         Override in a subclass to manipulate the response
@@ -216,7 +263,12 @@ class BetaAnalyticsDataRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_run_report(self, request: analytics_data_api.RunReportRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[analytics_data_api.RunReportRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_run_report(
+        self,
+        request: analytics_data_api.RunReportRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[analytics_data_api.RunReportRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for run_report
 
         Override in a subclass to manipulate the request or metadata
@@ -224,7 +276,9 @@ class BetaAnalyticsDataRestInterceptor:
         """
         return request, metadata
 
-    def post_run_report(self, response: analytics_data_api.RunReportResponse) -> analytics_data_api.RunReportResponse:
+    def post_run_report(
+        self, response: analytics_data_api.RunReportResponse
+    ) -> analytics_data_api.RunReportResponse:
         """Post-rpc interceptor for run_report
 
         Override in a subclass to manipulate the response
@@ -257,55 +311,56 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
     library's source repository. Thank you!
     """
 
-    def __init__(self, *,
-            host: str = 'analyticsdata.googleapis.com',
-            credentials: ga_credentials.Credentials=None,
-            credentials_file: str=None,
-            scopes: Sequence[str]=None,
-            client_cert_source_for_mtls: Callable[[
-                ], Tuple[bytes, bytes]]=None,
-            quota_project_id: Optional[str]=None,
-            client_info: gapic_v1.client_info.ClientInfo=DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool]=False,
-            url_scheme: str='https',
-            interceptor: Optional[BetaAnalyticsDataRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "analyticsdata.googleapis.com",
+        credentials: ga_credentials.Credentials = None,
+        credentials_file: str = None,
+        scopes: Sequence[str] = None,
+        client_cert_source_for_mtls: Callable[[], Tuple[bytes, bytes]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[BetaAnalyticsDataRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
-       NOTE: This REST transport functionality is currently in a beta
-       state (preview). We welcome your feedback via a GitHub issue in
-       this library's repository. Thank you!
+        NOTE: This REST transport functionality is currently in a beta
+        state (preview). We welcome your feedback via a GitHub issue in
+        this library's repository. Thank you!
 
-        Args:
-            host (Optional[str]):
-                 The hostname to connect to.
-            credentials (Optional[google.auth.credentials.Credentials]): The
-                authorization credentials to attach to requests. These
-                credentials identify the application to the service; if none
-                are specified, the client will attempt to ascertain the
-                credentials from the environment.
+         Args:
+             host (Optional[str]):
+                  The hostname to connect to.
+             credentials (Optional[google.auth.credentials.Credentials]): The
+                 authorization credentials to attach to requests. These
+                 credentials identify the application to the service; if none
+                 are specified, the client will attempt to ascertain the
+                 credentials from the environment.
 
-            credentials_file (Optional[str]): A file with credentials that can
-                be loaded with :func:`google.auth.load_credentials_from_file`.
-                This argument is ignored if ``channel`` is provided.
-            scopes (Optional(Sequence[str])): A list of scopes. This argument is
-                ignored if ``channel`` is provided.
-            client_cert_source_for_mtls (Callable[[], Tuple[bytes, bytes]]): Client
-                certificate to configure mutual TLS HTTP channel. It is ignored
-                if ``channel`` is provided.
-            quota_project_id (Optional[str]): An optional project to use for billing
-                and quota.
-            client_info (google.api_core.gapic_v1.client_info.ClientInfo):
-                The client info used to send a user-agent string along with
-                API requests. If ``None``, then default info will be used.
-                Generally, you only need to set this if you are developing
-                your own client library.
-            always_use_jwt_access (Optional[bool]): Whether self signed JWT should
-                be used for service account credentials.
-            url_scheme: the protocol scheme for the API endpoint.  Normally
-                "https", but for testing or local servers,
-                "http" can be specified.
+             credentials_file (Optional[str]): A file with credentials that can
+                 be loaded with :func:`google.auth.load_credentials_from_file`.
+                 This argument is ignored if ``channel`` is provided.
+             scopes (Optional(Sequence[str])): A list of scopes. This argument is
+                 ignored if ``channel`` is provided.
+             client_cert_source_for_mtls (Callable[[], Tuple[bytes, bytes]]): Client
+                 certificate to configure mutual TLS HTTP channel. It is ignored
+                 if ``channel`` is provided.
+             quota_project_id (Optional[str]): An optional project to use for billing
+                 and quota.
+             client_info (google.api_core.gapic_v1.client_info.ClientInfo):
+                 The client info used to send a user-agent string along with
+                 API requests. If ``None``, then default info will be used.
+                 Generally, you only need to set this if you are developing
+                 your own client library.
+             always_use_jwt_access (Optional[bool]): Whether self signed JWT should
+                 be used for service account credentials.
+             url_scheme: the protocol scheme for the API endpoint.  Normally
+                 "https", but for testing or local servers,
+                 "http" can be specified.
         """
         # Run the base constructor
         # TODO(yon-mg): resolve other ctor params i.e. scopes, quota, etc.
@@ -313,7 +368,9 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -324,10 +381,11 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
         self._interceptor = interceptor or BetaAnalyticsDataRestInterceptor()
@@ -337,12 +395,14 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         def __hash__(self):
             return hash("BatchRunPivotReports")
 
-        def __call__(self,
-                request: analytics_data_api.BatchRunPivotReportsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> analytics_data_api.BatchRunPivotReportsResponse:
+        def __call__(
+            self,
+            request: analytics_data_api.BatchRunPivotReportsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> analytics_data_api.BatchRunPivotReportsResponse:
             r"""Call the batch run pivot reports method over HTTP.
 
             Args:
@@ -363,43 +423,48 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta/{property=properties/*}:batchRunPivotReports',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta/{property=properties/*}:batchRunPivotReports",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_batch_run_pivot_reports(request, metadata)
+            request, metadata = self._interceptor.pre_batch_run_pivot_reports(
+                request, metadata
+            )
             pb_request = analytics_data_api.BatchRunPivotReportsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=False,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -418,12 +483,14 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         def __hash__(self):
             return hash("BatchRunReports")
 
-        def __call__(self,
-                request: analytics_data_api.BatchRunReportsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> analytics_data_api.BatchRunReportsResponse:
+        def __call__(
+            self,
+            request: analytics_data_api.BatchRunReportsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> analytics_data_api.BatchRunReportsResponse:
             r"""Call the batch run reports method over HTTP.
 
             Args:
@@ -444,43 +511,48 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta/{property=properties/*}:batchRunReports',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta/{property=properties/*}:batchRunReports",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_batch_run_reports(request, metadata)
+            request, metadata = self._interceptor.pre_batch_run_reports(
+                request, metadata
+            )
             pb_request = analytics_data_api.BatchRunReportsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=False,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -499,12 +571,14 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         def __hash__(self):
             return hash("CheckCompatibility")
 
-        def __call__(self,
-                request: analytics_data_api.CheckCompatibilityRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> analytics_data_api.CheckCompatibilityResponse:
+        def __call__(
+            self,
+            request: analytics_data_api.CheckCompatibilityRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> analytics_data_api.CheckCompatibilityResponse:
             r"""Call the check compatibility method over HTTP.
 
             Args:
@@ -529,43 +603,48 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta/{property=properties/*}:checkCompatibility',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta/{property=properties/*}:checkCompatibility",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_check_compatibility(request, metadata)
+            request, metadata = self._interceptor.pre_check_compatibility(
+                request, metadata
+            )
             pb_request = analytics_data_api.CheckCompatibilityRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=False,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -584,19 +663,24 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         def __hash__(self):
             return hash("GetMetadata")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: analytics_data_api.GetMetadataRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> analytics_data_api.Metadata:
+        def __call__(
+            self,
+            request: analytics_data_api.GetMetadataRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> analytics_data_api.Metadata:
             r"""Call the get metadata method over HTTP.
 
             Args:
@@ -617,35 +701,38 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1beta/{name=properties/*/metadata}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1beta/{name=properties/*/metadata}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_metadata(request, metadata)
             pb_request = analytics_data_api.GetMetadataRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -664,12 +751,14 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         def __hash__(self):
             return hash("RunPivotReport")
 
-        def __call__(self,
-                request: analytics_data_api.RunPivotReportRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> analytics_data_api.RunPivotReportResponse:
+        def __call__(
+            self,
+            request: analytics_data_api.RunPivotReportRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> analytics_data_api.RunPivotReportResponse:
             r"""Call the run pivot report method over HTTP.
 
             Args:
@@ -690,43 +779,48 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta/{property=properties/*}:runPivotReport',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta/{property=properties/*}:runPivotReport",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_run_pivot_report(request, metadata)
+            request, metadata = self._interceptor.pre_run_pivot_report(
+                request, metadata
+            )
             pb_request = analytics_data_api.RunPivotReportRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=False,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -745,12 +839,14 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         def __hash__(self):
             return hash("RunRealtimeReport")
 
-        def __call__(self,
-                request: analytics_data_api.RunRealtimeReportRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> analytics_data_api.RunRealtimeReportResponse:
+        def __call__(
+            self,
+            request: analytics_data_api.RunRealtimeReportRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> analytics_data_api.RunRealtimeReportResponse:
             r"""Call the run realtime report method over HTTP.
 
             Args:
@@ -771,43 +867,48 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta/{property=properties/*}:runRealtimeReport',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta/{property=properties/*}:runRealtimeReport",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_run_realtime_report(request, metadata)
+            request, metadata = self._interceptor.pre_run_realtime_report(
+                request, metadata
+            )
             pb_request = analytics_data_api.RunRealtimeReportRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=False,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -826,12 +927,14 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         def __hash__(self):
             return hash("RunReport")
 
-        def __call__(self,
-                request: analytics_data_api.RunReportRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: float=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> analytics_data_api.RunReportResponse:
+        def __call__(
+            self,
+            request: analytics_data_api.RunReportRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> analytics_data_api.RunReportResponse:
             r"""Call the run report method over HTTP.
 
             Args:
@@ -850,11 +953,12 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta/{property=properties/*}:runReport',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta/{property=properties/*}:runReport",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_run_report(request, metadata)
             pb_request = analytics_data_api.RunReportRequest.pb(request)
@@ -863,30 +967,32 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=False
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=False,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=False,
+                )
+            )
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -902,60 +1008,77 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
             return resp
 
     @property
-    def batch_run_pivot_reports(self) -> Callable[
-            [analytics_data_api.BatchRunPivotReportsRequest],
-            analytics_data_api.BatchRunPivotReportsResponse]:
+    def batch_run_pivot_reports(
+        self,
+    ) -> Callable[
+        [analytics_data_api.BatchRunPivotReportsRequest],
+        analytics_data_api.BatchRunPivotReportsResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._BatchRunPivotReports(self._session, self._host, self._interceptor) # type: ignore
+        return self._BatchRunPivotReports(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def batch_run_reports(self) -> Callable[
-            [analytics_data_api.BatchRunReportsRequest],
-            analytics_data_api.BatchRunReportsResponse]:
+    def batch_run_reports(
+        self,
+    ) -> Callable[
+        [analytics_data_api.BatchRunReportsRequest],
+        analytics_data_api.BatchRunReportsResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._BatchRunReports(self._session, self._host, self._interceptor) # type: ignore
+        return self._BatchRunReports(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def check_compatibility(self) -> Callable[
-            [analytics_data_api.CheckCompatibilityRequest],
-            analytics_data_api.CheckCompatibilityResponse]:
+    def check_compatibility(
+        self,
+    ) -> Callable[
+        [analytics_data_api.CheckCompatibilityRequest],
+        analytics_data_api.CheckCompatibilityResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CheckCompatibility(self._session, self._host, self._interceptor) # type: ignore
+        return self._CheckCompatibility(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_metadata(self) -> Callable[
-            [analytics_data_api.GetMetadataRequest],
-            analytics_data_api.Metadata]:
+    def get_metadata(
+        self,
+    ) -> Callable[[analytics_data_api.GetMetadataRequest], analytics_data_api.Metadata]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetMetadata(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetMetadata(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def run_pivot_report(self) -> Callable[
-            [analytics_data_api.RunPivotReportRequest],
-            analytics_data_api.RunPivotReportResponse]:
+    def run_pivot_report(
+        self,
+    ) -> Callable[
+        [analytics_data_api.RunPivotReportRequest],
+        analytics_data_api.RunPivotReportResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._RunPivotReport(self._session, self._host, self._interceptor) # type: ignore
+        return self._RunPivotReport(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def run_realtime_report(self) -> Callable[
-            [analytics_data_api.RunRealtimeReportRequest],
-            analytics_data_api.RunRealtimeReportResponse]:
+    def run_realtime_report(
+        self,
+    ) -> Callable[
+        [analytics_data_api.RunRealtimeReportRequest],
+        analytics_data_api.RunRealtimeReportResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._RunRealtimeReport(self._session, self._host, self._interceptor) # type: ignore
+        return self._RunRealtimeReport(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def run_report(self) -> Callable[
-            [analytics_data_api.RunReportRequest],
-            analytics_data_api.RunReportResponse]:
+    def run_report(
+        self,
+    ) -> Callable[
+        [analytics_data_api.RunReportRequest], analytics_data_api.RunReportResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._RunReport(self._session, self._host, self._interceptor) # type: ignore
+        return self._RunReport(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -965,6 +1088,4 @@ class BetaAnalyticsDataRestTransport(BetaAnalyticsDataTransport):
         self._session.close()
 
 
-__all__=(
-    'BetaAnalyticsDataRestTransport',
-)
+__all__ = ("BetaAnalyticsDataRestTransport",)
