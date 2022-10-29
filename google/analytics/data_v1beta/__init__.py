@@ -13,6 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from google.analytics.data import gapic_version as package_version
+
+__version__ = package_version.__version__
+
 
 from .services.beta_analytics_data import BetaAnalyticsDataClient
 from .services.beta_analytics_data import BetaAnalyticsDataAsyncClient
