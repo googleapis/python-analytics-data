@@ -47,10 +47,6 @@ DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     rest_version=requests_version,
 )
 
-# TODO (numeric enums): This file was generated with the option to
-#   request that the server respond with enums JSON-encoded as
-#   numbers. The code below does not implement that functionality yet.
-
 
 class AlphaAnalyticsDataRestInterceptor:
     """Interceptor for AlphaAnalyticsData.
@@ -67,12 +63,13 @@ class AlphaAnalyticsDataRestInterceptor:
 
     .. code-block:: python
         class MyCustomAlphaAnalyticsDataInterceptor(AlphaAnalyticsDataRestInterceptor):
-            def pre_run_funnel_report(request, metadata):
+            def pre_run_funnel_report(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_run_funnel_report(response):
+            def post_run_funnel_report(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
         transport = AlphaAnalyticsDataRestTransport(interceptor=MyCustomAlphaAnalyticsDataInterceptor())
         client = AlphaAnalyticsDataClient(transport=transport)

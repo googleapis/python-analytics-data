@@ -47,10 +47,6 @@ DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     rest_version=requests_version,
 )
 
-# TODO (numeric enums): This file was generated with the option to
-#   request that the server respond with enums JSON-encoded as
-#   numbers. The code below does not implement that functionality yet.
-
 
 class BetaAnalyticsDataRestInterceptor:
     """Interceptor for BetaAnalyticsData.
@@ -67,54 +63,61 @@ class BetaAnalyticsDataRestInterceptor:
 
     .. code-block:: python
         class MyCustomBetaAnalyticsDataInterceptor(BetaAnalyticsDataRestInterceptor):
-            def pre_batch_run_pivot_reports(request, metadata):
+            def pre_batch_run_pivot_reports(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_batch_run_pivot_reports(response):
+            def post_batch_run_pivot_reports(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_batch_run_reports(request, metadata):
+            def pre_batch_run_reports(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_batch_run_reports(response):
+            def post_batch_run_reports(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_check_compatibility(request, metadata):
+            def pre_check_compatibility(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_check_compatibility(response):
+            def post_check_compatibility(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_get_metadata(request, metadata):
+            def pre_get_metadata(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_get_metadata(response):
+            def post_get_metadata(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_run_pivot_report(request, metadata):
+            def pre_run_pivot_report(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_run_pivot_report(response):
+            def post_run_pivot_report(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_run_realtime_report(request, metadata):
+            def pre_run_realtime_report(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_run_realtime_report(response):
+            def post_run_realtime_report(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
-            def pre_run_report(request, metadata):
+            def pre_run_report(self, request, metadata):
                 logging.log(f"Received request: {request}")
                 return request, metadata
 
-            def post_run_report(response):
+            def post_run_report(self, response):
                 logging.log(f"Received response: {response}")
+                return response
 
         transport = BetaAnalyticsDataRestTransport(interceptor=MyCustomBetaAnalyticsDataInterceptor())
         client = BetaAnalyticsDataClient(transport=transport)
